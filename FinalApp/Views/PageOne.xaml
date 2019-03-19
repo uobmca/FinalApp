@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:AppPageBase xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:d="clr-namespace:FinalApp;assembly=FinalApp"
+             x:Class="FinalApp.Views.PageOne">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Test Page 1" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Button Command="{Binding TestCommand}" Text="Test" 
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+       
+    </ContentPage.Content>
+</d:AppPageBase>
