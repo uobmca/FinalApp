@@ -2,12 +2,14 @@
 <d:AppPageBase xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:d="clr-namespace:FinalApp;assembly=FinalApp"
-             x:Class="FinalApp.Views.PageOne">
+             x:Class="FinalApp.Views.PageOne"
+                xmlns:custom="clr-namespace:FinalApp.Controls">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Test Page 1" VerticalOptions="Center" HorizontalOptions="Center" />
         <Button Command="{Binding TestCommand}" Text="Test" 
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"/>
+            <custom:DateRange RangeText="Date Range for PAGE 1"/>
         </StackLayout>
        
     </ContentPage.Content>
