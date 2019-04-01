@@ -31,26 +31,36 @@ namespace FinalApp
             }
         }
 
-        public ICommand SubmitCommand { protected set; get; }
+        //public ICommand SubmitCommand { protected set; get; }
+
+        public ICommand GoogleLoginCommand { protected set; get; }
+
         private readonly INavigation navigation;
         public LoginViewModel(INavigation navigation)
         {
-            SubmitCommand = new Command(OnSubmit);
+            //SubmitCommand = new Command(OnSubmit);
+            GoogleLoginCommand = new Command(GoogleLogin);
             this.navigation = navigation;
         }
 
-        public void OnSubmit()
+        public void GoogleLogin(object obj)
         {
-            if (email != "123456" || password != "123")
-            {
-                DisplayInvalidLoginPrompt();
-            }
-
-            else
-            {
-                Application.Current.MainPage = new MainPage();
-            }
+            Application.Current.MainPage = new MainPage();
         }
+
+
+        //public void OnSubmit()
+        //{
+        //    if (email != "123456" || password != "123")
+        //    {
+        //        DisplayInvalidLoginPrompt();
+        //    }
+
+        //    else
+        //    {
+        //        Application.Current.MainPage = new MainPage();
+        //    }
+        //}
        
     }
 }

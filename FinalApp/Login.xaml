@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="FinalApp.Login">
    <ContentPage.Content>  
-        <StackLayout Orientation="Vertical" Padding="30" Spacing="40">  
-            <BoxView HeightRequest="10"/>  
-            <Image HorizontalOptions="Center" WidthRequest="300" Source="maco.jpg"/>  
-            <Frame BackgroundColor="#BF043055" HasShadow="False">  
+        <StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="30" Spacing="40">  
+            <BoxView BackgroundColor="Teal" HeightRequest="10"/>  
+            <Image BackgroundColor="Gray" HorizontalOptions="Center" WidthRequest="300" Source="maco.jpg"/>  
+            <!--<Frame BackgroundColor="#BF043055" HasShadow="False">  
                 <StackLayout Orientation="Vertical" Spacing="10">  
                     <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
                             HeightRequest="40"   
@@ -20,7 +20,11 @@
             </Frame>  
             <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="#088da5" />  
+                    BackgroundColor="#088da5" /> --> 
+            
+            <Button Command="{Binding GoogleLoginCommand}" Text="Login using Google Account" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="Red" />
         </StackLayout>  
     </ContentPage.Content> 
 </ContentPage>

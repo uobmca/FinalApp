@@ -18,6 +18,7 @@ namespace FinalApp
         public MainPage()
         {
             InitializeComponent();
+
             menuList = new List<MasterPageItem>();
 
             var page1Instance = new PageOne();
@@ -34,6 +35,11 @@ namespace FinalApp
 
             Detail = new NavigationPage((Page)page1.TargetType);
             Detail.BindingContext = page1.ViewModel;
+        }
+
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            Application.Current.MainPage = new Login();
         }
 
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -13,15 +13,15 @@ namespace FinalApp
             vm.DisplayInvalidLoginPrompt += Vm_DisplayInvalidLoginPrompt;
             InitializeComponent();
 
-            Email.Completed += (object sender, EventArgs e) =>
-            {
-                Password.Focus();
-            };
+            //Email.Completed += (object sender, EventArgs e) =>
+            //{
+            //    Password.Focus();
+            //};
 
-            Password.Completed += (object sender, EventArgs e) =>
-            {
-                vm.SubmitCommand.Execute(null);
-            };
+            //Password.Completed += (object sender, EventArgs e) =>
+            //{
+            //    vm.SubmitCommand.Execute(null);
+            //};
         }
 
         void Vm_DisplayInvalidLoginPrompt()

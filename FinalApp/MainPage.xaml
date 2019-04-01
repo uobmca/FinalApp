@@ -41,6 +41,12 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <!--<Button Command="{Binding LogoutCommand}" Text="Logout" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="Gray"/>-->
+                <Button Clicked="Handle_Clicked" Text="Logout" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="Gray"/>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
