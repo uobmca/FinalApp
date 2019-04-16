@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FinalApp.ViewModels;
 using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 
 namespace FinalApp.Views.Pages.TakePicture {
@@ -11,32 +13,41 @@ namespace FinalApp.Views.Pages.TakePicture {
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e) {
-            ImageSource imgSource = await GoToCameraPicker();
+            MediaFile imgFile = await GoToCameraPicker();
+            if (imgFile == null) {
+                return;
+            }
+
+            ImageSource imgSource = ImageSource.FromStream(() => {
+                var stream = imgFile.GetStream();
+                imgFile.Dispose();
+                return stream;
+            });
+            if (imgSource == null) {
+                return;
+            }
+
+            AnalyzePicturePageViewModel viewModel = new AnalyzePicturePageViewModel { 
+                UserImageFilePath = imgFile.Path,
+                UserImageSource = imgSource
+            };
+
+            await Navigation.PushAsync(new AnalyzePicture.AnalyzePicturePage { UserImageSource = imgSource, BindingContext = viewModel }, true);
         }
 
-        private async Task<ImageSource> GoToCameraPicker() {
+        private async Task<MediaFile> GoToCameraPicker() {
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported) {
                 await DisplayAlert("No Camera", "No camera available.", "OK");
                 return null;
             }
 
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions {
-                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
+            MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions {
+                PhotoSize = PhotoSize.Full,
                 Directory = "Pictures",
                 Name = "current.jpg"
             });
 
-            if (file == null) {
-                return null;
-            }
-
-            await DisplayAlert("File Location", string.Format("Succesfully saved to {0}", file.Path), "OK");
-
-            return ImageSource.FromStream(() => {
-                var stream = file.GetStream();
-                file.Dispose();
-                return stream;
-            });
+            return file;
         }
     }
 }

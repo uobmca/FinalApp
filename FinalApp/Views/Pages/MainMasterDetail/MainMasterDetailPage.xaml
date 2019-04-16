@@ -1,12 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FinalApp.Views.Pages.MainMasterDetail.MainMasterDetailPage" xmlns:pages="clr-namespace:FinalApp.Views.Pages.MainMasterDetail">
+<?xml version="1.0" encoding="utf-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  x:Class="FinalApp.Views.Pages.MainMasterDetail.MainMasterDetailPage" 
+                  xmlns:pages="clr-namespace:FinalApp.Views.Pages">
     <MasterDetailPage.Master>
-        <pages:MainMasterDetailPageMaster x:Name="MasterPage" />
+        <pages:MainMasterDetail.MainMasterDetailPageMaster x:Name="MasterPage" />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <pages:MainMasterDetailPageDetail />
+                <pages:Dashboard.DashboardPage/>
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

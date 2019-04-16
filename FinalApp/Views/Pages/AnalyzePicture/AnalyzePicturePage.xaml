@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FinalApp.Views.Pages.AnalyzePicture.AnalyzePicturePage">
+    <ContentPage.Content>
+        
+        <StackLayout>
+                
+            <AbsoluteLayout HeightRequest="200" Margin="0,64,0,8" BackgroundColor="Red">
+            
+                <Image x:Name="userImage"
+                       Source="{Binding UserImageSource}"
+                       AbsoluteLayout.LayoutFlags="All"
+                       AbsoluteLayout.LayoutBounds="0, 0.3, 1, 1"
+                       BackgroundColor="Black"
+                       Aspect="AspectFill"/>
+                
+                <Image x:Name="magnifyImage"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       AbsoluteLayout.LayoutBounds="0.5, 0.5, 40, 40"
+                       Source="ic_magnify"/>
+            </AbsoluteLayout>
+            
+            <Label Text="Please, be patient"
+               FontSize="Large"
+               TextColor="Black"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"/>
+            
+            <ActivityIndicator HorizontalOptions="Center" 
+                               Color="{StaticResource ColorPrimary}" 
+                               IsEnabled="true"
+                               IsRunning="true"
+                               IsVisible="true"
+                               WidthRequest="44" 
+                               HeightRequest="44"/>
+            
+            <Label Text="We're analyzing your picture" 
+                   HorizontalOptions="Center"
+                   FontSize="Micro"/>
+                
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

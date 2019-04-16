@@ -27,7 +27,9 @@ namespace FinalApp.iOS
 
             UINavigationBar.Appearance.BarTintColor = new UIColor(red:0.00f, green:0.41f, blue:0.75f, alpha:1.0f);
             UINavigationBar.Appearance.TintColor = UIColor.White;
-
+            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes {
+                TextColor = UIColor.White
+            });
 
             return base.FinishedLaunching(app, options);
         }

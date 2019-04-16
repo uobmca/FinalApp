@@ -10,9 +10,47 @@ using Xamarin.Forms.Xaml;
 namespace FinalApp.Views.Pages.MainMasterDetail {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMasterDetailPage : MasterDetailPage {
+        MasterDetailPage mdPage;
+        Color origContentBgColor;
+        Color origPageBgColor;
+
         public MainMasterDetailPage() {
             InitializeComponent();
+            SetupUI();
+
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
+        }
+
+        private void SetupUI() {
+
+            mdPage = this;
+            IsPresentedChanged += (object sender, EventArgs e) => {
+                if (Device.RuntimePlatform == Device.iOS) {
+                    Page currentPage = mdPage.Detail;
+                    NavigationPage navPage = currentPage as NavigationPage;
+                    ContentPage detailPage = navPage.CurrentPage as ContentPage;
+                    if (detailPage == null) {
+                        return;
+                    }
+
+                    if (mdPage.IsPresented) {
+                        origPageBgColor = detailPage.BackgroundColor;
+                        origContentBgColor = detailPage.Content.BackgroundColor;
+
+                        detailPage.BackgroundColor = Color.Black;
+                        detailPage.Content.FadeTo(0.5);
+
+                        if (detailPage.Content.BackgroundColor == Color.Default) {
+                            detailPage.Content.BackgroundColor = Color.White;
+                        }
+
+                    } else {
+                        detailPage.BackgroundColor = origPageBgColor;
+                        detailPage.Content.BackgroundColor = origContentBgColor;
+                        detailPage.Content.FadeTo(1.0);
+                    }
+                }
+            };
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {

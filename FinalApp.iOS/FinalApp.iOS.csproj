@@ -170,6 +170,26 @@
     <ImageAsset Include="Assets.xcassets\tutorial_bill01.imageset\tutorial_bill01-1.png" />
     <ImageAsset Include="Assets.xcassets\tutorial_bill01.imageset\tutorial_bill01-2.png" />
     <ImageAsset Include="Assets.xcassets\tutorial_bill01.imageset\tutorial_bill01-3.png" />
+    <ImageAsset Include="Assets.xcassets\ic_magnify.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_magnify.imageset\icons8-search-filled-64.png" />
+    <ImageAsset Include="Assets.xcassets\ic_magnify.imageset\icons8-search-filled-64-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_magnify.imageset\icons8-search-filled-64-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_user.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_user.imageset\ic_drawer_user.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_user.imageset\ic_drawer_user-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_user.imageset\ic_drawer_user-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_dashboard.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_dashboard.imageset\dashboard-icon-3.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_dashboard.imageset\dashboard-icon-3-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_dashboard.imageset\dashboard-icon-3-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_money.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_money.imageset\money.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_money.imageset\money-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_money.imageset\money-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_report.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_report.imageset\report.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_report.imageset\report-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_report.imageset\report-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -181,6 +201,9 @@
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.293080" />
     <PackageReference Include="Xam.Plugin.Media">
       <Version>4.0.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -199,5 +222,10 @@
     <Folder Include="Assets.xcassets\ic_pencil.imageset\" />
     <Folder Include="Assets.xcassets\ic_close.imageset\" />
     <Folder Include="Assets.xcassets\tutorial_bill01.imageset\" />
+    <Folder Include="Assets.xcassets\ic_magnify.imageset\" />
+    <Folder Include="Assets.xcassets\ic_drawer_user.imageset\" />
+    <Folder Include="Assets.xcassets\ic_drawer_dashboard.imageset\" />
+    <Folder Include="Assets.xcassets\ic_drawer_money.imageset\" />
+    <Folder Include="Assets.xcassets\ic_drawer_report.imageset\" />
   </ItemGroup>
 </Project>

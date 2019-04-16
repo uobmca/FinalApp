@@ -28,11 +28,9 @@ namespace FinalApp.Views.Pages.MainMasterDetail {
             public MainMasterDetailPageMasterViewModel() {
                 MenuItems = new ObservableCollection<MainMasterDetailPageMenuItem>(new[]
                 {
-                    new MainMasterDetailPageMenuItem { Id = 0, Title = "Dashboard", TargetType = typeof(Dashboard.DashboardPage) },
-                    new MainMasterDetailPageMenuItem { Id = 1, Title = "Income / Expenses" },
-                    new MainMasterDetailPageMenuItem { Id = 2, Title = "Reports" },
-                    new MainMasterDetailPageMenuItem { Id = 3, Title = "Tags" },
-                    new MainMasterDetailPageMenuItem { Id = 4, Title = "Sign Out" },
+                    new MainMasterDetailPageMenuItem { Id = 0, Icon = "ic_drawer_dashboard", Title = "Dashboard", TargetType = typeof(Dashboard.DashboardPage) },
+                    new MainMasterDetailPageMenuItem { Id = 1, Icon = "ic_drawer_money", Title = "Income / Expenses" },
+                    new MainMasterDetailPageMenuItem { Id = 2, Icon = "ic_drawer_report", Title = "Reports" }
                 });
             }
 
