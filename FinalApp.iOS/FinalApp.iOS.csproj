@@ -149,6 +149,22 @@
     <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-40x40%401x.png" />
     <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-40x40%402x.png" />
     <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\placeholder_bill.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\placeholder_bill.imageset\placeholder_bill.png" />
+    <ImageAsset Include="Assets.xcassets\placeholder_bill.imageset\placeholder_bill-1.png" />
+    <ImageAsset Include="Assets.xcassets\placeholder_bill.imageset\placeholder_bill-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_camera.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_pencil.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_pencil.imageset\pencil.png" />
+    <ImageAsset Include="Assets.xcassets\ic_pencil.imageset\pencil-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_pencil.imageset\pencil-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_camera.imageset\device-camera-icon.png" />
+    <ImageAsset Include="Assets.xcassets\ic_camera.imageset\device-camera-icon-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_camera.imageset\device-camera-icon-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_close.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_close.imageset\ic_close.png" />
+    <ImageAsset Include="Assets.xcassets\ic_close.imageset\ic_close%402x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_close.imageset\ic_close%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -170,5 +186,9 @@
     <Folder Include="Assets.xcassets\ic_logo.imageset\" />
     <Folder Include="Assets.xcassets\ic_hamburger.imageset\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Assets.xcassets\placeholder_bill.imageset\" />
+    <Folder Include="Assets.xcassets\ic_camera.imageset\" />
+    <Folder Include="Assets.xcassets\ic_pencil.imageset\" />
+    <Folder Include="Assets.xcassets\ic_close.imageset\" />
   </ItemGroup>
 </Project>
