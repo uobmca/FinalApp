@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             BackgroundColor="#f2f2f2"
+             x:Class="FinalApp.Views.Pages.Dashboard.DashboardPage">
+    <ContentPage.Content>
+        <ScrollView>
+            
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                
+                <Label Margin="16,32,16,32" Text="Hi, User!" FontSize="Large" FontAttributes="Bold"/>
+                
+                <Frame BackgroundColor="White" 
+                       HasShadow="false" 
+                       CornerRadius="8" 
+                       Margin="16,0,16,0" 
+                       Padding="16" 
+                       VerticalOptions="StartAndExpand">
+                    <Grid BackgroundColor="White" VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition Height="44"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Grid.Row="0" Grid.Column="0" Text="Overview" FontSize="Large" FontAttributes="Bold"/>
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Text="Income" VerticalTextAlignment="Center"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="Expenses" VerticalTextAlignment="Center"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="Balance" VerticalTextAlignment="Center"/>
+                        
+                        <Label Grid.Row="1" Grid.Column="1" Text="€ 130,90" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="€ 74,10" TextColor="Red" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="€ 56,08" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                        
+                    </Grid>
+                </Frame>
+                
+                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+                <Button Margin="16" Text="Add Income" FontAttributes="Bold" BackgroundColor="#2196f3" TextColor="White"/>
+                <Button Margin="16,4,16,4" Text="Add Expenses" FontAttributes="Bold" BackgroundColor="#f44336" TextColor="White"/>
+                </StackLayout>
+                    
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

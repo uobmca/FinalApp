@@ -25,6 +25,10 @@ namespace FinalApp.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+            UINavigationBar.Appearance.BarTintColor = new UIColor(red:0.00f, green:0.41f, blue:0.75f, alpha:1.0f);
+            UINavigationBar.Appearance.TintColor = UIColor.White;
+
+
             return base.FinishedLaunching(app, options);
         }
     }

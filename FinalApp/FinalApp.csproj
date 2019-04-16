@@ -20,6 +20,10 @@
     <Folder Include="Utilities\" />
     <Folder Include="Utilities\AlertUtilities\" />
     <Folder Include="Utilities\New Folder\" />
+    <Folder Include="Views\Pages\Dashboard\" />
+    <Folder Include="Views\Pages\Reports\" />
+    <Folder Include="Views\Pages\Tags\" />
+    <Folder Include="Views\Pages\IncomeExpenses\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Page1.xaml.cs" />

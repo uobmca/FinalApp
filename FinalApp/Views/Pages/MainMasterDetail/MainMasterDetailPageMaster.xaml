@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="FinalApp.Views.Pages.MainMasterDetail.MainMasterDetailPageMaster" 
+             Padding="0"
+             Title="Master"
+             Icon="ic_hamburger">
+    <StackLayout BackgroundColor="White" Spacing="0" Padding="0" Margin="0">
+        <BoxView Color="#0069c0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="32"/>
+        <ListView x:Name="MenuItemsListView" 
+                  SeparatorVisibility="None" 
+                  Margin="0"
+                  HasUnevenRows="true" 
+                  BackgroundColor="White"
+                  ItemsSource="{Binding MenuItems}">
+            <ListView.Header>
+                <StackLayout HeightRequest="100" BackgroundColor="#0069c0">
+                    
+                    
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label VerticalOptions="FillAndExpand" 
+                                   VerticalTextAlignment="Center" 
+                                   TextColor="White" 
+                                   Text="{Binding Title}" 
+                                   FontSize="24" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

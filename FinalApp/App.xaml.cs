@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using FinalApp.Views.Pages.MainMasterDetail;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +14,7 @@ namespace FinalApp
         public App() {
             InitializeComponent();
             RegisterDependencies();
-            MainPage = new Login();
+            MainPage = new MainMasterDetailPage();
         }
 
         protected override void OnStart() {
@@ -29,10 +30,10 @@ namespace FinalApp
         }
 
         private void RegisterDependencies() {
-            var builder = new ContainerBuilder();
+            /*var builder = new ContainerBuilder();
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<MainPageViewModel>();
-            Container = builder.Build();
+            Container = builder.Build();*/
         }
     }
 }

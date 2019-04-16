@@ -95,6 +95,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\IOSNavigationRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -140,6 +141,14 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ic_logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_logo.imageset\image%401x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_logo.imageset\image%402x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_logo.imageset\image%403x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-40x40%401x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-60x60%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -156,5 +165,10 @@
       <Project>{D70A45EA-C460-4305-830C-1BF89B6FE65C}</Project>
       <Name>FinalApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\ic_logo.imageset\" />
+    <Folder Include="Assets.xcassets\ic_hamburger.imageset\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>
