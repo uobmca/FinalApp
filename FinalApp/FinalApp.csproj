@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.293080" />
     <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -25,6 +26,7 @@
     <Folder Include="Views\Pages\Tags\" />
     <Folder Include="Views\Pages\IncomeExpenses\" />
     <Folder Include="Views\Pages\AddIncomePage\" />
+    <Folder Include="Views\Pages\TakePicture\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Page1.xaml.cs" />

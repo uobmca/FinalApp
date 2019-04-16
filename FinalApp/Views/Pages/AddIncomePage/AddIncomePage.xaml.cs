@@ -19,18 +19,45 @@ namespace FinalApp.Views.Pages.AddIncomePage {
                 Device.BeginInvokeOnMainThread(() => {
                     Navigation.PopModalAsync();
                 });
+            
             }));
             takePictureOptionGrid.Opacity = 0.0;
+
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (sender, e) => { 
+
+                if (sender is Grid) {
+                    ShowOptionSelection(takePictureOptionGrid);
+                }
+
+                if (sender == takePictureOptionGrid) {
+                    await GoToTakePicturePage();
+                    HideOptionSelection(takePictureOptionGrid);
+                }
+            };
+
+            takePictureOptionGrid.GestureRecognizers.Add(tapGestureRecognizer);
             insertManuallyOptionGrid.Opacity = 0.0;
+
             Device.BeginInvokeOnMainThread(() => {
                 RunAnimations();
             });
         }
 
-        protected override void OnAppearing() {
-            base.OnAppearing();
+        private async Task GoToTakePicturePage() {
+            await Navigation.PushAsync(new TakePicture.TakePicturePage());
+        }
 
+        private void ShowOptionSelection(Grid grid) {
+            Device.BeginInvokeOnMainThread(() => {
+                grid.BackgroundColor = Color.FromHex("#e2e2e2");
+            });
+        }
 
+        private void HideOptionSelection(Grid grid) {
+            Device.BeginInvokeOnMainThread(() => {
+                grid.BackgroundColor = Color.Transparent;
+            });
         }
 
         private void RunAnimations() {

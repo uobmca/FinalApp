@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             
+             x:Class="FinalApp.Views.Pages.TakePicture.TakePicturePage">
+    <ContentPage.Content>
+        <StackLayout Margin="16,64,16,64" Spacing="0" VerticalOptions="StartAndExpand">
+            
+            <AbsoluteLayout HeightRequest="130" HorizontalOptions="FillAndExpand" Margin="0,16,0,0" Padding="0">
+                <Image AbsoluteLayout.LayoutFlags="WidthProportional" 
+                       AbsoluteLayout.LayoutBounds="0,0,1,120"
+                       Aspect="AspectFill"
+                       Source="tutorial_bill01" />
+                <Frame AbsoluteLayout.LayoutFlags="PositionProportional"
+                       AbsoluteLayout.LayoutBounds="1.02,-0.1,32,32"
+                       Padding="0"
+                       BackgroundColor="Transparent"
+                       >
+                <Image Source="ic_camera"/>
+                </Frame>
+            </AbsoluteLayout>
+            
+            <StackLayout Spacing="8">
+                <Label Text="How to"
+                       HorizontalOptions="Center"
+                       TextColor="Black" 
+                       FontSize="Large" 
+                       FontAttributes="Bold"/>
+                
+                <Label 
+                    Text="Take a picture of the section of your bill containing the total amount due, and the date, as shown in the picture"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Small"
+                />
+           </StackLayout>
+            
+           <Button Style="{StaticResource PositiveButtonStyle}" 
+                   Margin="0,16,0,16" 
+                   Text="Take a picture"
+                   Clicked="Handle_Clicked"
+                   FontAttributes="Bold"/>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
