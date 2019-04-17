@@ -37,7 +37,7 @@ namespace FinalApp.ViewModels {
         }
 
         public async Task<CognitiveServicesResponse> MakeOCRRequest(string imageFilePath, bool isHandWritten = true) {
-            byte[] byteData = Commons.ImageUtils.GetImageAsByteArray(imageFilePath);
+            byte[] byteData = ImageUtils.GetImageAsByteArray(imageFilePath);
             string result = await ocrServices.SendCognitiveServicesRequest(byteData, isHandWritten);
             if (result is string operationId) {
 
