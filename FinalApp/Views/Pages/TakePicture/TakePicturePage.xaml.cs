@@ -42,7 +42,7 @@ namespace FinalApp.Views.Pages.TakePicture {
             }
 
             MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions {
-                PhotoSize = PhotoSize.Full,
+                PhotoSize = PhotoSize.Medium,
                 Directory = "Pictures",
                 Name = "current.jpg"
             });

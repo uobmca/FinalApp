@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 
 namespace FinalApp.Views.Pages.AddIncomePage {
@@ -22,25 +24,41 @@ namespace FinalApp.Views.Pages.AddIncomePage {
             
             }));
             takePictureOptionGrid.Opacity = 0.0;
+            pickPictureOptionGrid.Opacity = 0.0;
+            insertManuallyOptionGrid.Opacity = 0.0;
+
 
             var tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += async (sender, e) => { 
+            tapGestureRecognizer.Tapped += async (sender, e) => {
 
-                if (sender is Grid) {
-                    ShowOptionSelection(takePictureOptionGrid);
+                if (sender is Grid grid) {
+                    grid.ToString();
+                    ShowOptionSelection(grid);
                 }
 
                 if (sender == takePictureOptionGrid) {
                     await GoToTakePicturePage();
                     HideOptionSelection(takePictureOptionGrid);
                 }
+
+                if (sender == pickPictureOptionGrid) {
+                    await OpenPictureGallery();
+                    HideOptionSelection(pickPictureOptionGrid);
+                }
             };
 
             takePictureOptionGrid.GestureRecognizers.Add(tapGestureRecognizer);
-            insertManuallyOptionGrid.Opacity = 0.0;
+            pickPictureOptionGrid.GestureRecognizers.Add(tapGestureRecognizer);
+            insertManuallyOptionGrid.GestureRecognizers.Add(tapGestureRecognizer);
 
             Device.BeginInvokeOnMainThread(() => {
                 RunAnimations();
+            });
+        }
+
+        private async Task OpenPictureGallery() {
+            await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions {
+                PhotoSize = PhotoSize.Medium
             });
         }
 
@@ -63,6 +81,8 @@ namespace FinalApp.Views.Pages.AddIncomePage {
         private void RunAnimations() {
             takePictureOptionGrid.FadeTo(1.0, 500);
             takePictureOptionGrid.TranslateTo(0, 0, 500, Easing.SinOut);
+            pickPictureOptionGrid.FadeTo(1.0, 500);
+            pickPictureOptionGrid.TranslateTo(0, 0, 500, Easing.SinOut);
             insertManuallyOptionGrid.FadeTo(1.0, 500);
             insertManuallyOptionGrid.TranslateTo(0, 0, 500, Easing.SinOut);
         }

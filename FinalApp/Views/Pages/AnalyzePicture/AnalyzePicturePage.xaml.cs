@@ -60,6 +60,11 @@ namespace FinalApp.Views.Pages.AnalyzePicture {
                 }
 
                 if (response == null || !response.IsSuccessStatusCode || response.Content == null) {
+                    if (response != null) {
+                        Debug.Print("\nERROR Code: {0}", response.StatusCode);
+                        string msg = await response.Content.ReadAsStringAsync();
+                        Debug.Print("\nMessage: {0}", JToken.Parse(msg).ToString());
+                    }
                     return false;
                 }
 
