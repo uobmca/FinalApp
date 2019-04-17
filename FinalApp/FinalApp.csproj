@@ -17,6 +17,7 @@
     <PackageReference Include="Microcharts" Version="0.7.1" />
     <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
     <PackageReference Include="Polly" Version="7.1.0" />
+    <PackageReference Include="Microsoft.Azure.Mobile.Client.SQLiteStore" Version="4.1.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -34,6 +35,8 @@
     <Folder Include="Views\Pages\AnalyzePicture\" />
     <Folder Include="Network\" />
     <Folder Include="Commons\" />
+    <Folder Include="Views\Templates\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Page1.xaml.cs" />

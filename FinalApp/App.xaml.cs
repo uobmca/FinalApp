@@ -37,6 +37,7 @@ namespace FinalApp
             builder.RegisterType<MainPageViewModel>();
             builder.RegisterType<WestEuropeOCRServices>().As<INetworkOCRServices>().SingleInstance();
             builder.RegisterType<AnalyzePicturePageViewModel>();
+            builder.RegisterType<IncomeExpensesPageViewModel>();
             Container = builder.Build();
         }
     }

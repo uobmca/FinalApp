@@ -1,8 +1,6 @@
 ﻿
 namespace FinalApp.Models {
-    using System.Globalization;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
     using J = Newtonsoft.Json.JsonPropertyAttribute;
     using N = Newtonsoft.Json.NullValueHandling;
 
