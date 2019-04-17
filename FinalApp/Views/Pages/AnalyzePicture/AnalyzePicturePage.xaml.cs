@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using FinalApp.Models;
 using FinalApp.ViewModels;
 using Newtonsoft.Json.Linq;
@@ -13,7 +15,7 @@ using Xamarin.Forms;
 namespace FinalApp.Views.Pages.AnalyzePicture {
     public partial class AnalyzePicturePage : ContentPage {
 
-        const string subscriptionKey = "f61a5349f7944216b220f05fc119e8a2";
+        const string subscriptionKey = "d52564bdb77443deacdb5dba486a471a";
         const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr";
         public ImageSource UserImageSource { get; set; } = null;
         private bool shouldAnimate = true;
@@ -31,65 +33,16 @@ namespace FinalApp.Views.Pages.AnalyzePicture {
         }
 
         private async void StartAnalyzing(string imageFilePath) {
-            bool success = await MakeOCRRequest(imageFilePath);
-            if (!success) {
-                Device.BeginInvokeOnMainThread(async () => {
-                    magnifyImage.IsVisible = false;
-                    await DisplayAlert("Oops", "Something went wrong while analyzing your image. Please, give it another try", "Ok");
-                    await Navigation.PopAsync();
-                });
-            }
-        }
 
-        static async Task<bool> MakeOCRRequest(string imageFilePath) {
-            try {
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add(
-                    "Ocp-Apim-Subscription-Key", subscriptionKey);
-
-                string requestParameters = "language=unk&detectOrientation=true";
-                string uri = uriBase + "?" + requestParameters;
-
-                HttpResponseMessage response;
-                byte[] byteData = GetImageAsByteArray(imageFilePath);
-
-                using (ByteArrayContent content = new ByteArrayContent(byteData)) {
-                    content.Headers.ContentType =
-                        new MediaTypeHeaderValue("application/octet-stream");
-                    response = await client.PostAsync(uri, content);
+            if (BindingContext is AnalyzePicturePageViewModel viewModel) {
+                var response = await viewModel.MakeOCRRequest(imageFilePath);
+                if (response == null || response.Status != "Succeeded") {
+                    Device.BeginInvokeOnMainThread(async () => {
+                        magnifyImage.IsVisible = false;
+                        await DisplayAlert("Oops", "Something went wrong while analyzing your image. Please, give it another try", "Ok");
+                        await Navigation.PopAsync();
+                    });
                 }
-
-                if (response == null || !response.IsSuccessStatusCode || response.Content == null) {
-                    if (response != null) {
-                        Debug.Print("\nERROR Code: {0}", response.StatusCode);
-                        string msg = await response.Content.ReadAsStringAsync();
-                        Debug.Print("\nMessage: {0}", JToken.Parse(msg).ToString());
-                    }
-                    return false;
-                }
-
-                string contentString = await response.Content.ReadAsStringAsync();
-
-                if (contentString == null) {
-                    return false;
-                }
-
-                OcrApiResponse ocrResponse = OcrApiResponse.FromJson(contentString);
-
-                Debug.Print("\nResponse:\n\n{0}\n",
-                    JToken.Parse(contentString).ToString());
-
-                return true;
-            } catch (Exception e) {
-                Debug.Print("\n" + e.Message);
-                return false;
-            }
-        }
-
-        static byte[] GetImageAsByteArray(string imageFilePath) {
-            using (FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read)) {
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
             }
         }
 

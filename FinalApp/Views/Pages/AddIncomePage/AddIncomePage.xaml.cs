@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Autofac;
+using FinalApp.ViewModels;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Xamarin.Forms;
@@ -57,9 +59,25 @@ namespace FinalApp.Views.Pages.AddIncomePage {
         }
 
         private async Task OpenPictureGallery() {
-            await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions {
+
+            if (Device.RuntimePlatform.Equals("iOS")) { 
+                await Task.Delay(100); 
+            }
+            MediaFile mediaFile = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions {
                 PhotoSize = PhotoSize.Medium
             });
+
+            if (mediaFile == null) {
+                return;
+            }
+
+            using (var scope = App.Container.BeginLifetimeScope()) {
+                if (scope.Resolve<AnalyzePicturePageViewModel>() is AnalyzePicturePageViewModel viewModel) {
+                    viewModel.UserImageFilePath = mediaFile.Path;
+                    viewModel.UserImageSource = ImageSource.FromFile(mediaFile.Path);
+                    await Navigation.PushAsync(new AnalyzePicture.AnalyzePicturePage {  BindingContext = viewModel }, true);
+                }
+            }
         }
 
         private async Task GoToTakePicturePage() {

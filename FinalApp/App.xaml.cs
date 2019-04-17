@@ -1,5 +1,7 @@
 ﻿using System;
 using Autofac;
+using FinalApp.Network;
+using FinalApp.ViewModels;
 using FinalApp.Views.Pages.MainMasterDetail;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -30,10 +32,12 @@ namespace FinalApp
         }
 
         private void RegisterDependencies() {
-            /*var builder = new ContainerBuilder();
+            var builder = new ContainerBuilder();
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<MainPageViewModel>();
-            Container = builder.Build();*/
+            builder.RegisterType<WestEuropeOCRServices>().As<INetworkOCRServices>().SingleInstance();
+            builder.RegisterType<AnalyzePicturePageViewModel>();
+            Container = builder.Build();
         }
     }
 }

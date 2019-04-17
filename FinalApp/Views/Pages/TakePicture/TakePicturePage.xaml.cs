@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Autofac;
 using FinalApp.ViewModels;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -27,12 +28,13 @@ namespace FinalApp.Views.Pages.TakePicture {
                 return;
             }
 
-            AnalyzePicturePageViewModel viewModel = new AnalyzePicturePageViewModel { 
-                UserImageFilePath = imgFile.Path,
-                UserImageSource = imgSource
-            };
-
-            await Navigation.PushAsync(new AnalyzePicture.AnalyzePicturePage { UserImageSource = imgSource, BindingContext = viewModel }, true);
+            using(var scope = App.Container.BeginLifetimeScope()) {
+                if (scope.Resolve<AnalyzePicturePageViewModel>() is AnalyzePicturePageViewModel viewModel) {
+                    viewModel.UserImageFilePath = imgFile.Path;
+                    viewModel.UserImageSource = imgSource;  
+                    await Navigation.PushAsync(new AnalyzePicture.AnalyzePicturePage { BindingContext = viewModel }, true);
+                }
+            }
         }
 
         private async Task<MediaFile> GoToCameraPicker() {
