@@ -14,10 +14,10 @@
     <PackageReference Include="Autofac" Version="4.9.2" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="Microcharts" Version="0.7.1" />
-    <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
     <PackageReference Include="Polly" Version="7.1.0" />
     <PackageReference Include="Microsoft.Azure.Mobile.Client.SQLiteStore" Version="4.1.1" />
+    <PackageReference Include="Microcharts.Forms" Version="0.8.5-pre" />
+    <PackageReference Include="Microcharts" Version="0.8.5-pre" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

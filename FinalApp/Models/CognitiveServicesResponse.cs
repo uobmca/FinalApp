@@ -29,9 +29,4 @@ namespace FinalApp.Models {
         public static CognitiveServicesResponse FromJson(string json) => JsonConvert.DeserializeObject<CognitiveServicesResponse>(json, Commons.StandardJsonConverter.Settings);
     }
 
-    public static class Serialize {
-        public static string ToJson(this CognitiveServicesResponse self) => JsonConvert.SerializeObject(self, Commons.StandardJsonConverter.Settings);
-    }
-
-
 }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             BackgroundColor="White"
+             x:Class="FinalApp.Views.Pages.IncomeExpenses.ExpensesPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout Padding="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                    <Label Text="- €1238.20" 
+                           FontSize="Large" 
+                           HorizontalOptions="Center" 
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#d32f2f" 
+                           Margin="10,16,16,0" />
+                    
+                    <Label Text="This month" 
+                           FontSize="Medium" 
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center" 
+                           TextColor="Black" />
+                    
+                    <microcharts:ChartView BackgroundColor="Transparent"
+                                           HorizontalOptions="FillAndExpand"
+                                           HeightRequest="180" 
+                                           Margin="8,0,8,0" 
+                                           Chart="{Binding ExpensesChart}" />
+                    
+                    <Grid ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackLayout Grid.Row="0" 
+                                     Grid.Column="0"
+                                     Padding="8"
+                                     
+                                     >
+                            
+                            <Label FontAttributes="Bold" 
+                                   FontSize="Medium"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   Margin="-6,0,0,0"
+                                   Text="- €29.30"/>
+                            
+                            <Label FontSize="Small"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Text="Avg. Expenses"/>
+                            
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Row="0" 
+                                     Grid.Column="1"
+                                     Padding="8"
+                                     
+                                     >
+                            
+                            <Label FontAttributes="Bold" 
+                                   FontSize="Medium"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   Text="Monday"/>
+                            
+                            <Label FontSize="Small"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Text="Busiest day"/>
+                            
+                        </StackLayout>
+                        
+                    </Grid>
+                    
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

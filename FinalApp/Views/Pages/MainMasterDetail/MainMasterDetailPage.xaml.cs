@@ -29,9 +29,18 @@ namespace FinalApp.Views.Pages.MainMasterDetail {
                     Page currentPage = mdPage.Detail;
                     NavigationPage navPage = currentPage as NavigationPage;
                     ContentPage detailPage = navPage.CurrentPage as ContentPage;
+
                     if (detailPage == null) {
-                        return;
+                        if (navPage.CurrentPage is TabbedPage tabbedPage) { 
+                            if (tabbedPage.CurrentPage is NavigationPage tabNavPage) {
+                                if (tabNavPage.CurrentPage is ContentPage contentPage) {
+                                    detailPage = contentPage;
+                                }
+                            }
+                        }
                     }
+
+                    if (detailPage == null) return;
 
                     if (mdPage.IsPresented) {
                         origPageBgColor = detailPage.BackgroundColor;

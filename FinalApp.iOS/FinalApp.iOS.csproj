@@ -53,7 +53,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <CodesignProvision>iOS Enterprise Development Team</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -150,8 +150,6 @@
     <ImageAsset Include="Assets.xcassets\ic_logo.imageset\image%403x.png" />
     <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-40x40%401x.png" />
-    <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-40x40%402x.png" />
-    <ImageAsset Include="Assets.xcassets\ic_hamburger.imageset\Icon-App-60x60%403x.png" />
     <ImageAsset Include="Assets.xcassets\placeholder_bill.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\placeholder_bill.imageset\placeholder_bill.png" />
     <ImageAsset Include="Assets.xcassets\placeholder_bill.imageset\placeholder_bill-1.png" />
@@ -197,12 +195,26 @@
     <ImageAsset Include="Assets.xcassets\ic_gallery.imageset\ic_gallery.png" />
     <ImageAsset Include="Assets.xcassets\ic_gallery.imageset\ic_gallery-1.png" />
     <ImageAsset Include="Assets.xcassets\ic_gallery.imageset\ic_gallery-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tab_expenses.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tab_incomes.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tab_incomes.imageset\Happy_Face%402x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tab_incomes.imageset\Happy_Face%402x-3.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tab_incomes.imageset\Happy_Face%402x-4.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tab_expenses.imageset\Dollar%402x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tab_expenses.imageset\Dollar%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tab_expenses.imageset\Dollar%402x-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="SkiaSharp.Views.iOS">
+      <HintPath>bin\iPhone\Debug\SkiaSharp.Views.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>bin\iPhone\Debug\SkiaSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.293080" />
@@ -212,11 +224,11 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.1</Version>
     </PackageReference>
-    <PackageReference Include="Microcharts">
-      <Version>0.7.1</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.Azure.Mobile.Client.SQLiteStore">
       <Version>4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microcharts">
+      <Version>0.8.5-pre</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -241,5 +253,7 @@
     <Folder Include="Assets.xcassets\ic_drawer_money.imageset\" />
     <Folder Include="Assets.xcassets\ic_drawer_report.imageset\" />
     <Folder Include="Assets.xcassets\ic_gallery.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tab_expenses.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tab_incomes.imageset\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            xmlns:ie="clr-namespace:FinalApp.Views.Pages.IncomeExpenses; assembly=FinalApp"
+            x:Class="FinalApp.Views.Pages.IncomeExpenses.IncomesExpensesTabbedPage">
+    
+    <NavigationPage Title="Expenses" Icon="ic_tab_expenses">
+        <x:Arguments>
+            <ie:ExpensesPage/>
+        </x:Arguments>
+    </NavigationPage>
+    
+    <NavigationPage Title="Incomes" Icon="ic_tab_incomes">
+        <x:Arguments>
+            <ie:IncomesPage/>
+        </x:Arguments>
+    </NavigationPage>
+    
+</TabbedPage>
