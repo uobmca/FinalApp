@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             BackgroundColor="#f2f2f2"
+             x:Class="FinalApp.Views.Pages.Tags.TagDetailPage">
+    <ContentPage.Content>
+        
+        <StackLayout Margin="16,32,16,32">
+            
+            <Label Text="Name" FontAttributes="Bold"/>
+            <Entry Text="{Binding SelectedCategory.DisplayName, Mode=TwoWay}" Placeholder="Category name" 
+                   HorizontalOptions="FillAndExpand"/>
+            
+            <Label Margin="0,8,0,0" Text="Icon" FontAttributes="Bold"/>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Row="0" Grid.Column="0" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="1"/>    
+                <Image Grid.Row="0" Grid.Column="1" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                <Image Grid.Row="0" Grid.Column="2" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                <Image Grid.Row="0" Grid.Column="3" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                <Image Grid.Row="0" Grid.Column="4" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                
+            </Grid>
+            
+            <Grid Margin="0,8,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Row="0" Grid.Column="0" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                <Image Grid.Row="0" Grid.Column="1" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                <Image Grid.Row="0" Grid.Column="2" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                <Image Grid.Row="0" Grid.Column="3" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                <Image Grid.Row="0" Grid.Column="4" Source="ic_camera" WidthRequest="32" HorizontalOptions="StartAndExpand" Opacity="0.5"/>    
+                
+            </Grid>
+            
+            <Button BackgroundColor="{StaticResource ColorAccent}" 
+                    VerticalOptions="EndAndExpand"
+                    FontAttributes="Bold"
+                    Text="Save"
+                    TextColor="White"/>
+            
+                
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

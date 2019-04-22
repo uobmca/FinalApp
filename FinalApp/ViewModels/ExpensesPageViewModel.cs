@@ -9,6 +9,23 @@ using SkiaSharp;
 using Xamarin.Forms;
 
 namespace FinalApp.ViewModels {
+
+    public class ExpensesGroupedList : List<UserExpense> { 
+        public int ExpensesCategoryId { get; set; }
+
+        public ExpensesGroupedList() { }
+
+        public ExpensesGroupedList(int expensesCategoryId) {
+            ExpensesCategoryId = expensesCategoryId;
+        }
+
+        public ExpensesGroupedList(int expensesCategoryId, List<UserExpense> expenses) {
+            ExpensesCategoryId = expensesCategoryId;
+            this.Clear();
+            this.AddRange(expenses);
+        }
+    }
+
     public class ExpensesPageViewModel : BindableObject {
 
         protected static readonly BindableProperty ExpensesChartProperty =
@@ -16,6 +33,9 @@ namespace FinalApp.ViewModels {
 
         protected static readonly BindableProperty UserExpensesProperty =
             BindableProperty.Create(nameof(UserExpenses), typeof(IEnumerable<UserExpense>), typeof(ExpensesPageViewModel), new List<UserExpense>());
+
+        protected static readonly BindableProperty GroupedUserExpensesProperty =
+            BindableProperty.Create(nameof(GroupedUserExpenses), typeof(List<ExpensesGroupedList>), typeof(ExpensesPageViewModel), new List<ExpensesGroupedList>());
 
         public RadialGaugeChart ExpensesChart {
             get => (RadialGaugeChart)GetValue(ExpensesChartProperty);
@@ -25,6 +45,11 @@ namespace FinalApp.ViewModels {
         public IEnumerable<UserExpense> UserExpenses {
             get => (IEnumerable<UserExpense>)GetValue(UserExpensesProperty);
             set => SetValue(UserExpensesProperty, value);
+        }
+
+        public List<ExpensesGroupedList> GroupedUserExpenses {
+            get => (List<ExpensesGroupedList>)GetValue(GroupedUserExpensesProperty);
+            set => SetValue(GroupedUserExpensesProperty, value);
         }
 
         public ExpensesPageViewModel() {
@@ -76,11 +101,6 @@ namespace FinalApp.ViewModels {
         }
 
         private void UpdateExpensesChart() {
-            try {
-                var typeface = SkiaSharp.SKTypeface.FromFamilyName(null);
-            } catch(Exception e) {
-                Debug.Print(e.StackTrace);
-            }
 
             ExpensesChart = new RadialGaugeChart {
                 AnimationDuration = TimeSpan.FromMilliseconds(600.0),
@@ -91,6 +111,11 @@ namespace FinalApp.ViewModels {
                     ValueLabel = arg.First().Amount.ToString("F1")
                 }), LabelTextSize = 18.0f, BackgroundColor = SKColors.Transparent
             };
+
+            GroupedUserExpenses = UserExpenses
+                .GroupBy((expense) => expense.CategoryId)
+                .Select((group) => new ExpensesGroupedList((int)group.Key, group.ToList()))
+                .ToList();
         }
 
         private string CategoryIdToString(int id) { 

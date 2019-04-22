@@ -19,5 +19,20 @@ namespace FinalApp.Models {
         public static UserExpense FromJson(string json) => JsonConvert.DeserializeObject<UserExpense>(json, Commons.StandardJsonConverter.Settings);
     }
 
+    public partial class UserExpense { 
+        public string CategoryName { 
+            get {
+                switch (CategoryId) {
+                    case 1: return "House";
+                    case 2: return "Car";
+                    case 3: return "Entertainment";
+                    default: return "Other";
+                }
+            }
+        }
+
+    }
+
+
 }
 

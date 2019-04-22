@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using FinalApp.Network;
+using FinalApp.Services;
 using FinalApp.ViewModels;
 using FinalApp.Views.Pages.MainMasterDetail;
 using Xamarin.Forms;
@@ -36,9 +37,12 @@ namespace FinalApp
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<MainPageViewModel>();
             builder.RegisterType<WestEuropeOCRServices>().As<INetworkOCRServices>().SingleInstance();
+            builder.RegisterType<UserDataRepository>().As<IUserDataRepository>().SingleInstance();
             builder.RegisterType<AnalyzePicturePageViewModel>();
             builder.RegisterType<ExpensesPageViewModel>();
             builder.RegisterType<IncomesPageViewModel>();
+            builder.RegisterType<TagsPageViewModel>();
+            builder.RegisterType<TagDetailPageViewModel>();
             Container = builder.Build();
         }
     }

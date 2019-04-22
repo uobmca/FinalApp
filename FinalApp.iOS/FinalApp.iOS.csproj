@@ -203,6 +203,22 @@
     <ImageAsset Include="Assets.xcassets\ic_tab_expenses.imageset\Dollar%402x.png" />
     <ImageAsset Include="Assets.xcassets\ic_tab_expenses.imageset\Dollar%402x-1.png" />
     <ImageAsset Include="Assets.xcassets\ic_tab_expenses.imageset\Dollar%402x-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_arrow_down_red.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_arrow_up_blue.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_arrow_down_red.imageset\ic_arrow_down_red.png" />
+    <ImageAsset Include="Assets.xcassets\ic_arrow_down_red.imageset\ic_arrow_down_red-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_arrow_down_red.imageset\ic_arrow_down_red-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_arrow_up_blue.imageset\ic_arrow_up_blue.png" />
+    <ImageAsset Include="Assets.xcassets\ic_arrow_up_blue.imageset\ic_arrow_up_blue-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_arrow_up_blue.imageset\ic_arrow_up_blue-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_tag.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_tag.imageset\ic_tag_big.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_tag.imageset\ic_tag_big-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_drawer_tag.imageset\ic_tag_big-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_add.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_add.imageset\ic_add-3.png" />
+    <ImageAsset Include="Assets.xcassets\ic_add.imageset\ic_add.png" />
+    <ImageAsset Include="Assets.xcassets\ic_add.imageset\ic_add-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -255,5 +271,9 @@
     <Folder Include="Assets.xcassets\ic_gallery.imageset\" />
     <Folder Include="Assets.xcassets\ic_tab_expenses.imageset\" />
     <Folder Include="Assets.xcassets\ic_tab_incomes.imageset\" />
+    <Folder Include="Assets.xcassets\ic_arrow_down_red.imageset\" />
+    <Folder Include="Assets.xcassets\ic_arrow_up_blue.imageset\" />
+    <Folder Include="Assets.xcassets\ic_drawer_tag.imageset\" />
+    <Folder Include="Assets.xcassets\ic_add.imageset\" />
   </ItemGroup>
 </Project>

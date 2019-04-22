@@ -18,5 +18,9 @@ namespace FinalApp.Services {
 
         Task SaveUserIncome(UserIncome income);
         Task SaveUserIncomes(IEnumerable<UserIncome> incomes);
+
+        // Categories
+        Task<List<Category>> GetUserCategories();
+        Task SaveUserCategory(Category category);
     }
 }

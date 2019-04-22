@@ -21,18 +21,18 @@ namespace FinalApp.Services {
 
         public UserDataRepository() {
 
-            mobileClient = new MobileServiceClient(kApplicationUrl);
+            //mobileClient = new MobileServiceClient(kApplicationUrl);
 
-            var store = new MobileServiceSQLiteStore(kOfflineDatabasePath);
-            store.DefineTable<UserExpense>();
-            //store.DefineTable<UserIncome>();
-            //store.DefineTable<Category>();
+            //var store = new MobileServiceSQLiteStore(kOfflineDatabasePath);
+            //store.DefineTable<UserExpense>();
+            ////store.DefineTable<UserIncome>();
+            ////store.DefineTable<Category>();
 
-            mobileClient.SyncContext.InitializeAsync(store);
+            //mobileClient.SyncContext.InitializeAsync(store);
 
-            expensesTable = mobileClient.GetSyncTable<UserExpense>();
-            incomesTable = mobileClient.GetSyncTable<UserIncome>();
-            categoriesTable = mobileClient.GetSyncTable<Category>();
+            //expensesTable = mobileClient.GetSyncTable<UserExpense>();
+            //incomesTable = mobileClient.GetSyncTable<UserIncome>();
+            //categoriesTable = mobileClient.GetSyncTable<Category>();
         }
 
         private async Task SyncAsync() {
@@ -121,5 +121,28 @@ namespace FinalApp.Services {
             throw new NotImplementedException();
         }
 
+        public async Task<List<Category>> GetUserCategories() {
+            return new List<Category>() {
+                new Category {
+                    DisplayName = "House",
+                    CategoryId = 1,
+                    Icon = "ic_camera"
+                },
+                new Category {
+                    DisplayName = "Car",
+                    CategoryId = 2,
+                    Icon = "ic_camera"
+                },
+                new Category {
+                    DisplayName = "Entertainment",
+                    CategoryId = 3,
+                    Icon = "ic_camera"
+                },
+            };
+        }
+
+        public Task SaveUserCategory(Category category) {
+            throw new NotImplementedException();
+        }
     }
 }
