@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             BackgroundColor="#f2f2f2"
+             x:Class="FinalApp.Views.Pages.ExpenseDetail.ExpenseDetailPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="16">
+                <Label Text="Amount" FontAttributes="Bold"/>
+                <Entry Text="{Binding SelectedUserExpense.Amount, Mode=TwoWay}"/>
+                
+                <Label Text="Expire Date" FontAttributes="Bold" Margin="0,8,0,0"/>
+                <DatePicker Date="{Binding SelectedUserExpense.ExpireDate, Mode=TwoWay, Converter={StaticResource dateTimeOffsetToDateTimeConverter}}"/>
+                
+                <Label Text="Category" FontAttributes="Bold" Margin="0,8,0,0"/>
+                <Picker SelectedItem="{Binding SelectedUserCategory, Mode=TwoWay}" 
+                        ItemsSource="{Binding UserCategories}"/>
+                
+                <Label Text="Description" FontAttributes="Bold" Margin="0,8,0,0"/>
+                <Editor HeightRequest="80" 
+                        MaxLength="100"
+                        Placeholder="Your expense description"
+                        Text="{Binding SelectedUserExpense.Description, Mode=TwoWay}"/>
+                
+                <Button BackgroundColor="{StaticResource ColorAccent}" 
+                        Text="Save"
+                        Clicked="Handle_Clicked"
+                        VerticalOptions="EndAndExpand"
+                        TextColor="White"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

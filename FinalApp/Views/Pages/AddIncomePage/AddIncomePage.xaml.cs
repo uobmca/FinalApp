@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 using FinalApp.ViewModels;
+using FinalApp.Views.Base;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Xamarin.Forms;
@@ -47,6 +48,11 @@ namespace FinalApp.Views.Pages.AddIncomePage {
                     await OpenPictureGallery();
                     HideOptionSelection(pickPictureOptionGrid);
                 }
+
+                if (sender == insertManuallyOptionGrid) {
+                    await OpenInsertManuallyPage();
+                    HideOptionSelection(insertManuallyOptionGrid);
+                }
             };
 
             takePictureOptionGrid.GestureRecognizers.Add(tapGestureRecognizer);
@@ -56,6 +62,11 @@ namespace FinalApp.Views.Pages.AddIncomePage {
             Device.BeginInvokeOnMainThread(() => {
                 RunAnimations();
             });
+        }
+
+        private async Task OpenInsertManuallyPage() {
+            var page = new ExpenseDetail.ExpenseDetailPage();
+            await Navigation.PushModalAsync(new AppNavigationPage(page));
         }
 
         private async Task OpenPictureGallery() {

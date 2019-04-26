@@ -11,10 +11,10 @@ namespace FinalApp.ViewModels {
     public class TagsPageViewModel : BindableObject {
 
         // Bindable Properties
-        protected static readonly BindableProperty CategoriesProperty =
+        protected readonly BindableProperty CategoriesProperty =
             BindableProperty.Create(nameof(Categories), typeof(IEnumerable<Category>), typeof(TagsPageViewModel), new List<Category>());
 
-        protected static readonly BindableProperty CategoryEditButtonCommandProperty =
+        protected readonly BindableProperty CategoryEditButtonCommandProperty =
             BindableProperty.Create(nameof(CategoryEditButtonCommand), typeof(Command<Category>), typeof(TagsPageViewModel), null);
 
         public IEnumerable<Category> Categories {
@@ -27,7 +27,7 @@ namespace FinalApp.ViewModels {
             set => SetValue(CategoryEditButtonCommandProperty, value);
         }
 
-        private IUserDataRepository repository;
+        public IUserDataRepository repository;
 
         public TagsPageViewModel(IUserDataRepository repository) {
             this.repository = repository;

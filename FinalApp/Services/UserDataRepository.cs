@@ -21,18 +21,18 @@ namespace FinalApp.Services {
 
         public UserDataRepository() {
 
-            //mobileClient = new MobileServiceClient(kApplicationUrl);
+            mobileClient = new MobileServiceClient(kApplicationUrl);
 
-            //var store = new MobileServiceSQLiteStore(kOfflineDatabasePath);
-            //store.DefineTable<UserExpense>();
-            ////store.DefineTable<UserIncome>();
-            ////store.DefineTable<Category>();
+            var store = new MobileServiceSQLiteStore(kOfflineDatabasePath);
+            store.DefineTable<UserExpense>();
+            store.DefineTable<UserIncome>();
+            store.DefineTable<Category>();
 
-            //mobileClient.SyncContext.InitializeAsync(store);
+            mobileClient.SyncContext.InitializeAsync(store);
 
-            //expensesTable = mobileClient.GetSyncTable<UserExpense>();
-            //incomesTable = mobileClient.GetSyncTable<UserIncome>();
-            //categoriesTable = mobileClient.GetSyncTable<Category>();
+            expensesTable = mobileClient.GetSyncTable<UserExpense>();
+            incomesTable = mobileClient.GetSyncTable<UserIncome>();
+            categoriesTable = mobileClient.GetSyncTable<Category>();
         }
 
         private async Task SyncAsync() {
@@ -76,22 +76,23 @@ namespace FinalApp.Services {
         }
 
         public async Task<List<UserExpense>> GetUserExpenses() {
-            try {
-                await SyncAsync();
-                return await expensesTable.ToListAsync();
-            } catch (MobileServiceInvalidOperationException msioe) {
-                Debug.WriteLine(@"Invalid sync operation: {0}", msioe.Message);
-            } catch (Exception e) {
-                Debug.WriteLine(@"Sync error: {0}", e.Message);
-            }
-            return null;
+            return await expensesTable.ToListAsync();
+            //try {
+            //    await SyncAsync();
+            //    return await expensesTable.ToListAsync();
+            //} catch (MobileServiceInvalidOperationException msioe) {
+            //    Debug.WriteLine(@"Invalid sync operation: {0}", msioe.Message);
+            //} catch (Exception e) {
+            //    Debug.WriteLine(@"Sync error: {0}", e.Message);
+            //}
+            //return null;
         }
 
         public async Task SaveUserExpense(UserExpense expense) {
-            if (expense.CategoryId == -1) {
-                await expensesTable.InsertAsync(expense);
-            } else {
+            if (expense.Id != null && await expensesTable.LookupAsync(expense.Id) != null) {
                 await expensesTable.UpdateAsync(expense);
+            } else {
+                await expensesTable.InsertAsync(expense);
             }
         }
 
@@ -100,21 +101,23 @@ namespace FinalApp.Services {
         }
 
         public async Task<List<UserIncome>> GetUserIncomes() {
-            throw new NotImplementedException();
+            return await incomesTable.ToListAsync();
         }
 
         public async Task<List<UserIncome>> GetUserIncomes(DateTime startDate, DateTime endDate) {
-            throw new NotImplementedException();
+            return await incomesTable.ToListAsync();
         }
-
-
 
         public async Task SaveUserExpenses(IEnumerable<UserExpense> incomes) {
             throw new NotImplementedException();
         }
 
         public async Task SaveUserIncome(UserIncome income) {
-            throw new NotImplementedException();
+            if (income.Id != null && await incomesTable.LookupAsync(income.Id) != null) {
+                await incomesTable.UpdateAsync(income);
+            } else {
+                await incomesTable.InsertAsync(income);
+            }
         }
 
         public async Task SaveUserIncomes(IEnumerable<UserIncome> incomes) {
@@ -122,27 +125,15 @@ namespace FinalApp.Services {
         }
 
         public async Task<List<Category>> GetUserCategories() {
-            return new List<Category>() {
-                new Category {
-                    DisplayName = "House",
-                    CategoryId = 1,
-                    Icon = "ic_camera"
-                },
-                new Category {
-                    DisplayName = "Car",
-                    CategoryId = 2,
-                    Icon = "ic_camera"
-                },
-                new Category {
-                    DisplayName = "Entertainment",
-                    CategoryId = 3,
-                    Icon = "ic_camera"
-                },
-            };
+            return await categoriesTable.ToListAsync();
         }
 
-        public Task SaveUserCategory(Category category) {
-            throw new NotImplementedException();
+        public async Task SaveUserCategory(Category category) {
+            if (category.Id != null && await categoriesTable.LookupAsync(category.Id) != null) {
+                await categoriesTable.UpdateAsync(category);
+            } else {
+                await categoriesTable.InsertAsync(category);
+            }
         }
     }
 }

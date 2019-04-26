@@ -9,7 +9,9 @@ namespace FinalApp.Views.Pages.Tags {
         public TagDetailPage() {
             InitializeComponent();
             SetupUI();
-            SetupContext();
+            if(BindingContext == null) { 
+                SetupContext();
+            }
         }
 
         private void SetupContext() { 
@@ -25,6 +27,13 @@ namespace FinalApp.Views.Pages.Tags {
             ToolbarItems.Add(new ToolbarItem("Close", "ic_close", async () => {
                 await Navigation.PopModalAsync();
             }));
+        }
+
+        async void Handle_Clicked(object sender, System.EventArgs e) {
+            if(BindingContext is TagDetailPageViewModel viewModel) {
+                await viewModel.Save();
+                await Navigation.PopModalAsync();
+            }
         }
     }
 }

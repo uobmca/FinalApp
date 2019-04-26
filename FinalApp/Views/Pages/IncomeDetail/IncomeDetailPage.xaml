@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+        [J("amount")] public double Amount { get; set; }
+        [J("description")] public string Description { get; set; }
+        [J("incomeDate")] public DateTimeOffset IncomeDate { get; set; }
+        [J("categoryId")] public long CategoryId { get; set; }
+        [J("createdAt")] public DateTimeOffset CreatedAt { get; set; }
+        [J("updatedAt")] public DateTimeOffset UpdatedAt { get; set; }
+   
+-->
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             BackgroundColor="#f2f2f2"
+             x:Class="FinalApp.Views.Pages.IncomeDetail.IncomeDetailPage">
+    <ContentPage.Content>
+        <StackLayout Margin="16" BindingContext="{Binding SelectedUserIncome}">
+            
+            <Label Text="Amount" FontAttributes="Bold"/>
+            <Entry Text="{Binding Amount, Mode=TwoWay}"/>
+            
+            <Label Text="Date" FontAttributes="Bold" Margin="0,8,0,0"/>
+            <DatePicker Date="{Binding IncomeDate, Mode=TwoWay}"/>
+            
+            <Label Text="Description" FontAttributes="Bold" Margin="0,8,0,0"/>
+            <Editor HeightRequest="80" 
+                    MaxLength="100"
+                    Text="{Binding Description, Mode=TwoWay}"
+                    Placeholder="Your income description"/>
+            
+            <Button BackgroundColor="{StaticResource ColorAccent}" 
+                    Text="Save"
+                    Clicked="Handle_Clicked"
+                    VerticalOptions="EndAndExpand"
+                    TextColor="White"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -7,6 +7,13 @@ namespace FinalApp.Models {
     public partial class CognitiveServicesResponse {
         [J("status")] public string Status { get; set; }
         [J("recognitionResult", NullValueHandling = N.Ignore)] public RecognitionResult RecognitionResult { get; set; }
+
+        public Metadata ImageMetadata;
+    }
+
+    public partial class Metadata { 
+        public int Width { get; set; }
+        public int Height { get; set; } 
     }
 
     public partial class RecognitionResult {

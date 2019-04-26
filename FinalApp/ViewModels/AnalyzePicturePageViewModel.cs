@@ -14,10 +14,10 @@ namespace FinalApp.ViewModels {
         const int kResultRequestMaxRetryAttempts = 8;
         TimeSpan kResultRequestsInterval = TimeSpan.FromSeconds(3);
 
-        protected static readonly BindableProperty UserImageSourceProperty =
+        protected readonly BindableProperty UserImageSourceProperty =
             BindableProperty.Create(nameof(UserImageSource), typeof(ImageSource), typeof(AnalyzePicturePageViewModel), null);
 
-        protected static readonly BindableProperty UserImageFilePathProperty =
+        protected readonly BindableProperty UserImageFilePathProperty =
             BindableProperty.Create(nameof(UserImageFilePath), typeof(string), typeof(AnalyzePicturePageViewModel), null);
 
         public ImageSource UserImageSource {
@@ -38,8 +38,8 @@ namespace FinalApp.ViewModels {
 
         public async Task<CognitiveServicesResponse> MakeOCRRequest(string imageFilePath, bool isHandWritten = true) {
             byte[] byteData = ImageUtils.GetImageAsByteArray(imageFilePath);
-            string result = await ocrServices.SendCognitiveServicesRequest(byteData, isHandWritten);
-            if (result is string operationId) {
+            CognitiveServicesRequestResponse result = await ocrServices.SendCognitiveServicesRequest(byteData, isHandWritten);
+            if (result.OperationId is string operationId) {
 
                  CognitiveServicesResponse response = await Policy
                     .Handle<HttpRequestException>()

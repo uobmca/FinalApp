@@ -59,6 +59,7 @@
                     VerticalOptions="EndAndExpand"
                     FontAttributes="Bold"
                     Text="Save"
+                    Clicked="Handle_Clicked"
                     TextColor="White"/>
             
                 

@@ -6,13 +6,19 @@ namespace FinalApp.Models {
     using J = Newtonsoft.Json.JsonPropertyAttribute;
 
     public partial class UserExpense : BindableObject {
+        public string Id { get; set; }
         [J("amount")] public double Amount { get; set; }
         [J("description")] public string Description { get; set; }
         [J("startDate")] public DateTimeOffset StartDate { get; set; }
         [J("expireDate")] public DateTimeOffset ExpireDate { get; set; }
-        [J("categoryId")] public long CategoryId { get; set; }
+        [J("categoryId")] public string CategoryId { get; set; }
         [J("createdAt")] public DateTimeOffset CreatedAt { get; set; }
         [J("updatedAt")] public DateTimeOffset UpdatedAt { get; set; }
+        [J("testDate")] public DateTimeOffset TestDate { get; set; }
+    }
+
+    public partial class UserExpense {
+        public Category UserCategory { get; set; }
     }
 
     public partial class UserExpense {
@@ -23,9 +29,9 @@ namespace FinalApp.Models {
         public string CategoryName { 
             get {
                 switch (CategoryId) {
-                    case 1: return "House";
-                    case 2: return "Car";
-                    case 3: return "Entertainment";
+                    case "1": return "House";
+                    case "2": return "Car";
+                    case "3": return "Entertainment";
                     default: return "Other";
                 }
             }

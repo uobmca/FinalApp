@@ -5,9 +5,15 @@ namespace FinalApp.Models {
     using J = Newtonsoft.Json.JsonPropertyAttribute;
 
     public partial class Category : BindableObject {
-        [J("categoryId")] public long CategoryId { get; set; }
+        public string Id { get; set; }
+        [J("categoryId")] public string CategoryId { get; set; }
         [J("displayName")] public string DisplayName { get; set; }
         [J("icon")] public string Icon { get; set; }
+
+        public override string ToString() {
+            return DisplayName;
+        }
+
     }
 
     public partial class Category {

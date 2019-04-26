@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using FinalApp.Commons;
+using FinalApp.Views.Base;
 using Xamarin.Forms;
 
 namespace FinalApp.Views.Pages.Dashboard {
@@ -9,12 +10,13 @@ namespace FinalApp.Views.Pages.Dashboard {
             InitializeComponent();
         }
 
-        void OnAddIncomeClicked(object sender, System.EventArgs e) {
-            Navigation.PushModalAsync(new NavigationPage(new AddIncomePage.AddIncomePage()), true);
+        async void OnAddIncomeClicked(object sender, System.EventArgs e) {
+            var page = new IncomeDetail.IncomeDetailPage();
+            await Navigation.PushModalAsyncUnique(new AppNavigationPage(page));
         }
 
         void OnAddExpensesClicked(object sender, System.EventArgs e) {
-            Navigation.PushModalAsync(new NavigationPage(new AddIncomePage.AddIncomePage()), true);
+            Navigation.PushModalAsyncUnique(new NavigationPage(new AddIncomePage.AddIncomePage()));
         }
     }
 }

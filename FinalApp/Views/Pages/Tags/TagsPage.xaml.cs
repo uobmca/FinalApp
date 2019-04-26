@@ -22,16 +22,27 @@ namespace FinalApp.Views.Pages.Tags {
         public TagsPage() {
             InitializeComponent();
             SetupUI();
-            CategoryEditButtonCommand = new Command<Models.Category>(async (category) => {
-                if (App.Container.Resolve<TagDetailPageViewModel>() is TagDetailPageViewModel vm) {
-                    vm.SelectedCategory = category;
-                    var page = new TagDetailPage {
-                        BindingContext = vm
-                    };
-                    await Navigation.PushModalAsyncUnique(new AppNavigationPage(page));
-                }
-            });
 
+            using (var scope = App.Container.BeginLifetimeScope()) {
+                if (scope.Resolve<TagsPageViewModel>() is TagsPageViewModel viewModel) {
+                    BindingContext = viewModel;
+                    viewModel.ReloadData();
+
+                    CategoryEditButtonCommand = new Command<Models.Category>(async (category) => {
+                        var vm = new TagDetailPageViewModel(viewModel.repository) {
+                            SelectedCategory = category
+                        };
+                        var page = new TagDetailPage {
+                            BindingContext = vm
+                        };
+                        await Navigation.PushModalAsyncUnique(new AppNavigationPage(page));
+                    });
+                }
+            }
+        }
+
+        protected override void OnAppearing() {
+            base.OnAppearing();
             if (App.Container.Resolve<TagsPageViewModel>() is TagsPageViewModel viewModel) {
                 BindingContext = viewModel;
                 viewModel.ReloadData();
@@ -45,8 +56,10 @@ namespace FinalApp.Views.Pages.Tags {
         }
 
         private async Task GoToTagDetail() {
-            await Navigation.PushModalAsyncUnique(new AppNavigationPage(new TagDetailPage()));
             if (BindingContext  is TagsPageViewModel viewModel) {
+                await Navigation.PushModalAsyncUnique(new AppNavigationPage(new TagDetailPage() { 
+                    BindingContext = new TagDetailPageViewModel(viewModel.repository)
+                }));
                 await viewModel.ReloadData();
             }
         }

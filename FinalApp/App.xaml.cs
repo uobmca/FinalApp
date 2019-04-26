@@ -42,7 +42,10 @@ namespace FinalApp
             builder.RegisterType<ExpensesPageViewModel>();
             builder.RegisterType<IncomesPageViewModel>();
             builder.RegisterType<TagsPageViewModel>();
-            builder.RegisterType<TagDetailPageViewModel>();
+            builder.RegisterType<TagDetailPageViewModel>().InstancePerDependency();
+            builder.RegisterType<IncomeDetailPageViewModel>();
+            builder.RegisterType<ExpenseDetailPageViewModel>();
+            builder.RegisterType<ExpensesListPageViewModel>();
             Container = builder.Build();
         }
     }

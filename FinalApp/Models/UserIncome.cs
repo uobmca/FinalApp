@@ -6,6 +6,7 @@ namespace FinalApp.Models {
     using J = Newtonsoft.Json.JsonPropertyAttribute;
 
     public partial class UserIncome : BindableObject {
+        public string Id { get; set; }
         [J("amount")] public double Amount { get; set; }
         [J("description")] public string Description { get; set; }
         [J("incomeDate")] public DateTimeOffset IncomeDate { get; set; }
