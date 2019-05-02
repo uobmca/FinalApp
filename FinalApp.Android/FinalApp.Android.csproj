@@ -97,6 +97,26 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable\ic_add.png" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_down_red.png" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_up_blue.png" />
+    <AndroidResource Include="Resources\drawable\ic_camera.png" />
+    <AndroidResource Include="Resources\drawable\ic_close.png" />
+    <AndroidResource Include="Resources\drawable\ic_drawer_dashboard.png" />
+    <AndroidResource Include="Resources\drawable\ic_drawer_money.png" />
+    <AndroidResource Include="Resources\drawable\ic_drawer_report.png" />
+    <AndroidResource Include="Resources\drawable\ic_drawer_tag.png" />
+    <AndroidResource Include="Resources\drawable\ic_drawer_user.png" />
+    <AndroidResource Include="Resources\drawable\ic_gallery.png" />
+    <AndroidResource Include="Resources\drawable\ic_hamburger.png" />
+    <AndroidResource Include="Resources\drawable\ic_logo.png" />
+    <AndroidResource Include="Resources\drawable\ic_magnify.png" />
+    <AndroidResource Include="Resources\drawable\ic_pencil.png" />
+    <AndroidResource Include="Resources\drawable\ic_tab_expenses.png" />
+    <AndroidResource Include="Resources\drawable\ic_tab_incomes.png" />
+    <AndroidResource Include="Resources\drawable\placeholder_bill.png" />
+    <AndroidResource Include="Resources\drawable\tutorial_bill01.png" />
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -104,6 +124,7 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
+    <Folder Include="Resources\xml\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinalApp\FinalApp.csproj">

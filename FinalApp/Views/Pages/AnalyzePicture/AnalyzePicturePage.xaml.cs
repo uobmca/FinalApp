@@ -61,20 +61,22 @@ namespace FinalApp.Views.Pages.AnalyzePicture {
         }
 
         private void RunAnimations() {
-            Device.BeginInvokeOnMainThread(async () => {
-                while (shouldAnimate) {
-                    await magnifyImage.TranslateTo(80, -80, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(50, -80, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(90, 30, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(100, 80, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(20, 30, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(-100, 30, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(-50, 80, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(-30, 30, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(100, 80, 1000, Easing.SpringIn);
-                    await magnifyImage.TranslateTo(-80, 45, 1000, Easing.SpringIn);
-                }
-            });
+            if(Device.RuntimePlatform == Device.iOS) { 
+                Device.BeginInvokeOnMainThread(async () => {
+                    while (shouldAnimate) {
+                        await magnifyImage.TranslateTo(80, -80, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(50, -80, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(90, 30, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(100, 80, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(20, 30, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(-100, 30, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(-50, 80, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(-30, 30, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(100, 80, 1000, Easing.SpringIn);
+                        await magnifyImage.TranslateTo(-80, 45, 1000, Easing.SpringIn);
+                    }
+                });
+            }
         }
 
         protected override void OnAppearing() {
