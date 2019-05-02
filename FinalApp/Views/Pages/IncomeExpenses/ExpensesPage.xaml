@@ -28,7 +28,7 @@
                                              VerticalOptions="FillAndExpand" 
                                              HorizontalOptions="FillAndExpand" 
                                              BackgroundColor="White">
-                                    <Label Text="- €1238.20" 
+                                    <Label Text="{Binding ExpensesBalance}" 
                                            FontSize="Large" 
                                            HorizontalOptions="Center" 
                                            FontAttributes="Bold"
@@ -70,7 +70,7 @@
                                    HorizontalTextAlignment="Center"
                                    HorizontalOptions="Center"
                                    Margin="-6,0,0,0"
-                                   Text="- €29.30"/>
+                                   Text="{Binding AverageExpense}"/>
                             
                             <Label FontSize="Small"
                                    HorizontalOptions="Center"
@@ -87,7 +87,7 @@
                                    FontSize="Medium"
                                    HorizontalTextAlignment="Center"
                                    HorizontalOptions="Center"
-                                   Text="Monday"/>
+                                   Text="{Binding BusiestDay}"/>
                             
                             <Label FontSize="Small"
                                    HorizontalOptions="Center"
