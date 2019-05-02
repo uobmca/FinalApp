@@ -47,7 +47,7 @@ namespace FinalApp
             builder.RegisterType<IncomeDetailPageViewModel>();
             builder.RegisterType<ExpenseDetailPageViewModel>();
             builder.RegisterType<ExpensesListPageViewModel>();
-
+            builder.RegisterType<DashboardPageViewModel>();
             Container = builder.Build();
         }
     }

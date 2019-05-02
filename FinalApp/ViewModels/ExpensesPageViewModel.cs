@@ -99,12 +99,8 @@ namespace FinalApp.ViewModels {
         private async void UpdateOverview() {
 
             // Balance
-            userIncomes = await repository.GetUserIncomes();
             double expensesSum = UserExpenses.Sum((exp) => exp.Amount);
-            double incomesSum = userIncomes.Sum((inc) => inc.Amount);
-            double balance = incomesSum - expensesSum;
-            string signStr = balance == 0 ? "" : (balance > 0 ? "+" : "-");
-            ExpensesBalance = string.Format("{0} {1:C}", signStr, Math.Abs(balance));
+            ExpensesBalance = string.Format("{0:C}", Math.Abs(expensesSum));
 
             // Average
             AverageExpense = string.Format("- {0:C}", expensesSum / (double)UserExpenses.Count());

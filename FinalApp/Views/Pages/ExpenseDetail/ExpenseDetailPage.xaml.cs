@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Autofac;
 using FinalApp.ViewModels;
 using Xamarin.Forms;
@@ -14,13 +15,27 @@ namespace FinalApp.Views.Pages.ExpenseDetail {
                 await Navigation.PopModalAsync();
             }));
 
-            using(var scope = App.Container.BeginLifetimeScope()) { 
+            expireDatePicker.Date = DateTime.Now;
+
+            using (var scope = App.Container.BeginLifetimeScope()) { 
                 if(scope.Resolve<ExpenseDetailPageViewModel>() is ExpenseDetailPageViewModel viewModel) {
                     BindingContext = viewModel;
                     viewModel.Update();
                 }
             }
+
+
          }
+
+        protected async override void OnBindingContextChanged() {
+            base.OnBindingContextChanged();
+            if (BindingContext is ExpenseDetailPageViewModel viewModel) {
+                if (viewModel.SelectedUserCategory == null) {
+                    viewModel.SelectedUserCategory = viewModel.UserCategories.FirstOrDefault();
+                    categoryPicker.SelectedItem = viewModel.SelectedUserCategory;
+                }
+            }
+        }
 
         async void Handle_Clicked(object sender, System.EventArgs e) {
             if (BindingContext is ExpenseDetailPageViewModel viewModel) {

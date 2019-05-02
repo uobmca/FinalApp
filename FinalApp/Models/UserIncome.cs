@@ -10,9 +10,13 @@ namespace FinalApp.Models {
         [J("amount")] public double Amount { get; set; }
         [J("description")] public string Description { get; set; }
         [J("incomeDate")] public DateTimeOffset IncomeDate { get; set; }
-        [J("categoryId")] public long CategoryId { get; set; }
+        [J("categoryId")] public string CategoryId { get; set; }
         [J("createdAt")] public DateTimeOffset CreatedAt { get; set; }
         [J("updatedAt")] public DateTimeOffset UpdatedAt { get; set; }
+    }
+
+    public partial class UserIncome {
+        public Category UserCategory { get; set; }
     }
 
     public partial class UserIncome {

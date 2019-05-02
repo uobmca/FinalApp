@@ -10,10 +10,11 @@
                 <Entry Text="{Binding SelectedUserExpense.Amount, Mode=TwoWay}"/>
                 
                 <Label Text="Expire Date" FontAttributes="Bold" Margin="0,8,0,0"/>
-                <DatePicker Date="{Binding SelectedUserExpense.ExpireDate, Mode=TwoWay, Converter={StaticResource dateTimeOffsetToDateTimeConverter}}"/>
+                <DatePicker x:Name="expireDatePicker" Date="{Binding SelectedUserExpense.ExpireDate, Mode=TwoWay, Converter={StaticResource dateTimeOffsetToDateTimeConverter}}"/>
                 
                 <Label Text="Category" FontAttributes="Bold" Margin="0,8,0,0"/>
                 <Picker SelectedItem="{Binding SelectedUserCategory, Mode=TwoWay}" 
+                        x:Name="categoryPicker"
                         ItemsSource="{Binding UserCategories}"/>
                 
                 <Label Text="Description" FontAttributes="Bold" Margin="0,8,0,0"/>

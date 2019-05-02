@@ -52,6 +52,7 @@ namespace FinalApp.Views.Pages.AnalyzePicture {
                             vm.SelectedUserExpense = viewModel.ExtractedExpense;
                             page.BindingContext = vm;
                             await Navigation.PushModalAsync(new AppNavigationPage(page));
+                            await Navigation.PopToRootAsync();
                         }
                     }
 
