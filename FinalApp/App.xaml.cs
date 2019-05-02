@@ -38,6 +38,7 @@ namespace FinalApp
             builder.RegisterType<MainPageViewModel>();
             builder.RegisterType<WestEuropeOCRServices>().As<INetworkOCRServices>().SingleInstance();
             builder.RegisterType<UserDataRepository>().As<IUserDataRepository>().SingleInstance();
+            builder.RegisterType<OCRDataExtractor>().As<IOCRDataExtractor>().SingleInstance();
             builder.RegisterType<AnalyzePicturePageViewModel>();
             builder.RegisterType<ExpensesPageViewModel>();
             builder.RegisterType<IncomesPageViewModel>();
@@ -46,6 +47,7 @@ namespace FinalApp
             builder.RegisterType<IncomeDetailPageViewModel>();
             builder.RegisterType<ExpenseDetailPageViewModel>();
             builder.RegisterType<ExpensesListPageViewModel>();
+
             Container = builder.Build();
         }
     }

@@ -7,8 +7,10 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Autofac;
 using FinalApp.Models;
 using FinalApp.ViewModels;
+using FinalApp.Views.Base;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
@@ -36,12 +38,24 @@ namespace FinalApp.Views.Pages.AnalyzePicture {
 
             if (BindingContext is AnalyzePicturePageViewModel viewModel) {
                 var response = await viewModel.MakeOCRRequest(imageFilePath);
-                if (response == null || response.Status != "Succeeded") {
+                if (response == null || response.Status != "Succeeded" || viewModel.ExtractedExpense == null) {
                     Device.BeginInvokeOnMainThread(async () => {
                         magnifyImage.IsVisible = false;
                         await DisplayAlert("Oops", "Something went wrong while analyzing your image. Please, give it another try", "Ok");
                         await Navigation.PopAsync();
                     });
+                } else {
+                    var page = new ExpenseDetail.ExpenseDetailPage();
+
+                    using (var scope = App.Container.BeginLifetimeScope()) { 
+                        if (scope.Resolve<ExpenseDetailPageViewModel>() is ExpenseDetailPageViewModel vm) {
+                            vm.SelectedUserExpense = viewModel.ExtractedExpense;
+                            page.BindingContext = vm;
+                            await Navigation.PushModalAsync(new AppNavigationPage(page));
+                        }
+                    }
+
+
                 }
             }
         }

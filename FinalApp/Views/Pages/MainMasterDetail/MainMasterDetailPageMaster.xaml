@@ -23,8 +23,8 @@
                            Aspect="AspectFit" 
                            VerticalOptions="Start" 
                            HorizontalOptions="Start"/>
-                    <Label Margin="16,0,16,0" Text="Marco Developer" TextColor="White" FontAttributes="Bold"/>
-                    <Label Margin="16,0,16,0" Text="marcosaia1812@gmail.com" FontSize="Small" TextColor="White" />
+                    <Label Margin="16,0,16,0" Text="-" TextColor="White" FontAttributes="Bold"/>
+                    <Label Margin="16,0,16,0" Text="-" FontSize="Small" TextColor="White" />
                 </StackLayout>
             </ListView.Header>
             <ListView.ItemTemplate>

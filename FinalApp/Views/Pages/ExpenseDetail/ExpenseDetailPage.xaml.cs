@@ -25,6 +25,7 @@ namespace FinalApp.Views.Pages.ExpenseDetail {
         async void Handle_Clicked(object sender, System.EventArgs e) {
             if (BindingContext is ExpenseDetailPageViewModel viewModel) {
                 await viewModel.Save();
+                //await Navigation.PopModalAsync();
                 await Navigation.PopModalAsync();
             }
         }

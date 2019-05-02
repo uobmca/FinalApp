@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FinalApp.Commons;
 using FinalApp.Models;
 using FinalApp.Network;
+using FinalApp.Services;
 using Polly;
 using Xamarin.Forms;
 
@@ -29,16 +30,28 @@ namespace FinalApp.ViewModels {
             get => (string)GetValue(UserImageFilePathProperty);
             set => SetValue(UserImageFilePathProperty, value);
         }
+        public Metadata ImageMetadata { get; private set; }
+
+        public UserExpense ExtractedExpense { get; private set; }
 
         private INetworkOCRServices ocrServices;
+        private IOCRDataExtractor dataExtractor;
 
-        public AnalyzePicturePageViewModel(INetworkOCRServices ocrServices) {
+        public AnalyzePicturePageViewModel(INetworkOCRServices ocrServices, IOCRDataExtractor dataExtractor) {
             this.ocrServices = ocrServices;
+            this.dataExtractor = dataExtractor;
+        }
+
+        public async Task ExtractData() { 
+
         }
 
         public async Task<CognitiveServicesResponse> MakeOCRRequest(string imageFilePath, bool isHandWritten = true) {
             byte[] byteData = ImageUtils.GetImageAsByteArray(imageFilePath);
             CognitiveServicesRequestResponse result = await ocrServices.SendCognitiveServicesRequest(byteData, isHandWritten);
+
+            ImageMetadata = result.ImageMetadata;
+
             if (result.OperationId is string operationId) {
 
                  CognitiveServicesResponse response = await Policy
@@ -46,6 +59,8 @@ namespace FinalApp.ViewModels {
                     .OrResult<CognitiveServicesResponse>(r => r.Status != "Succeeded")
                     .WaitAndRetryAsync(kResultRequestMaxRetryAttempts, (i) => kResultRequestsInterval)
                     .ExecuteAsync(()=>ocrServices.GetCognitiveServicesResponse(operationId));
+
+                ExtractedExpense = await dataExtractor.ExtractExpensesFromReceipt(response.RecognitionResult, ImageMetadata);
 
                 return response;
             }
