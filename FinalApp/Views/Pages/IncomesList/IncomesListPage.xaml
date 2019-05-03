@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:templates="clr-namespace:FinalApp.Views.Templates; assembly=FinalApp"
+             x:Class="FinalApp.Views.Pages.IncomesList.IncomesListPage">
+    <ContentPage.Content>
+        
+        <ListView SelectionMode="None"
+                  RowHeight="60"
+                  ItemSelected="Handle_ItemSelected"
+                  ItemsSource="{Binding UserIncomes}">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <templates:IncomeDetailRowTemplate/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView> 
+    </ContentPage.Content>
+</ContentPage>

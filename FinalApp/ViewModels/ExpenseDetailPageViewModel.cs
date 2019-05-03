@@ -12,8 +12,6 @@ namespace FinalApp.ViewModels {
 
         protected readonly BindableProperty SelectedUserExpenseProperty =
             BindableProperty.Create(nameof(SelectedUserExpense), typeof(UserExpense), typeof(ExpenseDetailPageViewModel), new UserExpense { 
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
                 ExpireDate = DateTime.Now
             });
 

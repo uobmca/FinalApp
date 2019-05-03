@@ -1,5 +1,8 @@
 ﻿using Autofac;
+using FinalApp.Commons;
 using FinalApp.ViewModels;
+using FinalApp.Views.Base;
+using FinalApp.Views.Pages.IncomesList;
 using Xamarin.Forms;
 
 namespace FinalApp.Views.Pages.IncomeExpenses {
@@ -20,13 +23,13 @@ namespace FinalApp.Views.Pages.IncomeExpenses {
         }
 
         void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e) {
-            if (e.SelectedItem is ExpensesGroupedList expenseList) {
+            if (e.SelectedItem is IncomesGroupedList incomesList) {
                 using (var scope = App.Container.BeginLifetimeScope()) {
-                    if (scope.Resolve<ExpensesListPageViewModel>() is ExpensesListPageViewModel viewModel) {
-                        //var page = new IncomesLis();
-                        //viewModel.CategoryId = expenseList.ExpensesCategoryId;
-                        //page.BindingContext = viewModel;
-                        //Navigation.PushModalAsyncUnique(new AppNavigationPage(page));
+                    if (scope.Resolve<IncomesListPageViewModel>() is IncomesListPageViewModel viewModel) {
+                        var page = new IncomesListPage();
+                        viewModel.CategoryId = incomesList.IncomesCategoryId;
+                        page.BindingContext = viewModel;
+                        Navigation.PushModalAsyncUnique(new AppNavigationPage(page));
                     }
                 }
             }

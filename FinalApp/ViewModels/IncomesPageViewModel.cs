@@ -102,15 +102,11 @@ namespace FinalApp.ViewModels {
             IncomesBalance = string.Format("{0:C}", Math.Abs(incomesSum));
 
             // Average
-            AverageIncome = string.Format("- {0:C}", incomesSum / UserIncomes.Count());
+            AverageIncome = string.Format("{0:C}", incomesSum / UserIncomes.Count());
 
             // Busiest day
             var groupedIncomes = UserIncomes.GroupBy((inc) => {
-                DateTimeOffset date = inc.CreatedAt;
-                if (inc.IncomeDate != default(DateTimeOffset)) {
-                    date = inc.IncomeDate;
-                }
-                return date.DayOfWeek;
+                return inc.IncomeDate.DayOfWeek;
             });
 
             DayOfWeek busiestDay = DayOfWeek.Monday;
@@ -123,7 +119,9 @@ namespace FinalApp.ViewModels {
                 }
             }
 
-            BusiestDay = CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(busiestDay);
+            var dayName = CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(busiestDay);
+            var capitalizedDayName = dayName.Substring(0, 1).ToUpper() + dayName.Substring(1);
+            BusiestDay = capitalizedDayName;
         }
 
         private void UpdateIncomesChart() {

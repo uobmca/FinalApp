@@ -23,13 +23,18 @@ namespace FinalApp.Services {
 
             mobileClient = new MobileServiceClient(kApplicationUrl);
 
+            InitializeAsync();
+
+        }
+
+        private async Task InitializeAsync() {
+
             var store = new MobileServiceSQLiteStore(kOfflineDatabasePath);
             store.DefineTable<UserExpense>();
             store.DefineTable<UserIncome>();
             store.DefineTable<Category>();
 
-            mobileClient.SyncContext.InitializeAsync(store);
-
+            await mobileClient.SyncContext.InitializeAsync(store);
             expensesTable = mobileClient.GetSyncTable<UserExpense>();
             incomesTable = mobileClient.GetSyncTable<UserIncome>();
             categoriesTable = mobileClient.GetSyncTable<Category>();
@@ -41,21 +46,24 @@ namespace FinalApp.Services {
             try {
                 await mobileClient.SyncContext.PushAsync();
 
+                var query = expensesTable.CreateQuery();
                 await expensesTable.PullAsync(
                     nameof(expensesTable),
-                    expensesTable.CreateQuery());
+                    query);
 
-                //await incomesTable.PullAsync(
-                //    nameof(incomesTable),
-                //    incomesTable.CreateQuery());
+                await incomesTable.PullAsync(
+                    nameof(incomesTable),
+                    incomesTable.CreateQuery());
 
-                //await categoriesTable.PullAsync(
-                    //nameof(categoriesTable),
-                    //categoriesTable.CreateQuery());
+                await categoriesTable.PullAsync(
+                    nameof(categoriesTable),
+                    categoriesTable.CreateQuery());
             } catch (MobileServicePushFailedException exc) {
                 if (exc.PushResult != null) {
                     syncErrors = exc.PushResult.Errors;
                 }
+            } catch (Exception e) {
+                Debug.Print(e.Message);
             }
 
             // Simple error/conflict handling. A real application would handle the various errors like network conditions,
@@ -94,6 +102,7 @@ namespace FinalApp.Services {
             } else {
                 await expensesTable.InsertAsync(expense);
             }
+            await SyncAsync();
         }
 
         public async Task<List<UserExpense>> GetUserExpenses(DateTime startDate, DateTime endDate) {
@@ -118,6 +127,7 @@ namespace FinalApp.Services {
             } else {
                 await incomesTable.InsertAsync(income);
             }
+            await SyncAsync();
         }
 
         public async Task SaveUserIncomes(IEnumerable<UserIncome> incomes) {
@@ -134,6 +144,7 @@ namespace FinalApp.Services {
             } else {
                 await categoriesTable.InsertAsync(category);
             }
+            await SyncAsync();
         }
     }
 }

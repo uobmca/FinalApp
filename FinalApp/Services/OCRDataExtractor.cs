@@ -225,8 +225,6 @@ namespace FinalApp.Services {
                             var value = double.Parse(cleanStr);
                             return new UserExpense {
                                 Amount = value,
-                                CreatedAt = DateTime.Now,
-                                UpdatedAt = DateTime.Now,
                                 Description = "Receipt expense"
                             };
                         } catch(Exception e) {

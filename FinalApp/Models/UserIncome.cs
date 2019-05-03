@@ -4,15 +4,15 @@ namespace FinalApp.Models {
     using Newtonsoft.Json;
     using Xamarin.Forms;
     using J = Newtonsoft.Json.JsonPropertyAttribute;
+    using N = Newtonsoft.Json.NullValueHandling;
 
-    public partial class UserIncome : BindableObject {
-        public string Id { get; set; }
+    public partial class UserIncome {
+        [J("id")] public string Id { get; set; }
         [J("amount")] public double Amount { get; set; }
         [J("description")] public string Description { get; set; }
         [J("incomeDate")] public DateTimeOffset IncomeDate { get; set; }
         [J("categoryId")] public string CategoryId { get; set; }
-        [J("createdAt")] public DateTimeOffset CreatedAt { get; set; }
-        [J("updatedAt")] public DateTimeOffset UpdatedAt { get; set; }
+
     }
 
     public partial class UserIncome {

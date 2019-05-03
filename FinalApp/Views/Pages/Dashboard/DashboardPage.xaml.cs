@@ -18,6 +18,13 @@ namespace FinalApp.Views.Pages.Dashboard {
             }
         }
 
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            if (BindingContext is DashboardPageViewModel viewModel) {
+                viewModel.Update();
+            }
+        }
+
         async void OnAddIncomeClicked(object sender, System.EventArgs e) {
             var page = new IncomeDetail.IncomeDetailPage();
             await Navigation.PushModalAsyncUnique(new AppNavigationPage(page));
