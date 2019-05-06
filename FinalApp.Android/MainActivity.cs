@@ -40,7 +40,7 @@ namespace FinalApp.Droid
 
         public async Task<bool> Authenticate() {
             MobileServiceClient client = LoginManager.Instance.MobileClient;
-            var user = await client.LoginAsync(this, MobileServiceAuthenticationProvider.Google, AppGlobalConfig.AzureApplicationUrl);
+            var user = await client.LoginAsync(this, MobileServiceAuthenticationProvider.Google, AppGlobalConfig.GoogleUrlScheme);
             return user != null;
         }
     }

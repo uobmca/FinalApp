@@ -11,8 +11,8 @@
         
         <!-- Colors -->
         <Color x:Key="ColorPrimary">#000000</Color>
-        <Color x:Key="ColorAccent">#2196f3</Color>
-        <Color x:Key="ColorNegative">#d93341</Color>
+        <Color x:Key="ColorAccent">#102d40</Color>
+        <Color x:Key="ColorNegative">#CC503A</Color>
         <Color x:Key="ColorSecondary">#00518d</Color>
         <Color x:Key="ColorLightBg">#fafafa</Color>
         <Color x:Key="ColorDarkBg">#f1f1f1</Color>
@@ -29,6 +29,14 @@
             <Setter Property="BorderColor" Value="#13000000"/>
         </Style>
         
+        <Style x:Key="OutlineAccentButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="BorderColor" Value="{DynamicResource ColorAccent}"/>
+            <Setter Property="TextColor" Value="{DynamicResource ColorAccent}"/>
+        </Style>
+
         <Style x:Key="NegativeButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundedButtonStyle}">
             <Setter Property="TextColor" Value="{DynamicResource ColorNegative}"/>
             <Setter Property="BackgroundColor" Value="#f5f6f7"/>

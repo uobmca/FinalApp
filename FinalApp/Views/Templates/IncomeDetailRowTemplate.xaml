@@ -30,7 +30,7 @@
             <Label x:Name="amountLabel"
                    Grid.Row="0"
                    Grid.Column="2"
-               Text="{Binding Amount, FallbackValue=- €12,40, Converter={StaticResource doubleToCurrencyStringConverter}}" TextColor="#d32f2f" FontSize="Large" 
+               Text="{Binding Amount, FallbackValue=- €12,40, Converter={StaticResource doubleToCurrencyStringConverter}}" TextColor="{StaticResource ColorAccent}" FontSize="Large" 
                HorizontalOptions="EndAndExpand"
                HorizontalTextAlignment="End"
                VerticalOptions="CenterAndExpand"/>

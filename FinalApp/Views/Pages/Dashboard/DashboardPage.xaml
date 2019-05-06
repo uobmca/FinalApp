@@ -7,7 +7,7 @@
         <ScrollView>
             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
                 
-                <Label Margin="16,32,16,32" Text="Hi, User!" FontSize="Large" FontAttributes="Bold"/>
+                <Label Margin="16,32,16,32" Text="{Binding UserGreeting, FallbackValue=Hi\, User!}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
                 
                 <Frame BackgroundColor="White" 
                        HasShadow="false" 
@@ -42,8 +42,17 @@
                 </Frame>
                 
                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
-                <Button Margin="16" Text="Add Income" FontAttributes="Bold" BackgroundColor="#2196f3" TextColor="White" Clicked="OnAddIncomeClicked"/>
-                <Button Margin="16,4,16,4" Text="Add Expenses" FontAttributes="Bold" BackgroundColor="#f44336" TextColor="White" Clicked="OnAddExpensesClicked"/>
+                <Button Margin="16" 
+                        Text="Add Income" 
+                        FontAttributes="Bold" 
+                        BackgroundColor="{StaticResource ColorAccent}" 
+                        TextColor="White" Clicked="OnAddIncomeClicked"/>
+                <Button Margin="16,4,16,4" 
+                        Text="Add Expenses" 
+                        FontAttributes="Bold" 
+                        BackgroundColor="{StaticResource ColorNegative}" 
+                        TextColor="White" 
+                        Clicked="OnAddExpensesClicked"/>
                 </StackLayout>
                     
             </StackLayout>

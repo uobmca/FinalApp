@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 
 namespace FinalApp.Views.Base {
-    public class NoBounceScrollView : ScrollView {
+    public class NoBounceListView : ListView {
 
     }
 }

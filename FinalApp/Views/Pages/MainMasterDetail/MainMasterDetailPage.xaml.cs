@@ -50,7 +50,7 @@ namespace FinalApp.Views.Pages.MainMasterDetail {
                         detailPage.Content.FadeTo(0.5);
 
                         if (detailPage.Content.BackgroundColor == Color.Default) {
-                            detailPage.Content.BackgroundColor = Color.White;
+                            detailPage.Content.BackgroundColor = Color.FromHex("#f2f2f2");
                         }
 
                     } else {

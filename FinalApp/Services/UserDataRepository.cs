@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using FinalApp.Commons;
 using FinalApp.Models;
+using FinalApp.Network;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
@@ -21,8 +22,10 @@ namespace FinalApp.Services {
         IMobileServiceSyncTable<UserIncome> incomesTable;
         IMobileServiceSyncTable<Category> categoriesTable;
 
+        private string LoggedUserId { get => LoginManager.Instance.MobileClient.CurrentUser.UserId; }
+
         public UserDataRepository() {
-            MobileClient = new MobileServiceClient(AppGlobalConfig.AzureApplicationUrl);
+            MobileClient = LoginManager.Instance.MobileClient;
             InitializeAsync();
         }
 
@@ -37,6 +40,8 @@ namespace FinalApp.Services {
             expensesTable = MobileClient.GetSyncTable<UserExpense>();
             incomesTable = MobileClient.GetSyncTable<UserIncome>();
             categoriesTable = MobileClient.GetSyncTable<Category>();
+
+            await SyncAsync();
         }
 
         public async Task<MobileServiceUser> LoginAsync() {
@@ -53,18 +58,17 @@ namespace FinalApp.Services {
             try {
                 await MobileClient.SyncContext.PushAsync();
 
-                var query = expensesTable.CreateQuery();
                 await expensesTable.PullAsync(
                     nameof(expensesTable),
-                    query);
+                    expensesTable.CreateQuery().Where(item => item.UserId == LoggedUserId));
 
                 await incomesTable.PullAsync(
                     nameof(incomesTable),
-                    incomesTable.CreateQuery());
+                    incomesTable.CreateQuery().Where(item => item.UserId == LoggedUserId));
 
                 await categoriesTable.PullAsync(
                     nameof(categoriesTable),
-                    categoriesTable.CreateQuery());
+                    categoriesTable.CreateQuery().Where(item => item.UserId == LoggedUserId));
             } catch (MobileServicePushFailedException exc) {
                 if (exc.PushResult != null) {
                     syncErrors = exc.PushResult.Errors;
@@ -92,22 +96,35 @@ namespace FinalApp.Services {
 
         public async Task<List<UserExpense>> GetUserExpenses() {
             return await expensesTable.ToListAsync();
-            //try {
-            //    await SyncAsync();
-            //    return await expensesTable.ToListAsync();
-            //} catch (MobileServiceInvalidOperationException msioe) {
-            //    Debug.WriteLine(@"Invalid sync operation: {0}", msioe.Message);
-            //} catch (Exception e) {
-            //    Debug.WriteLine(@"Sync error: {0}", e.Message);
-            //}
-            //return null;
         }
 
         public async Task SaveUserExpense(UserExpense expense) {
+            expense.UserId = LoggedUserId;
             if (expense.Id != null && await expensesTable.LookupAsync(expense.Id) != null) {
                 await expensesTable.UpdateAsync(expense);
             } else {
                 await expensesTable.InsertAsync(expense);
+            }
+            await SyncAsync();
+        }
+
+        public async Task SaveUserIncome(UserIncome income) {
+            income.UserId = LoggedUserId;
+            if (income.Id != null && await incomesTable.LookupAsync(income.Id) != null) {
+                await incomesTable.UpdateAsync(income);
+            } else {
+                await incomesTable.InsertAsync(income);
+            }
+            await SyncAsync();
+        }
+
+
+        public async Task SaveUserCategory(Category category) {
+            category.UserId = LoggedUserId;
+            if (category.Id != null && await categoriesTable.LookupAsync(category.Id) != null) {
+                await categoriesTable.UpdateAsync(category);
+            } else {
+                await categoriesTable.InsertAsync(category);
             }
             await SyncAsync();
         }
@@ -117,24 +134,15 @@ namespace FinalApp.Services {
         }
 
         public async Task<List<UserIncome>> GetUserIncomes() {
-            return await incomesTable.ToListAsync();
+            return await incomesTable.Where((item) => item.UserId == LoggedUserId).ToListAsync();
         }
 
         public async Task<List<UserIncome>> GetUserIncomes(DateTime startDate, DateTime endDate) {
-            return await incomesTable.ToListAsync();
+            return await incomesTable.Where((item) => item.UserId == LoggedUserId).ToListAsync();
         }
 
         public async Task SaveUserExpenses(IEnumerable<UserExpense> incomes) {
             throw new NotImplementedException();
-        }
-
-        public async Task SaveUserIncome(UserIncome income) {
-            if (income.Id != null && await incomesTable.LookupAsync(income.Id) != null) {
-                await incomesTable.UpdateAsync(income);
-            } else {
-                await incomesTable.InsertAsync(income);
-            }
-            await SyncAsync();
         }
 
         public async Task SaveUserIncomes(IEnumerable<UserIncome> incomes) {
@@ -142,16 +150,8 @@ namespace FinalApp.Services {
         }
 
         public async Task<List<Category>> GetUserCategories() {
-            return await categoriesTable.ToListAsync();
+            return await categoriesTable.Where((item) => item.UserId == LoggedUserId).ToListAsync();
         }
 
-        public async Task SaveUserCategory(Category category) {
-            if (category.Id != null && await categoriesTable.LookupAsync(category.Id) != null) {
-                await categoriesTable.UpdateAsync(category);
-            } else {
-                await categoriesTable.InsertAsync(category);
-            }
-            await SyncAsync();
-        }
     }
 }

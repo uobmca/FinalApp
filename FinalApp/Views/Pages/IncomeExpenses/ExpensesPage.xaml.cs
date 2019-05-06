@@ -15,6 +15,11 @@ namespace FinalApp.Views.Pages.IncomeExpenses {
         public ExpensesPage() {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+            ToolbarItems.Add(new ToolbarItem("Add", "ic_add", async () => {
+                await Navigation.PushModalAsyncUnique(new NavigationPage(new AddIncomePage.AddIncomePage()));
+            }));
+
             if (DesignMode.IsDesignModeEnabled) return;
             using (var scope = App.Container.BeginLifetimeScope()) {
                 if (scope.Resolve<ExpensesPageViewModel>() is ExpensesPageViewModel viewModel) {

@@ -69,6 +69,9 @@
     <PackageReference Include="Microcharts.Forms">
       <Version>0.8.5-pre</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.CustomTabs">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -117,6 +120,8 @@
     <AndroidResource Include="Resources\drawable\placeholder_bill.png" />
     <AndroidResource Include="Resources\drawable\tutorial_bill01.png" />
     <AndroidResource Include="Resources\xml\file_paths.xml" />
+    <AndroidResource Include="Resources\drawable\ic_filter.png" />
+    <AndroidResource Include="Resources\drawable\ic_logo_transparent.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

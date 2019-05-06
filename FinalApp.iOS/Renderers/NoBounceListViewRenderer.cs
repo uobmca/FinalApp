@@ -4,11 +4,11 @@ using FinalApp.Views.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(FinalApp.Views.Base.NoBounceListView), typeof(ListViewRenderer))]
+[assembly: ExportRenderer(typeof(FinalApp.Views.Base.NoBounceListView), typeof(NoBounceListViewRenderer))]
 namespace FinalApp.iOS.Renderers {
-    public class NoBounceListView : ListViewRenderer {
+    public class NoBounceListViewRenderer : ListViewRenderer {
 
-        public NoBounceListView() {
+        public NoBounceListViewRenderer() {
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<ListView> e) {

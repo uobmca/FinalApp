@@ -163,6 +163,9 @@ namespace FinalApp.ViewModels {
         public async void Update() {
             userCategories = await repository.GetUserCategories();
             UserIncomes = await repository.GetUserIncomes();
+            foreach (UserIncome income in UserIncomes) {
+                income.UserCategory = userCategories.FirstOrDefault((category) => category.Id == income.CategoryId);
+            }
             UpdateIncomesChart();
             UpdateOverview();
         }

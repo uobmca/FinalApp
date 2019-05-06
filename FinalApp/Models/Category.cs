@@ -11,7 +11,7 @@ namespace FinalApp.Models {
         //[J("categoryId")] public string CategoryId { get; set; }
         [J("displayName")] public string DisplayName { get; set; }
         [J("icon", NullValueHandling = N.Ignore)] public string Icon { get; set; }
-
+        [J("userId")] public string UserId { get; set; }
 
         public override string ToString() {
             return DisplayName;

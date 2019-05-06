@@ -25,6 +25,7 @@
                 
                 <Button BackgroundColor="{StaticResource ColorAccent}" 
                         Text="Save"
+                        FontAttributes="Bold"
                         Clicked="Handle_Clicked"
                         VerticalOptions="EndAndExpand"
                         TextColor="White"/>

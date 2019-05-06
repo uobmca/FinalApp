@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Threading.Tasks;
+using Autofac;
 using FinalApp.Commons;
 using FinalApp.ViewModels;
 using FinalApp.Views.Base;
@@ -13,6 +14,12 @@ namespace FinalApp.Views.Pages.IncomeExpenses {
         public IncomesPage() {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+            ToolbarItems.Add(new ToolbarItem("Add", "ic_add", async () => {
+                var page = new IncomeDetail.IncomeDetailPage();
+                await Navigation.PushModalAsync(new AppNavigationPage(page));
+            }));
+
             if (DesignMode.IsDesignModeEnabled) return;
             using (var scope = App.Container.BeginLifetimeScope()) {
                 if (scope.Resolve<IncomesPageViewModel>() is IncomesPageViewModel viewModel) {

@@ -55,6 +55,23 @@ namespace FinalApp.Views.Pages.Tags {
             }));
         }
 
+        async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
+            if (e.Item is Category category) { 
+                using (var scope = App.Container.BeginLifetimeScope()) {
+                    if (scope.Resolve<TagsPageViewModel>() is TagsPageViewModel viewModel) {
+                        var vm = new TagDetailPageViewModel(viewModel.repository) {
+                            SelectedCategory = category
+                        };
+                        var page = new TagDetailPage {
+                            BindingContext = vm
+                        };
+                        await Navigation.PushModalAsyncUnique(new AppNavigationPage(page));
+
+                    }
+                }
+            }
+        }
+
         private async Task GoToTagDetail() {
             if (BindingContext  is TagsPageViewModel viewModel) {
                 await Navigation.PushModalAsyncUnique(new AppNavigationPage(new TagDetailPage() { 

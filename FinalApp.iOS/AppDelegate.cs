@@ -28,7 +28,7 @@ namespace FinalApp.iOS
             App.Init(this);
             LoadApplication(new App());
 
-            UINavigationBar.Appearance.BarTintColor = new UIColor(red:0.00f, green:0.41f, blue:0.75f, alpha:1.0f);
+            UINavigationBar.Appearance.BarTintColor = new UIColor(red: 0.06f, green: 0.18f, blue:0.25f, alpha:1.0f);
             UINavigationBar.Appearance.TintColor = UIColor.White;
             UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes {
                 TextColor = UIColor.White
@@ -49,7 +49,7 @@ namespace FinalApp.iOS
         public async Task<bool> Authenticate() {
             MobileServiceClient client = LoginManager.Instance.MobileClient;
             UIViewController rootVC = UIApplication.SharedApplication.KeyWindow.RootViewController;
-            MobileServiceUser user = await client.LoginAsync(rootVC, MobileServiceAuthenticationProvider.Google, "com.googleusercontent.apps.491061559234-7sdnlrp2cg1rnm41tcs48k7hcnhqtkpo");
+            MobileServiceUser user = await client.LoginAsync(rootVC, MobileServiceAuthenticationProvider.Google, AppGlobalConfig.GoogleUrlScheme);
 
             return user != null;
         }

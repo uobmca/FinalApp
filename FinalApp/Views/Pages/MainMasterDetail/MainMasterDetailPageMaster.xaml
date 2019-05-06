@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:bv="clr-namespace:FinalApp.Views.Base; assembly=FinalApp"
              x:Class="FinalApp.Views.Pages.MainMasterDetail.MainMasterDetailPageMaster" 
              Padding="0"
              Title="Master"
              Icon="ic_hamburger">
     <StackLayout BackgroundColor="White" Spacing="0" Padding="0" Margin="0">
-        <BoxView Color="#0d47a1" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="32"/>
-        <ListView x:Name="MenuItemsListView" 
+        <BoxView Color="#102d40" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="32"/>
+        <bv:NoBounceListView x:Name="MenuItemsListView" 
                   SeparatorVisibility="None" 
                   Margin="0"
                   HasUnevenRows="true" 
                   
                   BackgroundColor="White"
                   ItemsSource="{Binding MenuItems}">
-            <ListView.Header>
-                <StackLayout BackgroundColor="#0d47a1" HorizontalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,16" Margin="0,0,0,4">
+            <bv:NoBounceListView.Header>
+                <StackLayout BackgroundColor="#102d40" HorizontalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,16" Margin="0,0,0,4">
                     <Image Source="ic_drawer_user"
                            x:Name="profileImage"
                            Margin="8,0,8,0"
@@ -27,8 +28,8 @@
                     <Label Margin="16,8,16,0" x:Name="userNameLabel" Text="-" TextColor="White" FontAttributes="Bold"/>
                     <Label Margin="16,0,16,0" x:Name="userEmailLabel" Text="-" FontSize="Small" TextColor="White" />
                 </StackLayout>
-            </ListView.Header>
-            <ListView.ItemTemplate>
+            </bv:NoBounceListView.Header>
+            <bv:NoBounceListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Spacing="4" Margin="0,4,0,0">
@@ -47,9 +48,9 @@
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </bv:NoBounceListView.ItemTemplate>
             
-            <ListView.Footer>
+            <bv:NoBounceListView.Footer>
                 <StackLayout Padding="16,32" 
                              x:Name="signOutLayout"
                              Margin="0,16,0,16" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
@@ -59,7 +60,7 @@
                            Text="Sign Out" 
                            FontSize="Medium" />
                 </StackLayout> 
-            </ListView.Footer>
-        </ListView>
+            </bv:NoBounceListView.Footer>
+        </bv:NoBounceListView>
     </StackLayout>
 </ContentPage>
