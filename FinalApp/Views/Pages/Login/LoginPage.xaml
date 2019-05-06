@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FinalApp.Views.Pages.Login.LoginPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="24">
+            <Label TextColor="{StaticResource ColorNegative}" 
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   Text="Login"/>
+            
+            <Label Text="Get started with E - Walley by logging in with your account!" FontSize="Small"/>
+<!--            
+            <Frame Margin="0,16,0,0" HasShadow="false" CornerRadius="6" Padding="16,4,16,4" BackgroundColor="#0058c4" >
+                <StackLayout Orientation="Horizontal" 
+                             Spacing="16"
+                             BackgroundColor="#0058c4">
+                    <Image Source="ic_google" HeightRequest="32" VerticalOptions="CenterAndExpand"/>
+                    <Label Text="Sign in with google" 
+                           VerticalOptions="CenterAndExpand"
+                           TextColor="White"
+                           FontSize="Medium"
+                           FontAttributes="Bold"/>
+                </StackLayout>
+                    
+            </Frame>-->
+            
+            <Button Text="Sign in with google" 
+                    TextColor="White" 
+                    Clicked="Handle_Clicked"
+                    Margin="0,16"
+                    FontAttributes="Bold"
+                    BackgroundColor="{StaticResource ColorAccent}"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

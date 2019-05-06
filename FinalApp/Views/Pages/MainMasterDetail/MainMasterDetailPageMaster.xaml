@@ -17,14 +17,15 @@
             <ListView.Header>
                 <StackLayout BackgroundColor="#0d47a1" HorizontalOptions="FillAndExpand" Spacing="0" Padding="0,0,0,16" Margin="0,0,0,4">
                     <Image Source="ic_drawer_user"
+                           x:Name="profileImage"
                            Margin="8,0,8,0"
-                           WidthRequest="70" 
-                           HeightRequest="70"
+                           WidthRequest="64" 
+                           HeightRequest="64"
                            Aspect="AspectFit" 
                            VerticalOptions="Start" 
                            HorizontalOptions="Start"/>
-                    <Label Margin="16,0,16,0" Text="-" TextColor="White" FontAttributes="Bold"/>
-                    <Label Margin="16,0,16,0" Text="-" FontSize="Small" TextColor="White" />
+                    <Label Margin="16,8,16,0" x:Name="userNameLabel" Text="-" TextColor="White" FontAttributes="Bold"/>
+                    <Label Margin="16,0,16,0" x:Name="userEmailLabel" Text="-" FontSize="Small" TextColor="White" />
                 </StackLayout>
             </ListView.Header>
             <ListView.ItemTemplate>
@@ -49,7 +50,9 @@
             </ListView.ItemTemplate>
             
             <ListView.Footer>
-                <StackLayout Padding="16,32" Margin="0,16,0,16" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                <StackLayout Padding="16,32" 
+                             x:Name="signOutLayout"
+                             Margin="0,16,0,16" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                     <Label VerticalOptions="FillAndExpand" 
                            VerticalTextAlignment="Center" 
                            TextColor="Red" 

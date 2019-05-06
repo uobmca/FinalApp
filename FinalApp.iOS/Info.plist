@@ -42,5 +42,16 @@
 	<string>This app needs access to microphone.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to the photo gallery.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>Azure Mobile App</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.491061559234-7sdnlrp2cg1rnm41tcs48k7hcnhqtkpo</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

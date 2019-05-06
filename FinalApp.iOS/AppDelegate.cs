@@ -1,5 +1,9 @@
 ﻿
+using System.Threading.Tasks;
+using FinalApp.Commons;
+using FinalApp.Network;
 using Foundation;
+using Microsoft.WindowsAzure.MobileServices;
 using UIKit;
 
 namespace FinalApp.iOS
@@ -8,8 +12,9 @@ namespace FinalApp.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
     {
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -20,6 +25,7 @@ namespace FinalApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            App.Init(this);
             LoadApplication(new App());
 
             UINavigationBar.Appearance.BarTintColor = new UIColor(red:0.00f, green:0.41f, blue:0.75f, alpha:1.0f);
@@ -29,6 +35,23 @@ namespace FinalApp.iOS
             });
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options) {
+            return LoginManager.Instance.MobileClient.ResumeWithURL(url);
+        }
+
+        public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation) {
+            return LoginManager.Instance.MobileClient.ResumeWithURL(url);
+        }
+
+        // IAuthenticate implementation
+        public async Task<bool> Authenticate() {
+            MobileServiceClient client = LoginManager.Instance.MobileClient;
+            UIViewController rootVC = UIApplication.SharedApplication.KeyWindow.RootViewController;
+            MobileServiceUser user = await client.LoginAsync(rootVC, MobileServiceAuthenticationProvider.Google, "com.googleusercontent.apps.491061559234-7sdnlrp2cg1rnm41tcs48k7hcnhqtkpo");
+
+            return user != null;
         }
     }
 }

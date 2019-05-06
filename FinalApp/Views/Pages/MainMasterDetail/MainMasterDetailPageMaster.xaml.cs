@@ -7,7 +7,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using FinalApp.Network;
+using FinalApp.Views.Pages.Login;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,9 +19,27 @@ namespace FinalApp.Views.Pages.MainMasterDetail {
 
         public MainMasterDetailPageMaster() {
             InitializeComponent();
-
+            SetupUI();
             BindingContext = new MainMasterDetailPageMasterViewModel();
             ListView = MenuItemsListView;
+        }
+
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            var lm = LoginManager.Instance;
+            profileImage.Source = lm.UserPicture;
+            userNameLabel.Text = lm.UserName;
+            userEmailLabel.Text = lm.UserEmail;
+        }
+
+        private void SetupUI() {
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (sender, e) => {
+                await LoginManager.Instance.MobileClient.LogoutAsync();
+                LoginManager.Instance.LoggedUser = null;
+                Application.Current.MainPage = new LoginPage();
+            };
+            signOutLayout.GestureRecognizers.Add(tapGestureRecognizer);
         }
 
         class MainMasterDetailPageMasterViewModel : INotifyPropertyChanged {

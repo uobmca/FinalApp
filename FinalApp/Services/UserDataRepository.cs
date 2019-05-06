@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using FinalApp.Commons;
 using FinalApp.Models;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
@@ -10,21 +11,19 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 
 namespace FinalApp.Services {
     public class UserDataRepository : IUserDataRepository {
-
-        const string kApplicationUrl = "https://xamarinfinalapp.azurewebsites.net";
+    
         const string kOfflineDatabasePath = "db_local_finalapp.db";
 
-        MobileServiceClient mobileClient;
+        public MobileServiceClient MobileClient { get; set; }
+        public MobileServiceUser LoggedUser { get; set; }
+
         IMobileServiceSyncTable<UserExpense> expensesTable;
         IMobileServiceSyncTable<UserIncome> incomesTable;
         IMobileServiceSyncTable<Category> categoriesTable;
 
         public UserDataRepository() {
-
-            mobileClient = new MobileServiceClient(kApplicationUrl);
-
+            MobileClient = new MobileServiceClient(AppGlobalConfig.AzureApplicationUrl);
             InitializeAsync();
-
         }
 
         private async Task InitializeAsync() {
@@ -34,17 +33,25 @@ namespace FinalApp.Services {
             store.DefineTable<UserIncome>();
             store.DefineTable<Category>();
 
-            await mobileClient.SyncContext.InitializeAsync(store);
-            expensesTable = mobileClient.GetSyncTable<UserExpense>();
-            incomesTable = mobileClient.GetSyncTable<UserIncome>();
-            categoriesTable = mobileClient.GetSyncTable<Category>();
+            await MobileClient.SyncContext.InitializeAsync(store);
+            expensesTable = MobileClient.GetSyncTable<UserExpense>();
+            incomesTable = MobileClient.GetSyncTable<UserIncome>();
+            categoriesTable = MobileClient.GetSyncTable<Category>();
+        }
+
+        public async Task<MobileServiceUser> LoginAsync() {
+            MobileServiceUser user = await MobileClient.LoginAsync(MobileServiceAuthenticationProvider.Google, null);
+            if (user != null) {
+                LoggedUser = user;
+            }
+            return LoggedUser;
         }
 
         private async Task SyncAsync() {
             ReadOnlyCollection<MobileServiceTableOperationError> syncErrors = null;
 
             try {
-                await mobileClient.SyncContext.PushAsync();
+                await MobileClient.SyncContext.PushAsync();
 
                 var query = expensesTable.CreateQuery();
                 await expensesTable.PullAsync(

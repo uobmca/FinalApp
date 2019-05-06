@@ -50,11 +50,11 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: XOROVO SRL</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>iOS Enterprise Development Team</CodesignProvision>
+    <CodesignProvision>Xorovo Generic Internal App - 10/2018</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -223,6 +223,10 @@
     <ImageAsset Include="Assets.xcassets\ic_filter.imageset\ic_filtra_white.png" />
     <ImageAsset Include="Assets.xcassets\ic_filter.imageset\ic_filtra_white%402x.png" />
     <ImageAsset Include="Assets.xcassets\ic_filter.imageset\ic_filtra_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_google.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_google.imageset\google-icon.png" />
+    <ImageAsset Include="Assets.xcassets\ic_google.imageset\google-icon-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_google.imageset\google-icon-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -280,5 +284,6 @@
     <Folder Include="Assets.xcassets\ic_drawer_tag.imageset\" />
     <Folder Include="Assets.xcassets\ic_add.imageset\" />
     <Folder Include="Assets.xcassets\ic_filter.imageset\" />
+    <Folder Include="Assets.xcassets\ic_google.imageset\" />
   </ItemGroup>
 </Project>

@@ -42,6 +42,7 @@
     <Folder Include="Views\Pages\IncomesList\" />
     <Folder Include="Views\Pages\ExpensesList\" />
     <Folder Include="Converters\" />
+    <Folder Include="Views\Pages\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Page1.xaml.cs" />
