@@ -8,7 +8,7 @@
         <StackLayout Margin="16">
             
             <Label Text="Amount" FontAttributes="Bold"/>
-            <Entry Text="{Binding SelectedUserIncome.Amount, Mode=TwoWay}"/>
+            <Entry x:Name="amountEntry" Text="{Binding SelectedUserIncome.Amount, Mode=TwoWay}"/>
             
             <Label Text="Date" FontAttributes="Bold" Margin="0,8,0,0"/>
             <DatePicker x:Name="incomeDatePicker" Date="{Binding SelectedUserIncome.IncomeDate, Mode=TwoWay, Converter={StaticResource dateTimeOffsetToDateTimeConverter}}"/>

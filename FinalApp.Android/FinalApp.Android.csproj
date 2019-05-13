@@ -72,6 +72,9 @@
     <PackageReference Include="Xamarin.Android.Support.CustomTabs">
       <Version>27.0.2.1</Version>
     </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.1.5.188</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

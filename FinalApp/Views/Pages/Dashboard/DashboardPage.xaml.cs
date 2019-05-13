@@ -10,12 +10,14 @@ namespace FinalApp.Views.Pages.Dashboard {
     public partial class DashboardPage : ContentPage {
         public DashboardPage() {
             InitializeComponent();
+
             using (var scope = App.Container.BeginLifetimeScope()) {
                 if (scope.Resolve<DashboardPageViewModel>() is DashboardPageViewModel viewModel) {
                     BindingContext = viewModel;
                     viewModel.Update();
                 }
             }
+
         }
 
         protected override void OnAppearing() {

@@ -30,6 +30,12 @@ namespace FinalApp.Views.Pages.Tags {
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e) {
+
+            if(categoryEntry.Text == null || categoryEntry.Text.Trim().Equals("")) {
+                await DisplayAlert("Error", "Insert a name for the tag to proceed", "Ok");
+                return;
+            }
+
             if(BindingContext is TagDetailPageViewModel viewModel) {
                 await viewModel.Save();
                 await Navigation.PopModalAsync();

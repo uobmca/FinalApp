@@ -8,7 +8,9 @@
         <StackLayout Margin="16,32,16,32">
             
             <Label Text="Name" FontAttributes="Bold"/>
-            <Entry Text="{Binding SelectedCategory.DisplayName, Mode=TwoWay}" Placeholder="Category name" 
+            <Entry Text="{Binding SelectedCategory.DisplayName, Mode=TwoWay}" 
+                   x:Name="categoryEntry"
+                   Placeholder="Category name" 
                    HorizontalOptions="FillAndExpand"/>
             
             <Label Margin="0,8,0,0" Text="Icon" FontAttributes="Bold"/>

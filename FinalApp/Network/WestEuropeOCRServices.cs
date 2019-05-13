@@ -47,8 +47,6 @@ namespace FinalApp.Network {
                 }
             }
 
-            response.EnsureSuccessStatusCode();
-
             if (response.Headers.TryGetValues("Operation-Location", out IEnumerable<string> values)) {
                 if(values.First() is string operationId) {
                     return new CognitiveServicesRequestResponse { 
@@ -63,22 +61,17 @@ namespace FinalApp.Network {
 
         public async Task<CognitiveServicesResponse> GetCognitiveServicesResponse(string operationId) {
             var client = new HttpClient();
-            var queryString = HttpUtility.ParseQueryString(string.Empty);
 
             // Request headers
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
             var uri = operationId;
             var response = await client.GetAsync(uri);
-
-            response.EnsureSuccessStatusCode();
-
             var contentString = await response.Content.ReadAsStringAsync();
+
             if (contentString == null) {
                 return null;
             }
-
-
 
             return CognitiveServicesResponse.FromJson(contentString);
         }

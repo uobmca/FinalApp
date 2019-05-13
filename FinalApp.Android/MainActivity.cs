@@ -24,6 +24,9 @@ namespace FinalApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            SetupLibraries();
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
@@ -42,6 +45,10 @@ namespace FinalApp.Droid
             MobileServiceClient client = LoginManager.Instance.MobileClient;
             var user = await client.LoginAsync(this, MobileServiceAuthenticationProvider.Google, AppGlobalConfig.GoogleUrlScheme);
             return user != null;
+        }
+
+        private void SetupLibraries() {
+            Rg.Plugins.Popup.Popup.Init(this, bundle);
         }
     }
 }

@@ -40,8 +40,6 @@ namespace FinalApp.Services {
         public RectanglesZoneMap(List<TextRectangle> rectangles, Metadata imageMetadata) {
             this.rectangles = rectangles;
             this.imageMetaData = imageMetadata;
-            //HorizontalZoneRectangles = GetHorizontalZoneTextRectangles(rectangles, imageMetadata);
-            //VerticalZoneRectangles = GetVerticalZoneTextRectangles(rectangles, imageMetadata);
             RebuildMapMatrix();
         }
 
@@ -193,13 +191,7 @@ namespace FinalApp.Services {
 
             // Zone 0
             var map = new RectanglesZoneMap(rectangles, imageMetadata);
-
-
-
-            //var test = map.GetRectangleForZone(0, 0);
-
             var priceRegex = new Regex(@"^[0-9]+,[0-9]*$", RegexOptions.IgnoreCase);
-
 
             bool found = false;
             int startingX = -1;
@@ -247,7 +239,6 @@ namespace FinalApp.Services {
         public async Task<UserExpense> ExtractExpensesFromTypeTwoBill(RecognitionResult recognitionResult, Metadata imageMetadata) {
             throw new NotImplementedException();
         }
-
 
         private class RectangleUtils { 
             public static TextRectangle FromPointsArray(Line line) {

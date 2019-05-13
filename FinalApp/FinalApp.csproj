@@ -18,6 +18,7 @@
     <PackageReference Include="Microsoft.Azure.Mobile.Client.SQLiteStore" Version="4.1.1" />
     <PackageReference Include="Microcharts.Forms" Version="0.8.5-pre" />
     <PackageReference Include="Microcharts" Version="0.8.5-pre" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -43,6 +44,7 @@
     <Folder Include="Views\Pages\ExpensesList\" />
     <Folder Include="Converters\" />
     <Folder Include="Views\Pages\Login\" />
+    <Folder Include="Views\Popups\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Page1.xaml.cs" />

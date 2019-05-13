@@ -25,6 +25,7 @@ namespace FinalApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SetupLibraries();
             App.Init(this);
             LoadApplication(new App());
 
@@ -52,6 +53,10 @@ namespace FinalApp.iOS
             MobileServiceUser user = await client.LoginAsync(rootVC, MobileServiceAuthenticationProvider.Google, AppGlobalConfig.GoogleUrlScheme);
 
             return user != null;
+        }
+
+        private void SetupLibraries() {
+            Rg.Plugins.Popup.Popup.Init();
         }
     }
 }

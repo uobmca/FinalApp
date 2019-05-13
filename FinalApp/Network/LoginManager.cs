@@ -33,14 +33,15 @@ namespace FinalApp.Network {
             MobileClient = new MobileServiceClient(AppGlobalConfig.AzureApplicationUrl);
         }
 
-        public async Task<List<SocialLoginResult>> RetrieveUserData() {
+        public async Task<bool> RetrieveUserData() {
             var info = await MobileClient.InvokeApiAsync<List<SocialLoginResult>>("/.auth/me");
             if (info.FirstOrDefault() is SocialLoginResult result) {
                 UserName = result.GetUserName();
                 UserEmail = result.GetUserEmail();
                 UserPicture = result.GetUserPictureURL();
+                return true;
             }
-            return info;
+            return false;
         }
 
         public async Task<List<SocialLoginResult>> GetUserData() {

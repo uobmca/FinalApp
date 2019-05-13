@@ -7,7 +7,7 @@
         <ScrollView>
             <StackLayout Margin="16">
                 <Label Text="Amount" FontAttributes="Bold"/>
-                <Entry Text="{Binding SelectedUserExpense.Amount, Mode=TwoWay}"/>
+                <Entry x:Name="amountEntry" Text="{Binding SelectedUserExpense.Amount, Mode=TwoWay}"/>
                 
                 <Label Text="Expire Date" FontAttributes="Bold" Margin="0,8,0,0"/>
                 <DatePicker x:Name="expireDatePicker" Date="{Binding SelectedUserExpense.ExpireDate, Mode=TwoWay, Converter={StaticResource dateTimeOffsetToDateTimeConverter}}"/>
