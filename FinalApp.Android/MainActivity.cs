@@ -25,7 +25,7 @@ namespace FinalApp.Droid
 
             base.OnCreate(savedInstanceState);
 
-            SetupLibraries();
+            SetupLibraries(savedInstanceState);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
@@ -47,7 +47,7 @@ namespace FinalApp.Droid
             return user != null;
         }
 
-        private void SetupLibraries() {
+        private void SetupLibraries(Bundle bundle) {
             Rg.Plugins.Popup.Popup.Init(this, bundle);
         }
     }
