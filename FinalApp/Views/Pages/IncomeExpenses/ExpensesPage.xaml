@@ -6,6 +6,7 @@
              BackgroundColor="White"
              x:Class="FinalApp.Views.Pages.IncomeExpenses.ExpensesPage">
     <ContentPage.Content>
+        <ScrollView>
             <StackLayout Spacing="0" 
                          BackgroundColor="White" 
                          VerticalOptions="FillAndExpand" 
@@ -118,5 +119,6 @@
                 </StackLayout>
                 
             </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

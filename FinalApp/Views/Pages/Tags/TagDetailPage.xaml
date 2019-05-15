@@ -4,7 +4,7 @@
              BackgroundColor="#f2f2f2"
              x:Class="FinalApp.Views.Pages.Tags.TagDetailPage">
     <ContentPage.Content>
-        
+        <ScrollView>
         <StackLayout Margin="16,32,16,32">
             
             <Label Text="Name" FontAttributes="Bold"/>
@@ -66,6 +66,6 @@
             
                 
         </StackLayout>
-        
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

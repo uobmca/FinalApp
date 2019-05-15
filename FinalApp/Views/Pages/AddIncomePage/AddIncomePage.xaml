@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FinalApp.Views.Pages.AddIncomePage.AddIncomePage">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" Spacing="0">
             <Image Source="placeholder_bill" BackgroundColor="Black" HorizontalOptions="FillAndExpand" HeightRequest="140" Aspect="AspectFill"/>
             <BoxView HeightRequest="1" Color="#e2e2e2"/>
@@ -66,5 +67,6 @@
             </StackLayout>
             
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -5,6 +5,7 @@
              BackgroundColor="#f2f2f2"
              x:Class="FinalApp.Views.Pages.IncomeDetail.IncomeDetailPage">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Margin="16">
             
             <Label Text="Amount" FontAttributes="Bold"/>
@@ -33,5 +34,6 @@
             
             
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

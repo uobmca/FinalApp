@@ -4,6 +4,7 @@
              
              x:Class="FinalApp.Views.Pages.TakePicture.TakePicturePage">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Margin="16,64,16,64" Spacing="0" VerticalOptions="StartAndExpand">
             
             <AbsoluteLayout HeightRequest="130" HorizontalOptions="FillAndExpand" Margin="0,16,0,0" Padding="0">
@@ -42,6 +43,6 @@
                    FontAttributes="Bold"/>
             
         </StackLayout>
-        
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

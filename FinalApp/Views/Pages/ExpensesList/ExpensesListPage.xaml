@@ -4,7 +4,6 @@
              xmlns:templates="clr-namespace:FinalApp.Views.Templates; assembly=FinalApp"
              x:Class="FinalApp.Views.Pages.ExpensesList.ExpensesListPage">
     <ContentPage.Content>
-        
         <ListView SelectionMode="None"
                   RowHeight="60"
                   ItemSelected="Handle_ItemSelected"
