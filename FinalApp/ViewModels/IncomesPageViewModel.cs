@@ -125,7 +125,7 @@ namespace FinalApp.ViewModels {
         }
 
         private void UpdateIncomesChart() {
-            IncomesChart = new RadarChart {
+            IncomesChart = new PieChart {
                 AnimationDuration = TimeSpan.FromMilliseconds(600.0),
                 Entries = UserIncomes.GroupBy((arg) => arg.CategoryId).Select((arg) => new ChartEntry((float)arg.First().Amount) {
                     Color = CategoryIdToSKColor(arg.First().CategoryId),

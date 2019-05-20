@@ -61,6 +61,10 @@ namespace FinalApp.ViewModels {
                     .WaitAndRetryAsync(kResultRequestMaxRetryAttempts, (i) => kResultRequestsInterval)
                     .ExecuteAsync(()=>ocrServices.GetCognitiveServicesResponse(operationId));
 
+                if (response == null) {
+                    return null;
+                }
+
                 ExtractedExpense = await dataExtractor.ExtractExpensesFromReceipt(response.RecognitionResult, ImageMetadata);
 
                 return response;

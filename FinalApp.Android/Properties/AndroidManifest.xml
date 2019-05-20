@@ -11,7 +11,7 @@
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="com.googleusercontent.apps.491061559234-7sdnlrp2cg1rnm41tcs48k7hcnhqtkpo" android:host="easyauth.callback" />
+				<data android:scheme="1006430794848-o084aahai7kj0o6ugicdobli88n2j0dr.apps.googleusercontent.com" android:host="easyauth.callback" />
 			</intent-filter>
 		</activity>
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">

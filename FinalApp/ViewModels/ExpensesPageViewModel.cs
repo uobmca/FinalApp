@@ -49,10 +49,26 @@ namespace FinalApp.ViewModels {
         protected readonly BindableProperty BusiestDayProperty =
             BindableProperty.Create(nameof(BusiestDay), typeof(string), typeof(ExpensesPageViewModel), "-");
 
-        public RadialGaugeChart ExpensesChart {
-            get => (RadialGaugeChart)GetValue(ExpensesChartProperty);
+        public Chart ExpensesChart {
+            get => (Chart)GetValue(ExpensesChartProperty);
             set => SetValue(ExpensesChartProperty, value);
         }
+
+        private SKColor[] chartColors = new SKColor[] {
+            SKColors.Red,
+            SKColors.Blue,
+            SKColors.Green,
+            SKColors.Yellow,
+            SKColors.Orange,
+            SKColors.Firebrick,
+            SKColors.MidnightBlue,
+            SKColors.Turquoise,
+            SKColors.Purple,
+            SKColors.CornflowerBlue,
+            SKColors.PaleVioletRed,
+            SKColors.LimeGreen,
+            SKColors.DarkSeaGreen
+        };
 
         public IEnumerable<UserExpense> UserExpenses {
             get => (IEnumerable<UserExpense>)GetValue(UserExpensesProperty);
@@ -116,7 +132,7 @@ namespace FinalApp.ViewModels {
 
             DayOfWeek busiestDay = DayOfWeek.Monday;
             double busiestDayTotal = double.MinValue;
-            foreach(var group in groupedExpenses) {
+            foreach (var group in groupedExpenses) {
                 var totalInGroup = group.Sum((exp) => exp.Amount);
                 if (totalInGroup > busiestDayTotal) {
                     busiestDayTotal = totalInGroup;
@@ -134,13 +150,27 @@ namespace FinalApp.ViewModels {
 
         private void UpdateExpensesChart() {
 
-            ExpensesChart = new RadialGaugeChart {
+            int colorIndex = 0;
+            Dictionary<string, SKColor> assignedColors = new Dictionary<string, SKColor>();
+            ExpensesChart = new PieChart {
                 AnimationDuration = TimeSpan.FromMilliseconds(600.0),
-                Entries = UserExpenses.GroupBy((arg) => arg.CategoryId).Select((arg) => new ChartEntry((float)arg.First().Amount) {
-                    Color = CategoryIdToSKColor(arg.First().CategoryId),
-                    TextColor = CategoryIdToSKColor(arg.First().CategoryId),
-                    Label = CategoryIdToString(arg.First().CategoryId),
-                    ValueLabel = arg.First().Amount.ToString("F1")
+                Entries = UserExpenses.GroupBy((arg) => arg.CategoryId).Select((arg) => {
+                    SKColor color;
+                    var categoryId = arg.First().CategoryId;
+                    if (assignedColors.ContainsKey(categoryId)) {
+                        color = assignedColors[categoryId];
+                    } else {
+                        color = chartColors[colorIndex % (chartColors.Length - 1)];
+                        assignedColors[categoryId] = color;
+                        colorIndex++;
+                    }
+
+                    return new ChartEntry((float) arg.First().Amount) {
+                        Color = color,
+                        TextColor = CategoryIdToSKColor(arg.First().CategoryId),
+                        Label = CategoryIdToString(arg.First().CategoryId),
+                        ValueLabel = arg.First().Amount.ToString("F1")
+                    };
                 }),
                 LabelTextSize = 18.0f,
                 BackgroundColor = SKColors.Transparent

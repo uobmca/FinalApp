@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 namespace FinalApp.Network {
     public class WestEuropeOCRServices : INetworkOCRServices {
 
-        const string subscriptionKey = "d52564bdb77443deacdb5dba486a471a";
+        const string subscriptionKey = "ae95e38ef6de4b008b03b3c9d65c0276";
         const string uriBase = "https://westeurope.api.cognitive.microsoft.com/vision/v1.0";
 
         public async Task<CognitiveServicesRequestResponse> SendCognitiveServicesRequest(byte[] byteData, bool isHandWritten = true) {
