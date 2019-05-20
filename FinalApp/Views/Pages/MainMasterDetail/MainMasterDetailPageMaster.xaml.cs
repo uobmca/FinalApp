@@ -51,7 +51,7 @@ namespace FinalApp.Views.Pages.MainMasterDetail {
                 {
                     new MainMasterDetailPageMenuItem { Id = 0, Icon = "ic_drawer_dashboard", Title = "Dashboard", TargetType = typeof(Dashboard.DashboardPage) },
                     new MainMasterDetailPageMenuItem { Id = 1, Icon = "ic_drawer_money", Title = "Income / Expenses", TargetType = typeof(IncomeExpenses.IncomesExpensesTabbedPage) },
-                    new MainMasterDetailPageMenuItem { Id = 2, Icon = "ic_drawer_report", Title = "Reports" },
+                    new MainMasterDetailPageMenuItem { Id = 2, Icon = "ic_drawer_report", Title = "Reports", TargetType = typeof(Reports.ReportsPage) },
                     new MainMasterDetailPageMenuItem { Id = 3, Icon = "ic_drawer_tag", Title = "Tags", TargetType = typeof(Tags.TagsPage)},
                 });
             }
