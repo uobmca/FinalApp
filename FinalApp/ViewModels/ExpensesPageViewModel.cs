@@ -156,7 +156,7 @@ namespace FinalApp.ViewModels {
                 AnimationDuration = TimeSpan.FromMilliseconds(600.0),
                 Entries = UserExpenses.GroupBy((arg) => arg.CategoryId).Select((arg) => {
                     SKColor color;
-                    var categoryId = arg.First().CategoryId;
+                    var categoryId = arg.First().CategoryId ?? "";
                     if (assignedColors.ContainsKey(categoryId)) {
                         color = assignedColors[categoryId];
                     } else {
