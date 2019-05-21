@@ -65,7 +65,7 @@ namespace FinalApp.Services {
             foreach (TextRectangle rectangle in rectangles) {
 
                 int x = (int) Math.Round(rectangle.AvgBoundingBox.X / hStep);
-                int y = (int)Math.Round(rectangle.AvgBoundingBox.Y / yStep);
+                int y = (int) Math.Round(rectangle.AvgBoundingBox.Y / yStep);
 
                 x = x < 0 ? 0 : x;
                 x = x > hSize - 1 ? hSize - 1 : x;
@@ -75,7 +75,10 @@ namespace FinalApp.Services {
 
                 matrix[y, x] = rectangle.RectLine.Text;
             }
+
             MapMatrix = matrix;
+
+
         }
 
         public TextRectangle GetRectangleForZone(int hZone, int vZone) {
@@ -191,8 +194,9 @@ namespace FinalApp.Services {
 
             // Zone 0
             var map = new RectanglesZoneMap(rectangles, imageMetadata);
-            var priceRegex = new Regex(@"^[0-9]+,[0-9]*$", RegexOptions.IgnoreCase);
 
+
+            var priceRegex = new Regex(@"^[0-9]+,[0-9]*$", RegexOptions.IgnoreCase);
             bool found = false;
             int startingX = -1;
             int startingY = -1;

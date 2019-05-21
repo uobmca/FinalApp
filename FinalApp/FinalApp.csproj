@@ -45,6 +45,7 @@
     <Folder Include="Converters\" />
     <Folder Include="Views\Pages\Login\" />
     <Folder Include="Views\Popups\" />
+    <Folder Include="Views\Pages\ReportDetailPage\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Page1.xaml.cs" />

@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="#f2f2f2" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FinalApp.Views.Templates.MonthlyReportRowTemplate">
-    <ContentView.Content>
-        <Frame Padding="16" Margin="8" VerticalOptions="Start" BackgroundColor="White" HasShadow="false">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Label Text="{Binding MonthName, FallbackValue=January}" 
-                           Grid.Row="0"
-                           Grid.Column="0"
-                           VerticalTextAlignment="Center" FontAttributes="Bold"/>
-                    <Button Text="OPEN" TextColor="White"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            BackgroundColor="{StaticResource ColorSecondary}"/>
-                </Grid>
-        </Frame>
-    </ContentView.Content>
-</ContentView>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FinalApp.Views.Templates.MonthlyReportRowTemplate">
+    <ViewCell.View>
+        <StackLayout>
+            <Frame Padding="16" Margin="8" BackgroundColor="White" HasShadow="false">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="44"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Text="{Binding MonthName, FallbackValue=January}" 
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                        <Button Text="OPEN" TextColor="White"
+                                Grid.Row="0"
+                                Clicked="Handle_Clicked"
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                BackgroundColor="{StaticResource ColorSecondary}"/>
+                    </Grid>
+            </Frame>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

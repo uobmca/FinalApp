@@ -6,32 +6,36 @@
              x:Class="FinalApp.Views.Pages.Reports.ReportsPage">
     <ContentPage.Content>    
             <ListView SeparatorVisibility="None" 
+                      HasUnevenRows="true"
+                      Header="true"
                       ItemsSource="{Binding MonthlyReports}"
-                      BackgroundColor="Transparent">
+                      BackgroundColor="#f2f2f2">
                     
                 <ListView.Header>
-                    <StackLayout Padding="0" Margin="0,16" Spacing="4" >
-                        <Label Text="Get a report"  Margin="16,0" FontSize="Large" FontAttributes="Bold"/>
-                        <Label Margin="16,0" Text="Select a date range to get a detailed report of your incomes and your expenses"
+                    <StackLayout Padding="0,16" Margin="0,0" Spacing="4" >
+                        <Label Text="Get a report"  
+                               Margin="16,0" 
+                               FontSize="Large" 
+                               FontAttributes="Bold"/>
+                        <Label Margin="16,0" 
+                               Text="Select a date range to get a detailed report of your incomes and your expenses"
                        FontSize="Small"/>
                             
                         <Frame Padding="16" Margin="8" BackgroundColor="White" HasShadow="false">
 
-                            <StackLayout>
-                                
-
-                                <Label Text="From" FontSize="Small" Margin="0,8,0,0" FontAttributes="Bold"/>
+                            <StackLayout BackgroundColor="White">
+                                <Label Text="From" 
+                                       FontSize="Small" 
+                                       Margin="0,8,0,0" 
+                                       FontAttributes="Bold"/>
                                 <DatePicker Margin="0"/>
                                 <Label Text="To" FontSize="Small" Margin="0,8,0,0" FontAttributes="Bold"/>
                                 <DatePicker Margin="0"/>
-                                    
                                     <Button Text="GET REPORT"  
                                             TextColor="White"
                                             Margin="0,16"
                                             FontAttributes="Bold"
                                             BackgroundColor="{StaticResource ColorSecondary}" />
-                                    
-                                    
                             </StackLayout>
                         </Frame>
                 

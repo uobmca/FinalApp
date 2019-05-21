@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using FinalApp.Commons;
 using FinalApp.Models;
@@ -130,7 +131,7 @@ namespace FinalApp.Services {
         }
 
         public async Task<List<UserExpense>> GetUserExpenses(DateTime startDate, DateTime endDate) {
-            throw new NotImplementedException();
+            return (await GetUserExpenses()).Where((expense) => expense.ExpireDate >= startDate && expense.ExpireDate <= endDate).ToList();
         }
 
         public async Task<List<UserIncome>> GetUserIncomes() {
@@ -138,7 +139,7 @@ namespace FinalApp.Services {
         }
 
         public async Task<List<UserIncome>> GetUserIncomes(DateTime startDate, DateTime endDate) {
-            return await incomesTable.Where((item) => item.UserId == LoggedUserId).ToListAsync();
+            return (await GetUserIncomes()).Where((income) => income.IncomeDate >= startDate && income.IncomeDate <= endDate).ToList();
         }
 
         public async Task SaveUserExpenses(IEnumerable<UserExpense> incomes) {

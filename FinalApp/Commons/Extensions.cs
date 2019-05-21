@@ -23,4 +23,10 @@ namespace FinalApp.Commons {
             return Task.CompletedTask;
         }
     }
+
+    public static class StringExtensions { 
+        public static String Capitalize(this String self) {
+            return self.Substring(0, 1).ToUpper() + self.Substring(1).ToLower();
+        }
+    }
 }
