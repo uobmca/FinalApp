@@ -38,8 +38,8 @@ namespace FinalApp.Views.Pages.Reports {
         void OnGetReportClicked(object sender, System.EventArgs e) {
             using (var scope = App.Container.BeginLifetimeScope()) { 
                 if (scope.Resolve<ReportDetailPageViewModel>() is ReportDetailPageViewModel vm) {
-                    vm.StartDate = startDatePicker.Date;
-                    vm.EndDate = endDatePicker.Date;
+                    vm.StartDate = new DateTime(startDatePicker.Date.Year, startDatePicker.Date.Month, startDatePicker.Date.Day, 0, 0, 0);
+                    vm.EndDate = new DateTime(endDatePicker.Date.Year, endDatePicker.Date.Month, endDatePicker.Date.Day, 23, 59, 59);
                     vm.IsMonthlyReport = false;
 
                     ReportDetailPage.ReportDetailPage page = new ReportDetailPage.ReportDetailPage {

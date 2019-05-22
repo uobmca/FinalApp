@@ -57,9 +57,7 @@ namespace FinalApp.ViewModels {
             string outContent = HtmlContent;
 
             // Sets up title content
-            string monthNameContent = IsMonthlyReport ?
-                CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(StartDate.Month).Capitalize()
-                : string.Format("From {0} to {1}", StartDate.ToShortDateString(), EndDate.ToShortDateString());
+            string monthNameContent = GetHeaderTitle();
 
             // Sets up incomes and expenses content
             double totalIncomes = incomes.Sum((income) => income.Amount);
@@ -75,11 +73,23 @@ namespace FinalApp.ViewModels {
             outContent = outContent.Replace(monthNamePlaceholder, monthNameContent);
             outContent = outContent.Replace(incomesTotalPlaceholder, string.Format("{0:C}", totalIncomes));
             outContent = outContent.Replace(expensesTotalPlaceholder, string.Format("{0:C}", totalExpenses));
-            outContent = outContent.Replace(balanceValuePlacholder, string.Format("{0}{1:C}", signStr, balance));
+            outContent = outContent.Replace(balanceValuePlacholder, string.Format("{0}{1:C}", signStr, Math.Abs(balance)));
             outContent = outContent.Replace(incomesInnerFieldsPlaceholder, incomeInnerFields);
             outContent = outContent.Replace(expensesInnerFieldsPlaceholder, expensesInnerFields);
 
             HtmlContent = outContent;
+        }
+
+        private string GetHeaderTitle() { 
+            if (IsMonthlyReport) {
+                return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(StartDate.Month).Capitalize();
+            }
+
+            if (StartDate.Date == EndDate.Date) {
+                return StartDate.ToShortDateString();
+            }
+
+            return string.Format("From {0} to {1}", StartDate.ToShortDateString(), EndDate.ToShortDateString());
         }
 
         private string BuildIncomeInnerFields(IEnumerable<UserIncome> incomes, IEnumerable<Category> categories) {
