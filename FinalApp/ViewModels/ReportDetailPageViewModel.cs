@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FinalApp.Commons;
 using FinalApp.Models;
+using FinalApp.Network;
 using FinalApp.Services;
 using Xamarin.Forms;
 
@@ -24,7 +26,7 @@ namespace FinalApp.ViewModels {
         public bool IsMonthlyReport { get; set; }
 
         public string HtmlContent = "<!DOCTYPE html>\n<html>\n<head>\n<meta name=\"viewport\" " +
-        	"content=\"width=device-width, initial-scale=1\">\n<style>\n\nbody {\n\twidth:100%;\n}\n\ntable, th, " +
+        	"content=\"width=device-width, initial-scale=0.9\">\n<style>\n\nbody {\n\twidth:100%;\n}\n\ntable, th, " +
         	"td {\n  padding: 5px;\n  font-size: 12pt;\n}\n\n.income-value {\n\tcolor:green;\n    " +
         	"font-size:14pt;\n}\n\n.expenses-value {\n\tcolor:red;\n    " +
         	"font-size:14pt;\n}\n\n.balance-value {\n\tcolor:blue;\n    " +
@@ -39,9 +41,11 @@ namespace FinalApp.ViewModels {
         	"\n\t</table>\n</div>\n</body>\n</html>\n";
 
         private IUserDataRepository repository;
+        private DocumentsUtilsApiService documentsApiService;
 
-        public ReportDetailPageViewModel(IUserDataRepository repository) {
+        public ReportDetailPageViewModel(IUserDataRepository repository, DocumentsUtilsApiService documentsApiService) {
             this.repository = repository;
+            this.documentsApiService = documentsApiService;
         }
 
         public async Task BuildHtmlContent() {
@@ -105,6 +109,18 @@ namespace FinalApp.ViewModels {
             }
 
             return outString;
+        }
+
+        public async Task ExportPDF() {
+            var response = await documentsApiService.ConvertHtmlToPdf(HtmlContent);
+            if(response.IsSuccess) {
+                var fileName = string.Format("report_{0}_{1}.pdf", StartDate.ToFileTimeUtc(), EndDate.ToFileTimeUtc());
+                var fileService = DependencyService.Get<IFileService>();
+                using (var stream = new MemoryStream(response.FileBytesData)) {
+                    fileService.SaveDataStream(fileName, stream, "Reports");
+                    fileService.ShowDocument(fileName);
+                }
+            }
         }
 
     }

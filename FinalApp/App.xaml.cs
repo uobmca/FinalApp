@@ -48,6 +48,7 @@ namespace FinalApp
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<MainPageViewModel>();
             builder.RegisterType<WestEuropeOCRServices>().As<INetworkOCRServices>().SingleInstance();
+            builder.RegisterType<PdflayerApiService>().As<DocumentsUtilsApiService>().SingleInstance();
             builder.RegisterType<UserDataRepository>().As<IUserDataRepository>().SingleInstance();
             builder.RegisterType<OCRDataExtractor>().As<IOCRDataExtractor>().SingleInstance();
             builder.RegisterType<AnalyzePicturePageViewModel>();

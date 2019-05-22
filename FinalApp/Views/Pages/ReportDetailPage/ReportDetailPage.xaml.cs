@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 using FinalApp.ViewModels;
+using FinalApp.Views.Popups;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace FinalApp.Views.Pages.ReportDetailPage {
@@ -15,6 +17,18 @@ namespace FinalApp.Views.Pages.ReportDetailPage {
                     BindingContext = viewModel;
                 }
             }
+            SetupUI();
+        }
+
+        private void SetupUI() {
+            ToolbarItems.Add(new ToolbarItem("Export PDF", "ic_save", async () => {
+                if (BindingContext is ReportDetailPageViewModel viewModel) {
+                    var popup = new ActivityIndicatorPopup();
+                    await PopupNavigation.Instance.PushAsync(popup);
+                    await viewModel.ExportPDF();
+                    await PopupNavigation.Instance.RemovePageAsync(popup);
+                }
+            }));
         }
 
         protected async override void OnAppearing() {

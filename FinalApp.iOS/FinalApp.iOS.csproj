@@ -100,6 +100,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\IOSNavigationRenderer.cs" />
     <Compile Include="Renderers\NoBounceListViewRenderer.cs" />
+    <Compile Include="Services\FileService.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -232,6 +233,10 @@
     <ImageAsset Include="Assets.xcassets\ic_logo_transparent.imageset\logo_transparent.png" />
     <ImageAsset Include="Assets.xcassets\ic_logo_transparent.imageset\logo_transparent-1.png" />
     <ImageAsset Include="Assets.xcassets\ic_logo_transparent.imageset\logo_transparent-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_save.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_save.imageset\ic_save-3.png" />
+    <ImageAsset Include="Assets.xcassets\ic_save.imageset\ic_save.png" />
+    <ImageAsset Include="Assets.xcassets\ic_save.imageset\ic_save-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -294,5 +299,7 @@
     <Folder Include="Assets.xcassets\ic_filter.imageset\" />
     <Folder Include="Assets.xcassets\ic_google.imageset\" />
     <Folder Include="Assets.xcassets\ic_logo_transparent.imageset\" />
+    <Folder Include="Assets.xcassets\ic_save.imageset\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

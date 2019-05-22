@@ -65,6 +65,7 @@ namespace FinalApp.Views.Pages.TakePicture {
                 Name = "current.jpg"
             });
 
+
             return file;
         }
     }

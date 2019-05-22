@@ -28,10 +28,11 @@
                                        FontSize="Small" 
                                        Margin="0,8,0,0" 
                                        FontAttributes="Bold"/>
-                                <DatePicker Margin="0"/>
+                                <DatePicker Margin="0" x:Name="startDatePicker"/>
                                 <Label Text="To" FontSize="Small" Margin="0,8,0,0" FontAttributes="Bold"/>
-                                <DatePicker Margin="0"/>
-                                    <Button Text="GET REPORT"  
+                                <DatePicker Margin="0" x:Name="endDatePicker"/>
+                                    <Button Text="GET REPORT"
+                                            Clicked="OnGetReportClicked"
                                             TextColor="White"
                                             Margin="0,16"
                                             FontAttributes="Bold"
