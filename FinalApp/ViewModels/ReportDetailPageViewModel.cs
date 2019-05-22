@@ -26,7 +26,7 @@ namespace FinalApp.ViewModels {
         public bool IsMonthlyReport { get; set; }
 
         public string HtmlContent = "<!DOCTYPE html>\n<html>\n<head>\n<meta name=\"viewport\" " +
-        	"content=\"width=device-width, initial-scale=0.9\">\n<style>\n\nbody {\n\twidth:100%;\n}\n\ntable, th, " +
+        	"content=\"width=device-width\">\n<style>\n\nbody {\n\twidth:100%;\n}\n\ntable, th, " +
         	"td {\n  padding: 5px;\n  font-size: 12pt;\n}\n\n.income-value {\n\tcolor:green;\n    " +
         	"font-size:14pt;\n}\n\n.expenses-value {\n\tcolor:red;\n    " +
         	"font-size:14pt;\n}\n\n.balance-value {\n\tcolor:blue;\n    " +
@@ -65,6 +65,7 @@ namespace FinalApp.ViewModels {
             double totalIncomes = incomes.Sum((income) => income.Amount);
             double totalExpenses = expenses.Sum((expense) => expense.Amount);
             double balance = totalIncomes - totalExpenses;
+            string signStr = balance > 0 ? "" : "- ";
 
             // Fill income inner fields
             string incomeInnerFields = BuildIncomeInnerFields(incomes, categories);
@@ -74,7 +75,7 @@ namespace FinalApp.ViewModels {
             outContent = outContent.Replace(monthNamePlaceholder, monthNameContent);
             outContent = outContent.Replace(incomesTotalPlaceholder, string.Format("{0:C}", totalIncomes));
             outContent = outContent.Replace(expensesTotalPlaceholder, string.Format("{0:C}", totalExpenses));
-            outContent = outContent.Replace(balanceValuePlacholder, string.Format("{0:C}", balance));
+            outContent = outContent.Replace(balanceValuePlacholder, string.Format("{0}{1:C}", signStr, balance));
             outContent = outContent.Replace(incomesInnerFieldsPlaceholder, incomeInnerFields);
             outContent = outContent.Replace(expensesInnerFieldsPlaceholder, expensesInnerFields);
 
