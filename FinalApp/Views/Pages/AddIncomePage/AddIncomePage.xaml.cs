@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
+using FinalApp.Commons;
 using FinalApp.ViewModels;
 using FinalApp.Views.Base;
 using Plugin.Media;
@@ -66,7 +67,7 @@ namespace FinalApp.Views.Pages.AddIncomePage {
 
         private async Task OpenInsertManuallyPage() {
             var page = new ExpenseDetail.ExpenseDetailPage();
-            await Navigation.PushModalAsync(new AppNavigationPage(page));
+            await Navigation.PushModalAsyncUnique(new AppNavigationPage(page));
         }
 
         private async Task OpenPictureGallery() {

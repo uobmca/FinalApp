@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace FinalApp.Services {
 
         // The percentage of tolerance when dealing with classifying bounding boxes zone
         private const float kHorizontalTolerancePercentage = 0.07f;
-        private const float kVerticalTolerancePercentage = 0.03f;
+        private const float kVerticalTolerancePercentage = 0.06f;
 
         public List<List<TextRectangle>> HorizontalZoneRectangles { get; set; }
         public List<List<TextRectangle>> VerticalZoneRectangles { get; set; }
@@ -165,16 +166,25 @@ namespace FinalApp.Services {
 
 
     }
+    /*
+                new Regex(@"\s*Total\s*\d\s*pieces\s*", RegexOptions.IgnoreCase),
+                new Regex(@"\s*NET\s*BILL\s*VAL\s*", RegexOptions.IgnoreCase),
+                new Regex(@"\s*TOTALE\s*EURO\s*", RegexOptions.IgnoreCase),
+                new Regex(@"\s*IMPORTO\s*", RegexOptions.IgnoreCase),
+                new Regex(@"\s*TOTAL[:\s]+.*", RegexOptions.IgnoreCase),
+                new Regex(@"\s*SUB TOTAL\s+.*", RegexOptions.IgnoreCase)
+        */
 
     public class OCRDataExtractor : IOCRDataExtractor {
 
         private bool TestForPriceLabel(string str) {
-            var regexConds = new Regex[] {
-                new Regex(@"\s*Total\s*\d\s*pieces\s*", RegexOptions.IgnoreCase),
-                new Regex(@"\s*NET\s*BILL\s*VAL\s*", RegexOptions.IgnoreCase),
-                new Regex(@"\s*TOTALE\s*EURO\s*", RegexOptions.IgnoreCase),
-                new Regex(@"\s*IMPORTO\s*", RegexOptions.IgnoreCase)
-            };
+            var regexConds = GetPriceLabelRegexConds(new string[] {
+                "TOTAL PIECES",
+                "NET BILL VAL",
+                "TOTAL",
+                "SUB TOTAL"
+            });
+
             foreach(Regex rx in regexConds) { 
                 if(rx.IsMatch(str)) {
                     return true;
@@ -182,6 +192,14 @@ namespace FinalApp.Services {
             }
 
             return false;
+        }
+
+        private Regex[] GetPriceLabelRegexConds(string[] patterns) {
+            return patterns.Select((pattern) => GetPriceLabelRegex(pattern)).ToArray();
+        }
+
+        private Regex GetPriceLabelRegex(string pattern) {
+            return new Regex(string.Format(@"(\s*{0}\s*$)|(\s*{0}\s*:\s*)|(\s*{0}\s+.*)", pattern), RegexOptions.IgnoreCase);
         }
 
         public async Task<UserExpense> ExtractExpensesFromReceipt(RecognitionResult recognitionResult, Metadata imageMetadata) {
@@ -196,7 +214,7 @@ namespace FinalApp.Services {
             var map = new RectanglesZoneMap(rectangles, imageMetadata);
 
 
-            var priceRegex = new Regex(@"^[0-9]+,[0-9]*$", RegexOptions.IgnoreCase);
+            var priceRegex = new Regex(@"^\s*(\W\D){0,1}\s*[\d,]+\.[\d]{2}\s*$", RegexOptions.IgnoreCase);
             bool found = false;
             int startingX = -1;
             int startingY = -1;
@@ -213,15 +231,14 @@ namespace FinalApp.Services {
 
             if (found) { 
                 for (int i = startingX; i < map.HorizontalZoneCount; i++) {
-                    var cleanStr = map.MapMatrix[startingY, i].Trim()
-                        .Replace(" ", "")
-                        .Replace(".",",");
+                    var cleanStr = map.MapMatrix[startingY, i].Trim().Replace(" ", "");
                     if(priceRegex.IsMatch(cleanStr)) {
                         try { 
-                            var value = double.Parse(cleanStr);
+                            var value = double.Parse(cleanStr, System.Globalization.NumberStyles.Currency, CultureInfo.GetCultureInfo("si-LK"));
                             return new UserExpense {
                                 Amount = value,
-                                Description = "Receipt expense"
+                                Description = "Receipt expense",
+                                ExpireDate = DateTime.Now
                             };
                         } catch(Exception e) {
                             Debug.Print(e.StackTrace);
