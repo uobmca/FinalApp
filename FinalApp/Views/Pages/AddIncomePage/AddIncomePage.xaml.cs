@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Autofac;
 using FinalApp.Commons;
@@ -93,7 +94,9 @@ namespace FinalApp.Views.Pages.AddIncomePage {
         }
 
         private async Task GoToTakePicturePage() {
-            await Navigation.PushAsync(new SelectExpense.SelectExpensePage());
+            await Navigation.PushModalAsyncUnique(new SelectExpense.SelectExpensePage() { OnUserExpenseTypeSelected = new Command<Models.SelectableUserExpense>((obj) => {
+                Debug.Print("Selected expense type: " + obj.DisplayName);
+            })});
         }
 
         private void ShowOptionSelection(Grid grid) {

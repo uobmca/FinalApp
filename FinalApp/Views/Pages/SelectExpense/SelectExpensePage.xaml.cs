@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using Autofac;
+using FinalApp.Models;
 using FinalApp.ViewModels;
 using Xamarin.Forms;
 
 namespace FinalApp.Views.Pages.SelectExpense {
     public partial class SelectExpensePage : ContentPage {
+
+        public Command<SelectableUserExpense> OnUserExpenseTypeSelected { get; set; }
 
         private enum ItemsSourceType { 
             Receipt,
@@ -54,6 +58,13 @@ namespace FinalApp.Views.Pages.SelectExpense {
                     receiptSelectableFrame.Opacity = 0.3;
                     billSelectableFrame.Opacity = 1.0;
                     break;
+            }
+        }
+
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            if(OnUserExpenseTypeSelected is Command<SelectableUserExpense> listener) {
+                await Navigation.PopModalAsync();
+                listener.Execute(e.SelectedItem);
             }
         }
     }

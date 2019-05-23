@@ -9,6 +9,7 @@
                           IsVisible="{Binding IsItemsSourceEmpty, Converter={StaticResource inverseBoolConverter}}"
                           SeparatorVisibility="None"
                           VerticalOptions="StartAndExpand"
+                          ItemSelected="OnItemSelected"
                           BackgroundColor="Transparent"
                           ItemsSource="{Binding ItemsSource}"
                           HasUnevenRows="true">
