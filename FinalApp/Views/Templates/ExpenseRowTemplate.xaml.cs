@@ -16,7 +16,7 @@ namespace FinalApp.Views.Templates {
             if (BindingContext is ExpensesGroupedList groupedExpenses) {
                 categoryLabel.Text = groupedExpenses.First().UserCategory != null ? groupedExpenses.First().UserCategory.DisplayName : "N/A";
                 transactionsLabel.Text = $"{groupedExpenses.Count} transactions";
-                amountLabel.Text = string.Format("- €{0:#.00}", groupedExpenses.Sum((expense) => expense.Amount));
+                amountLabel.Text = string.Format("- {0:C}", groupedExpenses.Sum((expense) => expense.Amount));
             }
         }
     }

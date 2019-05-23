@@ -63,6 +63,7 @@ namespace FinalApp
             builder.RegisterType<IncomesListPageViewModel>();
             builder.RegisterType<ReportsPageViewModel>();
             builder.RegisterType<ReportDetailPageViewModel>();
+            builder.RegisterType<SelectExpensePageViewModel>();
             Container = builder.Build();
         }
     }

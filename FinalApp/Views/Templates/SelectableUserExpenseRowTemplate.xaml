@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+          x:Class="FinalApp.Views.Templates.SelectableUserExpenseRowTemplate">
+    <ViewCell.View>
+        <StackLayout BackgroundColor="Transparent">
+            <Frame Margin="16,16" CornerRadius="20" BackgroundColor="White" HasShadow="false" Padding="0">
+                <StackLayout HorizontalOptions="FillAndExpand">
+                     <Image Source="{Binding ExpenseImage}"
+                            BackgroundColor="Black"
+                            Aspect="AspectFill" 
+                            HeightRequest="130"
+                            HorizontalOptions="FillAndExpand"/>
+                    
+                    <Label Text="{Binding DisplayName, FallbackValue=Generic Receipt}" Margin="16" HorizontalOptions="Center" FontSize="Large"/>
+                    
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

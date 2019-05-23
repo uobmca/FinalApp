@@ -40,6 +40,22 @@ namespace FinalApp.Models {
 
     }
 
+    public class SelectableUserExpense {
+        public static class BillTypes {
+            public readonly static int Type01 = 0;
+            public readonly static int Type02 = 1;
+            public readonly static int Type03 = 2;
+        }
+
+        public static class ReceiptTypes {
+            public readonly static int GenericReceipt = 3;
+        }
+
+        public ImageSource ExpenseImage { get; set; }
+        public string DisplayName { get; set; }
+        public int ExpenseType { get; set; }
+    }
+
 
 }
 

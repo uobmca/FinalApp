@@ -93,7 +93,7 @@ namespace FinalApp.Views.Pages.AddIncomePage {
         }
 
         private async Task GoToTakePicturePage() {
-            await Navigation.PushAsync(new TakePicture.TakePicturePage());
+            await Navigation.PushAsync(new SelectExpense.SelectExpensePage());
         }
 
         private void ShowOptionSelection(Grid grid) {

@@ -46,6 +46,7 @@
     <Folder Include="Views\Pages\Login\" />
     <Folder Include="Views\Popups\" />
     <Folder Include="Views\Pages\ReportDetailPage\" />
+    <Folder Include="Views\Pages\SelectExpense\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Page1.xaml.cs" />

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:templates="clr-namespace:FinalApp.Views.Templates; assembly=FinalApp"
+             BackgroundColor="#f2f2f2" 
+             x:Class="FinalApp.Views.Pages.SelectExpense.SelectExpensePage">
+    <ContentPage.Content>
+                <ListView VerticalScrollBarVisibility="Never"
+                          IsVisible="{Binding IsItemsSourceEmpty, Converter={StaticResource inverseBoolConverter}}"
+                          SeparatorVisibility="None"
+                          VerticalOptions="StartAndExpand"
+                          BackgroundColor="Transparent"
+                          ItemsSource="{Binding ItemsSource}"
+                          HasUnevenRows="true">
+                    
+                    <ListView.Header>
+                        <StackLayout>
+                            <Label Text="Select an option please" 
+                                   Margin="24,24,24,0"
+                                   FontSize="Large"/>
+                            
+                            <Grid Padding="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Frame x:Name="receiptSelectableFrame"
+                                       Grid.Row="0" 
+                                       Grid.Column="0" 
+                                       HasShadow="false"
+                                       Padding="0" 
+                                       Margin="0"  
+                                       CornerRadius="10">
+                                
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <Image Source="placeholder_receipt" Aspect="AspectFill" HeightRequest="100"/>
+                                        <Label Margin="0,8" Text="Receipt" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                    
+                                </Frame>
+                                
+                                <Frame x:Name="billSelectableFrame"
+                                       Grid.Row="0" 
+                                       Grid.Column="1" 
+                                       Opacity="0.3"
+                                       HasShadow="false" 
+                                       Padding="0" 
+                                       Margin="0"  
+                                       CornerRadius="10">
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        
+                                        <Image Source="placeholder_bill" Aspect="AspectFill" HeightRequest="100"/>
+                                        <Label Margin="0,8" Text="Bill"  HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                            
+                            <Grid Margin="24,8" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="44"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       VerticalOptions="CenterAndExpand"
+                                       Text="Templates" 
+                                       VerticalTextAlignment="Center"
+                                       FontSize="Large"/>
+                                
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       Text="{Binding ItemsSourceCount, StringFormat='{0} available'}" 
+                                       FontSize="Micro"/>
+                            </Grid>
+                            
+                            
+                            <StackLayout IsVisible="{Binding IsItemsSourceEmpty}">
+                                <Image Source="ic_magnify" Margin="16" Opacity="0.3"/>
+                                <Label Text="No templates found." HorizontalOptions="CenterAndExpand" 
+                                       FontSize="Medium"/>
+                                <Label Text="We can't find any template for the selected category" HorizontalOptions="CenterAndExpand" 
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="Gray"
+                                       FontSize="Small"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ListView.Header>
+            
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:SelectableUserExpenseRowTemplate/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
+                
+           
+    </ContentPage.Content>
+</ContentPage>

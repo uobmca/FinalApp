@@ -182,7 +182,11 @@ namespace FinalApp.Services {
                 "TOTAL PIECES",
                 "NET BILL VAL",
                 "TOTAL",
-                "SUB TOTAL"
+                "SUB TOTAL",
+                "TOTALE",
+                "TOTALE EURO",
+                "VAL",
+                "VALUE"
             });
 
             foreach(Regex rx in regexConds) { 

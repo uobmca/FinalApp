@@ -237,6 +237,22 @@
     <ImageAsset Include="Assets.xcassets\ic_save.imageset\ic_save-3.png" />
     <ImageAsset Include="Assets.xcassets\ic_save.imageset\ic_save.png" />
     <ImageAsset Include="Assets.xcassets\ic_save.imageset\ic_save-2.png" />
+    <ImageAsset Include="Assets.xcassets\placeholder_receipt.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\placeholder_receipt.imageset\placeholder_receipt.jpg" />
+    <ImageAsset Include="Assets.xcassets\placeholder_receipt.imageset\placeholder_receipt-1.jpg" />
+    <ImageAsset Include="Assets.xcassets\placeholder_receipt.imageset\placeholder_receipt-2.jpg" />
+    <ImageAsset Include="Assets.xcassets\receipts_generic.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\receipts_generic.imageset\receipts_generic.png" />
+    <ImageAsset Include="Assets.xcassets\receipts_generic.imageset\receipts_generic-1.png" />
+    <ImageAsset Include="Assets.xcassets\receipts_generic.imageset\receipts_generic-2.png" />
+    <ImageAsset Include="Assets.xcassets\bill_type_01.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bill_type_02.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bill_type_01.imageset\bill_type_01.jpeg" />
+    <ImageAsset Include="Assets.xcassets\bill_type_01.imageset\bill_type_01-1.jpeg" />
+    <ImageAsset Include="Assets.xcassets\bill_type_01.imageset\bill_type_01-2.jpeg" />
+    <ImageAsset Include="Assets.xcassets\bill_type_02.imageset\bill_type_02.jpeg" />
+    <ImageAsset Include="Assets.xcassets\bill_type_02.imageset\bill_type_02-1.jpeg" />
+    <ImageAsset Include="Assets.xcassets\bill_type_02.imageset\bill_type_02-2.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -301,5 +317,9 @@
     <Folder Include="Assets.xcassets\ic_logo_transparent.imageset\" />
     <Folder Include="Assets.xcassets\ic_save.imageset\" />
     <Folder Include="Services\" />
+    <Folder Include="Assets.xcassets\placeholder_receipt.imageset\" />
+    <Folder Include="Assets.xcassets\receipts_generic.imageset\" />
+    <Folder Include="Assets.xcassets\bill_type_01.imageset\" />
+    <Folder Include="Assets.xcassets\bill_type_02.imageset\" />
   </ItemGroup>
 </Project>
