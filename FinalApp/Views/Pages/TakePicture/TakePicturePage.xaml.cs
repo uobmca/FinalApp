@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Autofac;
 using FinalApp.ViewModels;
+using FinalApp.Views.Pages.SelectExpense;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Xamarin.Forms;
@@ -43,14 +44,17 @@ namespace FinalApp.Views.Pages.TakePicture {
                 return;
             }
 
-            using(var scope = App.Container.BeginLifetimeScope()) {
-                if (scope.Resolve<AnalyzePicturePageViewModel>() is AnalyzePicturePageViewModel viewModel) {
-                    viewModel.UserImageFilePath = imgFile.Path;
-                    viewModel.UserImageSource = imgSource;
-                    imgFile.Dispose();
-                    await Navigation.PushAsync(new AnalyzePicture.AnalyzePicturePage { BindingContext = viewModel }, true);
+            await SelectExpensePage.PromptUserForExpenseType(Navigation, async (expenseType) => {
+                using (var scope = App.Container.BeginLifetimeScope()) {
+                    if (scope.Resolve<AnalyzePicturePageViewModel>() is AnalyzePicturePageViewModel viewModel) {
+                        viewModel.UserImageFilePath = imgFile.Path;
+                        viewModel.UserImageSource = imgSource;
+                        viewModel.ExpenseType = expenseType.ExpenseType;
+                        imgFile.Dispose();
+                        await Navigation.PushAsync(new AnalyzePicture.AnalyzePicturePage { BindingContext = viewModel }, true);
+                    }
                 }
-            }
+            });
         }
 
         private async Task<MediaFile> GoToCameraPicker() {

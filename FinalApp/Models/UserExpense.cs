@@ -42,13 +42,13 @@ namespace FinalApp.Models {
 
     public class SelectableUserExpense {
         public static class BillTypes {
-            public readonly static int Type01 = 0;
-            public readonly static int Type02 = 1;
-            public readonly static int Type03 = 2;
+            public const int Type01 = 0;
+            public const int Type02 = 1;
+            public const int Type03 = 2;
         }
 
         public static class ReceiptTypes {
-            public readonly static int GenericReceipt = 3;
+            public const int GenericReceipt = 3;
         }
 
         public ImageSource ExpenseImage { get; set; }

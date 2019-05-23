@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Autofac;
+using FinalApp.Commons;
 using FinalApp.Models;
 using FinalApp.ViewModels;
 using Xamarin.Forms;
@@ -20,6 +22,11 @@ namespace FinalApp.Views.Pages.SelectExpense {
             InitializeComponent();
             SetupBindingContext();
             SetupListeners();
+        }
+
+        public static async Task PromptUserForExpenseType(INavigation navigation, Action<SelectableUserExpense> completion) {
+            var page = new SelectExpensePage { OnUserExpenseTypeSelected = new Command<SelectableUserExpense>(completion) };
+            await navigation.PushModalAsyncUnique(page);
         }
 
         private void SetupBindingContext() {

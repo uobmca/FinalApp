@@ -6,6 +6,7 @@ using Autofac;
 using FinalApp.Commons;
 using FinalApp.ViewModels;
 using FinalApp.Views.Base;
+using FinalApp.Views.Pages.SelectExpense;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Xamarin.Forms;
@@ -84,19 +85,20 @@ namespace FinalApp.Views.Pages.AddIncomePage {
                 return;
             }
 
-            using (var scope = App.Container.BeginLifetimeScope()) {
-                if (scope.Resolve<AnalyzePicturePageViewModel>() is AnalyzePicturePageViewModel viewModel) {
-                    viewModel.UserImageFilePath = mediaFile.Path;
-                    viewModel.UserImageSource = ImageSource.FromFile(mediaFile.Path);
-                    await Navigation.PushAsync(new AnalyzePicture.AnalyzePicturePage {  BindingContext = viewModel }, true);
+            await SelectExpensePage.PromptUserForExpenseType(Navigation, async (expenseType) => {
+                using (var scope = App.Container.BeginLifetimeScope()) {
+                    if (scope.Resolve<AnalyzePicturePageViewModel>() is AnalyzePicturePageViewModel viewModel) {
+                        viewModel.UserImageFilePath = mediaFile.Path;
+                        viewModel.UserImageSource = ImageSource.FromFile(mediaFile.Path);
+                        viewModel.ExpenseType = expenseType.ExpenseType;
+                        await Navigation.PushAsync(new AnalyzePicture.AnalyzePicturePage {  BindingContext = viewModel }, true);
+                    }
                 }
-            }
+            });
         }
 
         private async Task GoToTakePicturePage() {
-            await Navigation.PushModalAsyncUnique(new SelectExpense.SelectExpensePage() { OnUserExpenseTypeSelected = new Command<Models.SelectableUserExpense>((obj) => {
-                Debug.Print("Selected expense type: " + obj.DisplayName);
-            })});
+            await Navigation.PushAsyncUnique(new TakePicture.TakePicturePage());
         }
 
         private void ShowOptionSelection(Grid grid) {

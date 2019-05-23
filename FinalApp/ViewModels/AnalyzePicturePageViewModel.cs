@@ -21,6 +21,8 @@ namespace FinalApp.ViewModels {
         protected readonly BindableProperty UserImageFilePathProperty =
             BindableProperty.Create(nameof(UserImageFilePath), typeof(string), typeof(AnalyzePicturePageViewModel), null);
 
+        public int ExpenseType { get; set; }
+
         public ImageSource UserImageSource {
             get => (ImageSource)GetValue(UserImageSourceProperty);
             set => SetValue(UserImageSourceProperty, value);
@@ -65,7 +67,20 @@ namespace FinalApp.ViewModels {
                     return null;
                 }
 
-                ExtractedExpense = await dataExtractor.ExtractExpensesFromReceipt(response.RecognitionResult, ImageMetadata);
+                switch(ExpenseType) {
+                    case SelectableUserExpense.ReceiptTypes.GenericReceipt:
+                        ExtractedExpense = await dataExtractor.ExtractExpensesFromReceipt(response.RecognitionResult, ImageMetadata);
+                        break;
+                    case SelectableUserExpense.BillTypes.Type01:
+                        ExtractedExpense = await dataExtractor.ExtractExpensesFromTypeOneBill(response.RecognitionResult, ImageMetadata);
+                        break;
+                    case SelectableUserExpense.BillTypes.Type02:
+                        ExtractedExpense = await dataExtractor.ExtractExpensesFromTypeTwoBill(response.RecognitionResult, ImageMetadata);
+                        break;
+                    default:
+                        ExtractedExpense = null;
+                        break;
+                }
 
                 return response;
             }
