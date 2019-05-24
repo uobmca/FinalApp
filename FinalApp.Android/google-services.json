@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1006430794848",
+    "firebase_url": "https://finalappocr.firebaseio.com",
+    "project_id": "finalappocr",
+    "storage_bucket": "finalappocr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006430794848:android:b54ae197e4841956",
+        "android_client_info": {
+          "package_name": "com.xamarin.starterkit.FinalApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006430794848-bhsa6jpeib70a9c3960ohpc4g9dc63aj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGzZrA0yiZ_COeo8nJqc2e1R9op4FPf2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006430794848-bhsa6jpeib70a9c3960ohpc4g9dc63aj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1006430794848-j029c5q446f75d8ubhv4bukh2nth0j70.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.xamarin.starterkit.FinalApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

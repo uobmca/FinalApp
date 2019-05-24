@@ -22,5 +22,7 @@ namespace FinalApp.Services {
         // Categories
         Task<List<Category>> GetUserCategories();
         Task SaveUserCategory(Category category);
+
+        bool IsInitializing { get; }
     }
 }

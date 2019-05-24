@@ -19,9 +19,10 @@
                         <Button Text="OPEN" TextColor="White"
                                 Grid.Row="0"
                                 Clicked="Handle_Clicked"
+                                Margin="0,4"
                                 Grid.Column="1"
                                 FontAttributes="Bold"
-                                BackgroundColor="{StaticResource ColorSecondary}"/>
+                                BackgroundColor="{StaticResource ColorAccent}"/>
                     </Grid>
             </Frame>
         </StackLayout>

@@ -66,6 +66,10 @@ namespace FinalApp.ViewModels {
 
         public async Task Update() {
 
+            if(repository.IsInitializing) {
+                await Task.Delay(3000);
+            }
+
             UserExpenses = await repository.GetUserExpenses();
             UserIncomes = await repository.GetUserIncomes();
 

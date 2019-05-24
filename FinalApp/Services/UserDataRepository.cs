@@ -25,6 +25,9 @@ namespace FinalApp.Services {
 
         private string LoggedUserId { get => LoginManager.Instance.MobileClient.CurrentUser.UserId; }
 
+        private bool _isInitializing = true;
+        public bool IsInitializing => _isInitializing;
+
         public UserDataRepository() {
             MobileClient = LoginManager.Instance.MobileClient;
             InitializeAsync();
@@ -43,6 +46,7 @@ namespace FinalApp.Services {
             categoriesTable = MobileClient.GetSyncTable<Category>();
 
             await SyncAsync();
+            _isInitializing = false;
         }
 
         public async Task<MobileServiceUser> LoginAsync() {
