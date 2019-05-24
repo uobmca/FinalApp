@@ -1,16 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Reflection;
 using Autofac;
 using FinalApp.ViewModels;
 using Xamarin.Forms;
 
 namespace FinalApp.Views.Pages.Tags {
+
     public partial class TagDetailPage : ContentPage {
+
+        private CategoryIconsGridBuilder categoryIconsBuilder;
+
         public TagDetailPage() {
             InitializeComponent();
-            SetupUI();
+            SetupUI(); 
             if(BindingContext == null) { 
                 SetupContext();
+            }
+        }
+
+        protected override void OnBindingContextChanged() {
+            base.OnBindingContextChanged();
+            if (BindingContext is TagDetailPageViewModel viewModel) {
+                categoryIconsBuilder.SetSelected(viewModel.SelectedCategory);
             }
         }
 
@@ -23,6 +33,9 @@ namespace FinalApp.Views.Pages.Tags {
         }
 
         private void SetupUI() {
+            categoryIconsBuilder = new CategoryIconsGridBuilder();
+            categoriesGridContainer.Children.Add(categoryIconsBuilder.Build(5));
+
             NavigationPage.SetHasNavigationBar(this, true);
             ToolbarItems.Add(new ToolbarItem("Close", "ic_close", async () => {
                 await Navigation.PopModalAsync();
@@ -37,6 +50,7 @@ namespace FinalApp.Views.Pages.Tags {
             }
 
             if(BindingContext is TagDetailPageViewModel viewModel) {
+                viewModel.SetCategoryIcon(categoryIconsBuilder.SelectedCategoryIcon.IconSource);
                 await viewModel.Save();
                 await Navigation.PopModalAsync();
             }

@@ -26,6 +26,7 @@ namespace FinalApp.ViewModels {
             set => SetValue(CategoryIdProperty, value);
         }
 
+        private IEnumerable<Category> userCategories;
         private IUserDataRepository repository;
 
         public ExpensesListPageViewModel(IUserDataRepository repository) {
@@ -41,7 +42,11 @@ namespace FinalApp.ViewModels {
         }
 
         public async Task Update(string categoryId) {
+            userCategories = await repository.GetUserCategories();
             UserExpenses = (await repository.GetUserExpenses()).Where((arg)=>arg.CategoryId == categoryId);
+            foreach (UserExpense expense in UserExpenses) {
+                expense.UserCategory = userCategories.FirstOrDefault((category) => category.Id == expense.CategoryId);
+            }
         }
 
         public async Task Update() {

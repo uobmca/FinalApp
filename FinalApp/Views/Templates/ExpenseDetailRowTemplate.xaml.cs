@@ -14,6 +14,7 @@ namespace FinalApp.Views.Templates {
             if (BindingContext is UserExpense expense) {
                 dateLabel.Text = expense.ExpireDate.Date.ToShortDateString();
                 amountLabel.Text = string.Format("{0:C}", expense.Amount);
+                categoryIconImage.Source = expense.UserCategory != null ? (expense.UserCategory.Icon != "" ? expense.UserCategory.Icon : "ic_tag_home") : "ic_tag_home";
             }
         }
     }

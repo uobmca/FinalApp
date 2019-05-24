@@ -14,6 +14,7 @@ namespace FinalApp.Views.Templates {
             if (BindingContext is UserIncome income) {
                 dateLabel.Text = income.IncomeDate.Date.ToShortDateString();
                 amountLabel.Text = string.Format("{0:C}", income.Amount);
+                categoryIconImage.Source = income.UserCategory != null ? (income.UserCategory.Icon != "" ? income.UserCategory.Icon : "ic_tag_home") : "ic_tag_home";
             }
         }
     }

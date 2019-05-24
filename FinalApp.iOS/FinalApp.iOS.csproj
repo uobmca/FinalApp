@@ -253,6 +253,46 @@
     <ImageAsset Include="Assets.xcassets\bill_type_02.imageset\bill_type_02.jpeg" />
     <ImageAsset Include="Assets.xcassets\bill_type_02.imageset\bill_type_02-1.jpeg" />
     <ImageAsset Include="Assets.xcassets\bill_type_02.imageset\bill_type_02-2.jpeg" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_beer.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_car.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_cards.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_food.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_fun.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_home.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_salary.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_work.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_beer.imageset\ic_tag_beer.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_beer.imageset\ic_tag_beer-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_beer.imageset\ic_tag_beer-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_car.imageset\ic_tag_car.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_car.imageset\ic_tag_car-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_car.imageset\ic_tag_car-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_cards.imageset\ic_tag_cards.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_cards.imageset\ic_tag_cards-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_cards.imageset\ic_tag_cards-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_food.imageset\ic_tag_food.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_food.imageset\ic_tag_food-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_food.imageset\ic_tag_food-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_fun.imageset\ic_tag_fun.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_fun.imageset\ic_tag_fun-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_fun.imageset\ic_tag_fun-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_home.imageset\ic_tag_home.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_home.imageset\ic_tag_home-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_home.imageset\ic_tag_home-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_salary.imageset\ic_tag_salary.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_salary.imageset\ic_tag_salary-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_salary.imageset\ic_tag_salary-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_work.imageset\ic_tag_work.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_work.imageset\ic_tag_work-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_work.imageset\ic_tag_work-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_bills.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_pets.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_bills.imageset\ic_tag_bills.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_bills.imageset\ic_tag_bills-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_bills.imageset\ic_tag_bills-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_pets.imageset\ic_tag_pets.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_pets.imageset\ic_tag_pets-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_tag_pets.imageset\ic_tag_pets-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -330,6 +370,16 @@
     <Folder Include="Assets.xcassets\receipts_generic.imageset\" />
     <Folder Include="Assets.xcassets\bill_type_01.imageset\" />
     <Folder Include="Assets.xcassets\bill_type_02.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_beer.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_car.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_cards.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_food.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_fun.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_home.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_salary.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_work.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_bills.imageset\" />
+    <Folder Include="Assets.xcassets\ic_tag_pets.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="GoogleService-Info.plist">

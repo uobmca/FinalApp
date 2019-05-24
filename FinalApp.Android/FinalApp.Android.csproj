@@ -140,6 +140,16 @@
     <AndroidResource Include="Resources\drawable\bill_type_01.jpeg" />
     <AndroidResource Include="Resources\drawable\bill_type_02.jpeg" />
     <AndroidResource Include="Resources\drawable\receipts_generic.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_beer.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_car.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_cards.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_food.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_fun.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_home.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_salary.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_work.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_bills.png" />
+    <AndroidResource Include="Resources\drawable\ic_tag_pets.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

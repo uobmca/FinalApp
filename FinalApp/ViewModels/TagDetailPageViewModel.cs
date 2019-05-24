@@ -22,6 +22,10 @@ namespace FinalApp.ViewModels {
             this.repository = repository;
         }
 
+        public void SetCategoryIcon(string icon) {
+            SelectedCategory.Icon = icon;
+        }
+
         public async Task Save() {
             await this.repository.SaveUserCategory(SelectedCategory);
         }

@@ -17,6 +17,7 @@ namespace FinalApp.Views.Templates {
                 categoryLabel.Text = groupedExpenses.First().UserCategory != null ? groupedExpenses.First().UserCategory.DisplayName : "N/A";
                 transactionsLabel.Text = $"{groupedExpenses.Count} transactions";
                 amountLabel.Text = string.Format("- {0:C}", groupedExpenses.Sum((expense) => expense.Amount));
+                categoryIconImage.Source = groupedExpenses.First().UserCategory.Icon != "" ? groupedExpenses.First().UserCategory.Icon : "ic_home";
             }
         }
     }
