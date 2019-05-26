@@ -14,10 +14,14 @@ namespace FinalApp.Views.Templates {
         protected override void OnBindingContextChanged() {
             base.OnBindingContextChanged();
             if (BindingContext is ExpensesGroupedList groupedExpenses) {
-                categoryLabel.Text = groupedExpenses.First().UserCategory != null ? groupedExpenses.First().UserCategory.DisplayName : "N/A";
+                if(groupedExpenses.FirstOrDefault() is UserExpense expense) { 
+                    if (expense.UserCategory is Category category) {
+                        categoryLabel.Text = category.DisplayName ?? "N/A";
+                        categoryIconImage.Source = category.Icon ?? "ic_home";
+                    }
+                }
                 transactionsLabel.Text = $"{groupedExpenses.Count} transactions";
-                amountLabel.Text = string.Format("- {0:C}", groupedExpenses.Sum((expense) => expense.Amount));
-                categoryIconImage.Source = groupedExpenses.First().UserCategory.Icon != "" ? groupedExpenses.First().UserCategory.Icon : "ic_home";
+                amountLabel.Text = string.Format("- {0:C}", groupedExpenses.Sum((exp) => exp.Amount));
             }
         }
     }
