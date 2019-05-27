@@ -31,6 +31,9 @@ namespace FinalApp.ViewModels {
         private IEnumerable<Category> userCategories;
         private IUserDataRepository repository;
 
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
         public ExpensesListPageViewModel(IUserDataRepository repository) {
             this.repository = repository;
             Update();
@@ -45,14 +48,14 @@ namespace FinalApp.ViewModels {
 
         public async Task Update(string categoryId) {
             userCategories = await repository.GetUserCategories();
-            UserExpenses = (await repository.GetUserExpenses()).Where((arg)=>arg.CategoryId == categoryId);
+            UserExpenses = (await repository.GetUserExpenses(StartDate, EndDate)).Where((arg)=>arg.CategoryId == categoryId);
             foreach (UserExpense expense in UserExpenses) {
                 expense.UserCategory = userCategories.FirstOrDefault((category) => category.Id == expense.CategoryId);
             }
         }
 
         public async Task Update() {
-            UserExpenses = await repository.GetUserExpenses();
+            UserExpenses = await repository.GetUserExpenses(StartDate, EndDate);
         }
 
         public async Task Remove(UserExpense expense) { 

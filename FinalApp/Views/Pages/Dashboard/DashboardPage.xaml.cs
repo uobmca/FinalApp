@@ -5,6 +5,8 @@ using FinalApp.Views.Base;
 using Xamarin.Forms;
 using Autofac;
 using FinalApp.ViewModels;
+using FinalApp.Views.Popups;
+using Rg.Plugins.Popup.Services;
 
 namespace FinalApp.Views.Pages.Dashboard {
     public partial class DashboardPage : ContentPage {
@@ -18,10 +20,13 @@ namespace FinalApp.Views.Pages.Dashboard {
             }
         }
 
-        protected override void OnAppearing() {
+        protected async override void OnAppearing() {
             base.OnAppearing();
             if (BindingContext is DashboardPageViewModel viewModel) {
-                viewModel.Update();
+                var loadingPopup = new ActivityIndicatorPopup();
+                await PopupNavigation.Instance.PushAsync(loadingPopup);
+                await viewModel.Update();
+                await PopupNavigation.Instance.RemovePageAsync(loadingPopup);
             }
         }
 

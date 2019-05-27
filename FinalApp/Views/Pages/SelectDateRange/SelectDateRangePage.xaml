@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             BackgroundColor="{StaticResource ColorAccent}"
+             x:Class="FinalApp.Views.Pages.SelectDateRange.SelectDateRangePage">
+    <ContentPage.Content>
+        <StackLayout Padding="0,24" Margin="0,0,0,0">
+            <Label Text="Filter your statistics" 
+                   FontSize="Large" 
+                   Margin="16,0"
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+            <Label Text="Setup your desired date range in order to filter your statistics"
+                   FontSize="Small"
+                   Margin="16,0"
+                   TextColor="White"/>
+            
+            <Frame BackgroundColor="White" HasShadow="false" 
+                   Margin="16,16,16,4"
+                   Padding="16">
+                <StackLayout>
+                    <Label Text="From" FontAttributes="Bold"/>
+                    <DatePicker x:Name="startDatePicker"/>
+                </StackLayout>
+            </Frame>
+            
+            <Frame BackgroundColor="White" HasShadow="false" 
+                   Margin="16,4,16,16"
+                   Padding="16">
+                <StackLayout>
+                    <Label Text="To" FontAttributes="Bold"/>
+                    <DatePicker x:Name="endDatePicker"/>
+                </StackLayout>
+            </Frame>
+            
+            <Button Text="Confirm" FontAttributes="Bold"
+                    Clicked="Handle_Clicked"
+                    BorderColor="White"
+                    TextColor="White"
+                    Margin="16,16"
+                    BorderWidth="1"
+                    BackgroundColor="Transparent"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

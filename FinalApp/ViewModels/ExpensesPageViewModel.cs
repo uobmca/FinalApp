@@ -49,6 +49,9 @@ namespace FinalApp.ViewModels {
         protected readonly BindableProperty BusiestDayProperty =
             BindableProperty.Create(nameof(BusiestDay), typeof(string), typeof(ExpensesPageViewModel), "-");
 
+        protected readonly BindableProperty DateRangeDescriptionProperty =
+            BindableProperty.Create(nameof(DateRangeDescription), typeof(string), typeof(ExpensesPageViewModel), "This month");
+            
         public Chart ExpensesChart {
             get => (Chart)GetValue(ExpensesChartProperty);
             set => SetValue(ExpensesChartProperty, value);
@@ -95,9 +98,17 @@ namespace FinalApp.ViewModels {
             set => SetValue(BusiestDayProperty, value);
         }
 
+        public string DateRangeDescription {
+            get => (string)GetValue(DateRangeDescriptionProperty);
+            set => SetValue(DateRangeDescriptionProperty, value);
+        }
+
         private IUserDataRepository repository;
         private IEnumerable<Category> userCategories;
         private List<UserIncome> userIncomes;
+
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public ExpensesPageViewModel(IUserDataRepository repository) {
             this.repository = repository;
@@ -200,14 +211,27 @@ namespace FinalApp.ViewModels {
         }
 
         public async Task Update() {
+            StartDate = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, DateTime.Now.Date.Day, 0, 0, 0);
+            EndDate = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, DateTime.Now.Date.Day, 23, 59, 59);
+            await Update(StartDate, EndDate);
+            DateRangeDescription = "This month";
+        }
+
+        public async Task Update(DateTime startDate, DateTime endDate) {
+            StartDate = startDate;
+            EndDate = endDate;
+
             userCategories = await repository.GetUserCategories();
-            UserExpenses = await repository.GetUserExpenses();
+
+            UserExpenses = await repository.GetUserExpenses(startDate, endDate);
 
             foreach (UserExpense expense in UserExpenses) {
                 expense.UserCategory = userCategories.FirstOrDefault((category) => category.Id == expense.CategoryId);
             }
             UpdateOverview();
             UpdateExpensesChart();
+
+            DateRangeDescription = string.Format("{0} - {1}", startDate.ToShortDateString(), endDate.ToShortDateString());
         }
 
 

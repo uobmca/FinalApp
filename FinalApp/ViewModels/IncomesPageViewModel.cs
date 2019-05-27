@@ -192,7 +192,10 @@ namespace FinalApp.ViewModels {
 
         public async void Update() {
             userCategories = await repository.GetUserCategories();
-            UserIncomes = await repository.GetUserIncomes();
+
+            var startDate = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, DateTime.Now.Date.Day, 0, 0, 0);
+            var endDate = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, DateTime.Now.Date.Day, 23, 59, 59);
+            UserIncomes = await repository.GetUserIncomes(startDate, endDate);
             foreach (UserIncome income in UserIncomes) {
                 income.UserCategory = userCategories.FirstOrDefault((category) => category.Id == income.CategoryId);
             }

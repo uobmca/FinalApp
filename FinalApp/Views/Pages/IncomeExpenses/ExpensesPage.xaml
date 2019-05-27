@@ -36,12 +36,25 @@
                                            HorizontalTextAlignment="Center"
                                            TextColor="#d32f2f" 
                                            Margin="10,16,16,0" />
-                                    
-                                    <Label Text="This month" 
-                                           FontSize="Medium" 
+
+                                    <Label Text="{Binding DateRangeDescription, FallbackValue=This month}" 
+                                           FontSize="Large" 
                                            HorizontalTextAlignment="Center"
                                            HorizontalOptions="Center" 
+                                           FontAttributes="Bold"
                                            TextColor="Black" />
+                                    
+                                    <Frame BackgroundColor="{StaticResource ColorAccent}" 
+                                           x:Name="filterFrame"
+                                           HorizontalOptions="Center"
+                                           Padding="4"
+                                           HeightRequest="24"
+                                           WidthRequest="24"
+                                           Opacity="0.8"
+                                           CornerRadius="12"
+                                           HasShadow="false">
+                                        <Image Source="ic_filter" />
+                                    </Frame>
                     
                     <microcharts:ChartView BackgroundColor="Transparent"
                                            HorizontalOptions="FillAndExpand"

@@ -70,8 +70,11 @@ namespace FinalApp.ViewModels {
                 await Task.Delay(3000);
             }
 
-            UserExpenses = await repository.GetUserExpenses();
-            UserIncomes = await repository.GetUserIncomes();
+            var startDate = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, DateTime.Now.Date.Day, 0, 0, 0);
+            var endDate = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, DateTime.Now.Date.Day, 23, 59, 59);
+
+            UserExpenses = await repository.GetUserExpenses(startDate, endDate);
+            UserIncomes = await repository.GetUserIncomes(startDate, endDate);
 
             var incomesSumValue = UserIncomes.Sum((inc) => inc.Amount);
             var expensesSumValue = UserExpenses.Sum((exp) => exp.Amount);

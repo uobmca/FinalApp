@@ -49,6 +49,7 @@
     <Folder Include="Views\Pages\SelectExpense\" />
     <Folder Include="Services\Base\" />
     <Folder Include="Views\Pages\Tags\Base\" />
+    <Folder Include="Views\Pages\SelectDateRange\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Page1.xaml.cs" />
