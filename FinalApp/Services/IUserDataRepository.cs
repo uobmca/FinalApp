@@ -12,12 +12,16 @@ namespace FinalApp.Services {
         Task SaveUserExpense(UserExpense income);
         Task SaveUserExpenses(IEnumerable<UserExpense> incomes);
 
+        Task RemoveUserExpense(UserExpense expense);
+
         // Incomes
         Task<List<UserIncome>> GetUserIncomes();
         Task<List<UserIncome>> GetUserIncomes(DateTime startDate, DateTime endDate);
 
         Task SaveUserIncome(UserIncome income);
         Task SaveUserIncomes(IEnumerable<UserIncome> incomes);
+
+        Task RemoveUserIncome(UserIncome income);
 
         // Categories
         Task<List<Category>> GetUserCategories();

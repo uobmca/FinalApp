@@ -293,6 +293,10 @@
     <ImageAsset Include="Assets.xcassets\ic_tag_pets.imageset\ic_tag_pets.png" />
     <ImageAsset Include="Assets.xcassets\ic_tag_pets.imageset\ic_tag_pets-1.png" />
     <ImageAsset Include="Assets.xcassets\ic_tag_pets.imageset\ic_tag_pets-2.png" />
+    <ImageAsset Include="Assets.xcassets\ic_delete.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_delete.imageset\ic_delete.png" />
+    <ImageAsset Include="Assets.xcassets\ic_delete.imageset\ic_delete-1.png" />
+    <ImageAsset Include="Assets.xcassets\ic_delete.imageset\ic_delete-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -380,6 +384,7 @@
     <Folder Include="Assets.xcassets\ic_tag_work.imageset\" />
     <Folder Include="Assets.xcassets\ic_tag_bills.imageset\" />
     <Folder Include="Assets.xcassets\ic_tag_pets.imageset\" />
+    <Folder Include="Assets.xcassets\ic_delete.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="GoogleService-Info.plist">

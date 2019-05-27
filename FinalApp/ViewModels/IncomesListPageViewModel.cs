@@ -26,6 +26,8 @@ namespace FinalApp.ViewModels {
             set => SetValue(CategoryIdProperty, value);
         }
 
+        public Command<UserIncome> DeleteCommand;
+
         private IEnumerable<Category> userCategories;
         private readonly IUserDataRepository repository;
 
@@ -49,6 +51,13 @@ namespace FinalApp.ViewModels {
             UserIncomes = (await repository.GetUserIncomes()).Where((inc) => inc.CategoryId == categoryId);
             foreach (UserIncome income in UserIncomes) {
                 income.UserCategory = userCategories.FirstOrDefault((category) => category.Id == income.CategoryId);
+            }
+        }
+
+        public async Task Remove(UserIncome income) { 
+            if(UserIncomes.Contains(income)) {
+                await repository.RemoveUserIncome(income);
+                await this.Update(CategoryId);
             }
         }
     }

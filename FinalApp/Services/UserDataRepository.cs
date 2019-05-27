@@ -158,5 +158,16 @@ namespace FinalApp.Services {
             return await categoriesTable.Where((item) => item.UserId == LoggedUserId).ToListAsync();
         }
 
+        public async Task RemoveUserExpense(UserExpense expense) {
+            if (expense.Id != null && await incomesTable.LookupAsync(expense.Id) != null) {
+                await expensesTable.DeleteAsync(expense);
+            }
+        }
+
+        public async Task RemoveUserIncome(UserIncome income) {
+            if (income.Id != null && await incomesTable.LookupAsync(income.Id) != null) {
+                await incomesTable.DeleteAsync(income);
+            }
+        }
     }
 }

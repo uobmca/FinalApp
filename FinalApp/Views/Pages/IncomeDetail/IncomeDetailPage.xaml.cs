@@ -56,5 +56,6 @@ namespace FinalApp.Views.Pages.IncomeDetail {
             }
             await Navigation.PopModalAsync();
         }
+
     }
 }

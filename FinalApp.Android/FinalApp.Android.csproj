@@ -150,6 +150,7 @@
     <AndroidResource Include="Resources\drawable\ic_tag_work.png" />
     <AndroidResource Include="Resources\drawable\ic_tag_bills.png" />
     <AndroidResource Include="Resources\drawable\ic_tag_pets.png" />
+    <AndroidResource Include="Resources\drawable\ic_delete.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
