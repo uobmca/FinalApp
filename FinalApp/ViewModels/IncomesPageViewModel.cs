@@ -82,6 +82,21 @@ namespace FinalApp.ViewModels {
         private IEnumerable<Category> userCategories;
         private List<UserExpense> userExpenses;
 
+        private SKColor[] chartColors = new SKColor[] {
+            SKColors.Blue,
+            SKColors.Green,
+            SKColors.Yellow,
+            SKColors.Orange,
+            SKColors.Firebrick,
+            SKColors.MidnightBlue,
+            SKColors.Turquoise,
+            SKColors.Purple,
+            SKColors.CornflowerBlue,
+            SKColors.PaleVioletRed,
+            SKColors.LimeGreen,
+            SKColors.DarkSeaGreen
+        };
+
         public IncomesPageViewModel(IUserDataRepository repository) {
             this.repository = repository;
             Update();
@@ -125,13 +140,28 @@ namespace FinalApp.ViewModels {
         }
 
         private void UpdateIncomesChart() {
+
+            int colorIndex = 0;
+            Dictionary<string, SKColor> assignedColors = new Dictionary<string, SKColor>();
             IncomesChart = new PieChart {
                 AnimationDuration = TimeSpan.FromMilliseconds(600.0),
-                Entries = UserIncomes.GroupBy((arg) => arg.CategoryId).Select((arg) => new ChartEntry((float)arg.First().Amount) {
-                    Color = CategoryIdToSKColor(arg.First().CategoryId),
-                    TextColor = CategoryIdToSKColor(arg.First().CategoryId),
-                    Label = CategoryIdToString(arg.First().CategoryId),
-                    ValueLabel = arg.First().Amount.ToString("F1")
+                Entries = UserIncomes.GroupBy((arg) => arg.CategoryId).Select((arg) => {
+                    SKColor color;
+                    var categoryId = arg.First().CategoryId ?? "";
+                    if (assignedColors.ContainsKey(categoryId)) {
+                        color = assignedColors[categoryId];
+                    } else {
+                        color = chartColors[colorIndex % (chartColors.Length - 1)];
+                        assignedColors[categoryId] = color;
+                        colorIndex++;
+                    }
+
+                    return new ChartEntry((float)arg.First().Amount) {
+                        Color = color,
+                        TextColor = CategoryIdToSKColor(arg.First().CategoryId),
+                        Label = CategoryIdToString(arg.First().CategoryId),
+                        ValueLabel = arg.First().Amount.ToString("F1")
+                    };
                 }),
                 LabelTextSize = 18.0f,
                 BackgroundColor = SKColors.Transparent

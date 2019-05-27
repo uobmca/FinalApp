@@ -3,7 +3,9 @@
     <ContentPage.Content>
         <ScrollView>
         <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" Spacing="0">
-            <Image Source="placeholder_bill" BackgroundColor="Black" HorizontalOptions="FillAndExpand" HeightRequest="140" Aspect="AspectFill"/>
+            <StackLayout BackgroundColor="Black">
+                <Image Source="ic_expense_header" Opacity="0.7" BackgroundColor="Black" HorizontalOptions="FillAndExpand" HeightRequest="140" Aspect="AspectFill"/>
+            </StackLayout>
             <BoxView HeightRequest="1" Color="#e2e2e2"/>
             <Label Text="Choose an option" Margin="16,16,16,8" FontSize="Large"/>
             
