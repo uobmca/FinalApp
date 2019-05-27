@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="#f2f2f2"
              x:Name="self"
+             Title="{Binding UserCategoryName}"
              xmlns:templates="clr-namespace:FinalApp.Views.Templates; assembly=FinalApp"
              x:Class="FinalApp.Views.Pages.IncomesList.IncomesListPage">
     <ContentPage.Content>

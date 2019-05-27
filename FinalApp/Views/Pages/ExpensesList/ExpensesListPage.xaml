@@ -2,16 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:templates="clr-namespace:FinalApp.Views.Templates; assembly=FinalApp"
+             x:Name="self"
              x:Class="FinalApp.Views.Pages.ExpensesList.ExpensesListPage">
     <ContentPage.Content>
         <ListView SelectionMode="None"
-                  RowHeight="60"
+                  HasUnevenRows="True"
+                  BackgroundColor="#f2f2f2"
+                  SeparatorVisibility="None"
+                  VerticalOptions="FillAndExpand"
                   ItemSelected="Handle_ItemSelected"
                   ItemsSource="{Binding UserExpenses}">
             
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <templates:ExpenseDetailRowTemplate/>
+                    <templates:ExpenseDetailRowTemplate ParentContext="{Binding BindingContext, Source={x:Reference self}}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
             

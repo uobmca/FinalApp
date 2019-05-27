@@ -15,7 +15,7 @@ namespace FinalApp.ViewModels {
 
         protected readonly BindableProperty CategoryIdProperty =
             BindableProperty.Create(nameof(CategoryId), typeof(string), typeof(IncomesListPageViewModel), "");
-
+            
         public IEnumerable<UserIncome> UserIncomes {
             get => (IEnumerable<UserIncome>)GetValue(UserIncomesProperty);
             set => SetValue(UserIncomesProperty, value);
@@ -25,6 +25,7 @@ namespace FinalApp.ViewModels {
             get => (string)GetValue(CategoryIdProperty);
             set => SetValue(CategoryIdProperty, value);
         }
+
 
         public Command<UserIncome> DeleteCommand;
 

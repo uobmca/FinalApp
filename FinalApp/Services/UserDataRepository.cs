@@ -159,7 +159,7 @@ namespace FinalApp.Services {
         }
 
         public async Task RemoveUserExpense(UserExpense expense) {
-            if (expense.Id != null && await incomesTable.LookupAsync(expense.Id) != null) {
+            if (expense.Id != null && await expensesTable.LookupAsync(expense.Id) != null) {
                 await expensesTable.DeleteAsync(expense);
             }
         }

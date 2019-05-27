@@ -4,50 +4,50 @@
              x:Class="FinalApp.Views.Templates.IncomeDetailRowTemplate">
     <ViewCell.View >
         <StackLayout BackgroundColor="#f2f2f2">
-        <StackLayout Orientation="Horizontal" Spacing="8" Margin="16,16,16,16">
-            <StackLayout HeightRequest="44" HorizontalOptions="Start" 
-                         VerticalOptions="CenterAndExpand">
-                <Image x:Name="deleteImage"
-                       Source="ic_delete" 
-                       HeightRequest="32"
-                       VerticalOptions="CenterAndExpand"
-                       Aspect="AspectFit"/>
-            </StackLayout>
-           <Frame HasShadow="false" Padding="4" CornerRadius="10" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">    
-               <StackLayout BackgroundColor="#ffffff" 
-                            HorizontalOptions="FillAndExpand">
+          <StackLayout Orientation="Horizontal" Spacing="8" Margin="16,16,16,16">
+              <StackLayout HeightRequest="44" HorizontalOptions="Start" 
+                           VerticalOptions="CenterAndExpand">
+                  <Image x:Name="deleteImage"
+                         Source="ic_delete" 
+                         HeightRequest="32"
+                         VerticalOptions="CenterAndExpand"
+                         Aspect="AspectFit"/>
+              </StackLayout>
+             <Frame HasShadow="false" Padding="4" CornerRadius="10" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">    
+                 <StackLayout BackgroundColor="#ffffff" 
+                              HorizontalOptions="FillAndExpand">
 
-                    <StackLayout Padding="10">
-                            
-                        <Label x:Name="descriptionLabel"
-                               Text="{Binding Description, FallbackValue=Lorem ipsum dolor sit amet\, consectetur adipiscing elit\, sed do eiusmod tempor}"/>
-                        
-                    <StackLayout Orientation="Horizontal" Margin="0,8,0,0" VerticalOptions="EndAndExpand" >
-                        <StackLayout Spacing="0">
-                                    <Label Text="Expire Date" 
-                                           FontAttributes="Bold"
-                                           FontSize="Micro"/>
-                            <Label x:Name="dateLabel"
-                               HorizontalOptions="StartAndExpand"
-                               VerticalOptions="CenterAndExpand"
-                               FontSize="Micro"
-                               Text="{Binding ExpireDate, Converter={StaticResource dateTimeOffsetToDateTimeConverter}, FallbackValue=01/01/2001}" />
-                        </StackLayout>
-                                
-                        <Label x:Name="amountLabel"
-                               HorizontalOptions="EndAndExpand"
-                               VerticalOptions="CenterAndExpand"
-                               FontAttributes="Bold" 
-                               Text="{Binding Amount, FallbackValue=- €12.40, Converter={StaticResource doubleToCurrencyStringConverter}}" 
-                               TextColor="{StaticResource ColorAccent}" 
-                               FontSize="Large" />
-                    </StackLayout>
-                    </StackLayout>
-                            
+                      <StackLayout Padding="10">
+                              
+                          <Label x:Name="descriptionLabel"
+                                 Text="{Binding Description, FallbackValue=Lorem ipsum dolor sit amet\, consectetur adipiscing elit\, sed do eiusmod tempor}"/>
+                          
+                      <StackLayout Orientation="Horizontal" Margin="0,8,0,0" VerticalOptions="EndAndExpand" >
+                          <StackLayout Spacing="0">
+                                      <Label Text="Expire Date" 
+                                             FontAttributes="Bold"
+                                             FontSize="Micro"/>
+                              <Label x:Name="dateLabel"
+                                 HorizontalOptions="StartAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 FontSize="Micro"
+                                 Text="{Binding ExpireDate, Converter={StaticResource dateTimeOffsetToDateTimeConverter}, FallbackValue=01/01/2001}" />
+                          </StackLayout>
+                                  
+                          <Label x:Name="amountLabel"
+                                 HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 FontAttributes="Bold" 
+                                 Text="{Binding Amount, FallbackValue=- €12.40, Converter={StaticResource doubleToCurrencyStringConverter}}" 
+                                 TextColor="{StaticResource ColorAccent}" 
+                                 FontSize="Large" />
+                      </StackLayout>
+                      </StackLayout>
+                              
 
-                </StackLayout> 
-            </Frame> 
-        </StackLayout>
+                  </StackLayout> 
+              </Frame> 
+          </StackLayout>
         </StackLayout>
         
     </ViewCell.View>

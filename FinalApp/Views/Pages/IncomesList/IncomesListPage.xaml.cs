@@ -22,6 +22,7 @@ namespace FinalApp.Views.Pages.IncomesList {
                         await viewModel.Remove(userIncome);
                     }
                 });
+
             }
         }
 

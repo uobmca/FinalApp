@@ -26,6 +26,8 @@ namespace FinalApp.ViewModels {
             set => SetValue(CategoryIdProperty, value);
         }
 
+        public Command<UserExpense> DeleteCommand;
+
         private IEnumerable<Category> userCategories;
         private IUserDataRepository repository;
 
@@ -51,6 +53,13 @@ namespace FinalApp.ViewModels {
 
         public async Task Update() {
             UserExpenses = await repository.GetUserExpenses();
+        }
+
+        public async Task Remove(UserExpense expense) { 
+            if(UserExpenses.Contains(expense)) {
+                await repository.RemoveUserExpense(expense);
+                await this.Update(CategoryId);
+            }
         }
     }
 }
